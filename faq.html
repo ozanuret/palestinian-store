@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Palæstinensisk Arv Butik</title>
+    <meta name="description" content="Ofte stillede spørgsmål om vores palæstinensiske produkter, levering og kundeservice.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c5530">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Palæstinensisk Arv">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+                            <div class="nav-brand">
+                    <a href="index.html">
+                        <h1>🇵🇸 Palæstinensisk Arv</h1>
+                    </a>
+                </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Hjem</a>
+                <a href="produkter.html" class="nav-link">Produkter</a>
+                <a href="om-os.html" class="nav-link">Om Os</a>
+                <a href="kultur.html" class="nav-link">Kultur</a>
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button class="search-btn" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="wishlist-btn" onclick="toggleWishlist()">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="language-currency-selector">
+                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
+                        <option value="da">🇩🇰 Dansk</option>
+                        <option value="en">🇺🇸 English</option>
+                    </select>
+                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
+                        <option value="DKK">DKK</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Search Bar -->
+        <div class="search-bar" id="searchBar">
+            <div class="search-container">
+                <input type="text" placeholder="Søg efter produkter..." id="searchInput">
+                <button class="search-submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link">Hjem</a>
+            <a href="produkter.html" class="mobile-link">Produkter</a>
+            <a href="om-os.html" class="mobile-link">Om Os</a>
+            <a href="kultur.html" class="mobile-link">Kultur</a>
+            <a href="kontakt.html" class="mobile-link">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Ofte Stillede Spørgsmål</h1>
+            <p>Find svar på de mest almindelige spørgsmål om vores produkter, levering og kundeservice</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-page">
+        <div class="container">
+            <!-- FAQ Categories -->
+            <div class="faq-categories">
+                <button class="faq-category-btn active" onclick="filterFAQ('all')">
+                    <i class="fas fa-th-large"></i>
+                    <span>Alle Spørgsmål</span>
+                </button>
+                <button class="faq-category-btn" onclick="filterFAQ('products')">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Produkter</span>
+                </button>
+                <button class="faq-category-btn" onclick="filterFAQ('shipping')">
+                    <i class="fas fa-shipping-fast"></i>
+                    <span>Levering</span>
+                </button>
+                <button class="faq-category-btn" onclick="filterFAQ('returns')">
+                    <i class="fas fa-undo"></i>
+                    <span>Returnering</span>
+                </button>
+                <button class="faq-category-btn" onclick="filterFAQ('payment')">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Betaling</span>
+                </button>
+                <button class="faq-category-btn" onclick="filterFAQ('support')">
+                    <i class="fas fa-headset"></i>
+                    <span>Kundeservice</span>
+                </button>
+            </div>
+
+            <!-- FAQ Items -->
+            <div class="faq-container">
+                <!-- Products FAQ -->
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Hvad er kvaliteten af jeres t-shirts?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vores t-shirts er fremstillet af 100% organisk bomuld af højeste kvalitet. Vi arbejder kun med bæredygtige materialer og sikrer, at hvert produkt leverer både komfort og holdbarhed. Vores designs er håndtrykte og håndbroderede af erfarne palæstinensiske håndværkere.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Er jeres produkter autentiske palæstinensiske designs?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ja, alle vores designs er autentiske og inspireret af traditionel palæstinensk kultur og historie. Vi samarbejder direkte med palæstinensiske kunstnere og håndværkere for at sikre, at hvert produkt afspejler den rigtige kulturelle arv og traditioner.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Hvilke størrelser har I tilgængelige?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vi tilbyder størrelser fra XS til XXL for de fleste af vores t-shirts. Alle størrelser følger standard europæiske målinger. Hvis du er usikker på din størrelse, kan du se vores størrelsesguide på produktsiden eller kontakte vores kundeservice for hjælp.</p>
+                    </div>
+                </div>
+
+                <!-- Shipping FAQ -->
+                <div class="faq-item" data-category="shipping">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Hvor lang tid tager levering?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard levering til Danmark tager 3-5 hverdage. Express levering er tilgængelig og tager 1-2 hverdage. For internationale forsendelser kan leveringstiden variere mellem 5-10 hverdage afhængigt af destinationen.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="shipping">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Hvad koster levering?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard levering til Danmark koster 49 kr. Gratis levering på ordrer over 500 kr. Express levering koster 99 kr. Internationale forsendelser koster mellem 99-199 kr afhængigt af destinationen.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="shipping">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Leverer I til alle lande?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vi leverer til de fleste lande i verden. Når du indtaster din adresse i checkout, vil du automatisk se, om vi leverer til dit land. Hvis dit land ikke er på listen, kan du kontakte os, så vil vi undersøge mulighederne.</p>
+                    </div>
+                </div>
+
+                <!-- Returns FAQ -->
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Hvad er jeres returneringspolitik?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Du har 30 dage til at returnere dit produkt fra modtagelsesdatoen. Produktet skal være ubrugt og i original emballage. Vi tilbyder gratis returnering for danske kunder. Internationale returneringer kan medføre ekstra omkostninger.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Hvordan returnerer jeg et produkt?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For at returnere et produkt, gå til din ordre i din konto og vælg "Returner produkt". Udfyld returneringsformularen og print returneringslabelen. Pak produktet sikkert og send det tilbage med den medfølgende label.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Hvor lang tid tager det at få pengene tilbage?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Når vi modtager din returnering, behandler vi den inden for 2-3 hverdage. Pengene tilbagebetales til din oprindelige betalingsmetode inden for 5-10 hverdage, afhængigt af din bank.</p>
+                    </div>
+                </div>
+
+                <!-- Payment FAQ -->
+                <div class="faq-item" data-category="payment">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Hvilke betalingsmetoder accepterer I?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vi accepterer alle større kreditkort (Visa, Mastercard, American Express), MobilePay, PayPal og bankoverførsel. Alle betalinger behandles sikkert gennem vores certificerede betalingsgateway.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="payment">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Er mine betalingsoplysninger sikre?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ja, vi tager sikkerhed meget alvorligt. Alle betalinger krypteres med SSL-teknologi, og vi gemmer aldrig dine kreditkortoplysninger. Vi bruger kun certificerede betalingsprocessorer til at håndtere transaktioner.</p>
+                    </div>
+                </div>
+
+                <!-- Support FAQ -->
+                <div class="faq-item" data-category="support">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Hvordan kan jeg kontakte kundeservice?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Du kan kontakte os via email på info@palestinensisk-arv.dk, telefon på +45 12 34 56 78, eller gennem vores kontaktformular på hjemmesiden. Vi svarer normalt inden for 24 timer på hverdage.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="support">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Hvad er jeres åbningstider?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vores kundeservice er tilgængelig mandag til fredag fra 9:00 til 17:00 dansk tid. Online ordrer kan placeres 24/7, og vi behandler dem i åbningstiden.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="support">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Kan jeg få hjælp til at vælge det rigtige produkt?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolut! Vores kundeservice team er eksperter i vores produkter og kan hjælpe dig med at finde det perfekte produkt. Kontakt os med dine ønsker og behov, så vil vi give dig personlig vejledning.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact CTA -->
+            <div class="faq-cta">
+                <div class="cta-content">
+                    <h2>Fandt du ikke svaret?</h2>
+                    <p>Vores kundeservice team er klar til at hjælpe dig med alle spørgsmål</p>
+                    <div class="cta-actions">
+                        <a href="kontakt.html" class="cta-btn primary">
+                            <i class="fas fa-envelope"></i>
+                            Kontakt Os
+                        </a>
+                        <a href="tel:+4512345678" class="cta-btn secondary">
+                            <i class="fas fa-phone"></i>
+                            Ring til Os
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Palæstinensisk Arv</h3>
+                    <p>Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Hurtige Links</h4>
+                    <a href="index.html">Hjem</a>
+                    <a href="produkter.html">Produkter</a>
+                    <a href="om-os.html">Om Os</a>
+                    <a href="kultur.html">Kultur</a>
+                    <a href="kontakt.html">Kontakt</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kategorier</h4>
+                    <a href="produkter.html">Tøj & Mode</a>
+                    <a href="produkter.html">Tilbehør</a>
+                    <a href="produkter.html">Kultur & Historie</a>
+                    <a href="produkter.html">Nyheder</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kundeservice</h4>
+                    <a href="kontakt.html">Kontakt Os</a>
+                    <a href="levering-returnering.html">Levering & Returnering</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment">
+                        <span>Betalinger accepteres:</span>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Indkøbskurv</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p>Din kurv er tom</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">0.00 kr</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Gå til Kassen</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h3>Ønskeliste</h3>
+            <button class="close-wishlist" onclick="toggleWishlist()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <p>Din ønskeliste er tom</p>
+        </div>
+        <div class="wishlist-footer">
+            <button class="clear-wishlist-btn" onclick="clearWishlist()">Ryd Ønskeliste</button>
+        </div>
+    </div>
+    <div class="wishlist-overlay" id="wishlistOverlay" onclick="toggleWishlist()"></div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Indlæser...</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ specific functions
+        function filterFAQ(category) {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const categoryBtns = document.querySelectorAll('.faq-category-btn');
+            
+            // Update active button
+            categoryBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.faq-category-btn').classList.add('active');
+            
+            // Filter items
+            faqItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeInUp 0.5s ease';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            const allFaqItems = document.querySelectorAll('.faq-item');
+            allFaqItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Initialize FAQ page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to FAQ items
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html> 

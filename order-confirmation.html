@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordre Bekræftet - Palæstinensisk Arv Butik</title>
+    <meta name="description" content="Tak for din bestilling! Din ordre er bekræftet og bliver sendt snart.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c5530">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Palæstinensisk Arv">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+                            <div class="nav-brand">
+                    <a href="index.html">
+                        <h1>🇵🇸 Palæstinensisk Arv</h1>
+                    </a>
+                </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Hjem</a>
+                <a href="produkter.html" class="nav-link">Produkter</a>
+                <a href="om-os.html" class="nav-link">Om Os</a>
+                <a href="kultur.html" class="nav-link">Kultur</a>
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button class="search-btn" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="wishlist-btn" onclick="toggleWishlist()">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="language-currency-selector">
+                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
+                        <option value="da">🇩🇰 Dansk</option>
+                        <option value="en">🇺🇸 English</option>
+                    </select>
+                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
+                        <option value="DKK">DKK</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Search Bar -->
+        <div class="search-bar" id="searchBar">
+            <div class="search-container">
+                <input type="text" placeholder="Søg efter produkter..." id="searchInput">
+                <button class="search-submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link">Hjem</a>
+            <a href="produkter.html" class="mobile-link">Produkter</a>
+            <a href="om-os.html" class="mobile-link">Om Os</a>
+            <a href="kultur.html" class="mobile-link">Kultur</a>
+            <a href="kontakt.html" class="mobile-link">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Confirmation Content -->
+    <section class="confirmation-content">
+        <div class="container">
+            <div class="confirmation-card">
+                <div class="success-animation">
+                    <div class="success-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+                
+                <div class="confirmation-header">
+                    <h1>Tak for din bestilling!</h1>
+                    <p>Din ordre er bekræftet og bliver sendt snart</p>
+                </div>
+                
+                <div class="order-details">
+                    <div class="order-info">
+                        <h2>Ordre #PA-2024-001</h2>
+                        <p class="order-date">Bestilt: 15. januar 2024</p>
+                        <p class="order-status">Status: <span class="status-badge processing">Behandles</span></p>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h3>Ordreoversigt</h3>
+                        <div class="order-items">
+                            <div class="order-item">
+                                <img src="images/free-palestine-black-tshirt.jpg" alt="Free Palestine T-shirt">
+                                <div class="item-details">
+                                    <h4>Free Palestine T-shirt</h4>
+                                    <p>Sort, Størrelse L x 1</p>
+                                    <span class="item-price">299 kr</span>
+                                </div>
+                            </div>
+                            
+                            <div class="order-item">
+                                <img src="images/palestine-map-white-tshirt.jpg" alt="Palestine Map T-shirt">
+                                <div class="item-details">
+                                    <h4>Palestine Map T-shirt</h4>
+                                    <p>Hvid, Størrelse M x 1</p>
+                                    <span class="item-price">349 kr</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-totals">
+                            <div class="total-row">
+                                <span>Subtotal</span>
+                                <span>648 kr</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Levering</span>
+                                <span>49 kr</span>
+                            </div>
+                            <div class="total-row final">
+                                <span>Total</span>
+                                <span>697 kr</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="shipping-info">
+                        <h3>Leveringsoplysninger</h3>
+                        <div class="shipping-details">
+                            <div class="address-info">
+                                <h4>Leveringsadresse</h4>
+                                <p>Ahmed Hassan<br>
+                                Nørrebrogade 123<br>
+                                2200 København N<br>
+                                Danmark</p>
+                            </div>
+                            
+                            <div class="shipping-method">
+                                <h4>Leveringsmetode</h4>
+                                <p><i class="fas fa-truck"></i> Standard Levering (3-5 hverdage)</p>
+                                <p class="estimated-delivery">Forventet levering: 18-22. januar 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="next-steps">
+                        <h3>Hvad sker der nu?</h3>
+                        <div class="steps-timeline">
+                            <div class="step">
+                                <div class="step-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Ordre bekræftet</h4>
+                                    <p>Din ordre er modtaget og bekræftet</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-icon">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Pakkes og sendes</h4>
+                                    <p>Vi pakker dine produkter og sender dem</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>På vej til dig</h4>
+                                    <p>Du modtager tracking information</p>
+                                </div>
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h4>Leveret</h4>
+                                    <p>Din pakke ankommer til din dør</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <a href="produkter.html" class="btn-secondary">
+                            <i class="fas fa-shopping-bag"></i>
+                            Fortsæt Shopping
+                        </a>
+                        <a href="kontakt.html" class="btn-primary">
+                            <i class="fas fa-headset"></i>
+                            Kontakt Support
+                        </a>
+                    </div>
+                    
+                    <div class="additional-info">
+                        <div class="info-card">
+                            <i class="fas fa-envelope"></i>
+                            <h4>Email bekræftelse</h4>
+                            <p>Du modtager en email bekræftelse med alle detaljer</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <i class="fas fa-undo"></i>
+                            <h4>30 dages returret</h4>
+                            <p>Alle produkter kan returneres inden for 30 dage</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Sikker betaling</h4>
+                            <p>Din betaling er sikker og krypteret</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Palæstinensisk Arv</h3>
+                    <p>Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Hurtige Links</h4>
+                    <a href="index.html">Hjem</a>
+                    <a href="produkter.html">Produkter</a>
+                    <a href="om-os.html">Om Os</a>
+                    <a href="kultur.html">Kultur</a>
+                    <a href="kontakt.html">Kontakt</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kategorier</h4>
+                    <a href="produkter.html">Tøj & Mode</a>
+                    <a href="produkter.html">Tilbehør</a>
+                    <a href="produkter.html">Kultur & Historie</a>
+                    <a href="produkter.html">Nyheder</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kundeservice</h4>
+                    <a href="kontakt.html">Kontakt Os</a>
+                    <a href="levering-returnering.html">Levering & Returnering</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment">
+                        <span>Betalinger accepteres:</span>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Add success animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const successCircle = document.querySelector('.success-circle');
+            setTimeout(() => {
+                successCircle.style.transform = 'scale(1)';
+                successCircle.style.opacity = '1';
+            }, 500);
+        });
+    </script>
+</body>
+</html> 

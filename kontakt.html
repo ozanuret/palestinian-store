@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt Os - Palæstinensisk Arv Butik</title>
+    <meta name="description" content="Kontakt Palæstinensisk Arv Butik. Vi er her for at hjælpe dig med spørgsmål om produkter, levering og mere.">
+    <link rel="stylesheet" href="styles.css?v=1.2">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h1>🇵🇸 Palæstinensisk Arv</h1>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Hjem</a>
+                <a href="produkter.html" class="nav-link">Produkter</a>
+                <a href="om-os.html" class="nav-link">Om Os</a>
+                <a href="kultur.html" class="nav-link">Kultur</a>
+                <a href="kontakt.html" class="nav-link active">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button class="search-btn" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="wishlist-btn" onclick="toggleWishlist()">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="language-currency-selector">
+                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
+                        <option value="da">🇩🇰 Dansk</option>
+                        <option value="en">🇺🇸 English</option>
+                    </select>
+                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
+                        <option value="DKK">DKK</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Search Bar -->
+        <div class="search-bar" id="searchBar">
+            <div class="search-container">
+                <input type="text" placeholder="Søg efter produkter..." id="searchInput">
+                <button class="search-submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link">Hjem</a>
+            <a href="produkter.html" class="mobile-link">Produkter</a>
+            <a href="om-os.html" class="mobile-link">Om Os</a>
+            <a href="kultur.html" class="mobile-link">Kultur</a>
+            <a href="kontakt.html" class="mobile-link">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Conversational Hero Section -->
+    <section class="contact-hero-conversational">
+        <div class="chat-bubble-container">
+            <div class="chat-bubble bubble-1">
+                <div class="bubble-content">
+                    <i class="fas fa-hand-wave"></i>
+                    <span>Hej! Hvordan kan vi hjælpe dig?</span>
+                </div>
+            </div>
+            <div class="chat-bubble bubble-2">
+                <div class="bubble-content">
+                    <i class="fas fa-heart"></i>
+                    <span>Vi elsker at høre fra vores kunder</span>
+                </div>
+            </div>
+            <div class="chat-bubble bubble-3">
+                <div class="bubble-content">
+                    <i class="fas fa-clock"></i>
+                    <span>Vi svarer inden for 24 timer</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-center-conversational">
+            <div class="hero-badge-conversational">
+                <span>🇵🇸 Lad Os Snakke</span>
+            </div>
+            <h1 class="hero-title-conversational">
+                <span class="title-line-1">Kontakt</span>
+                <span class="title-line-2">Os</span>
+            </h1>
+            <p class="hero-subtitle-conversational">Vi er her for at hjælpe dig med alle spørgsmål om vores produkter, levering og palæstinensisk kultur. Lad os skabe en forbindelse.</p>
+            <div class="hero-actions-conversational">
+                <a href="#contact-form" class="cta-btn-conversational primary">
+                    <i class="fas fa-comment"></i>
+                    Start En Samtale
+                </a>
+                <a href="#contact-info" class="cta-btn-conversational secondary">
+                    <i class="fas fa-phone"></i>
+                    Ring Til Os
+                </a>
+            </div>
+        </div>
+        
+        <div class="floating-avatars">
+            <div class="avatar" style="--delay: 0s">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="avatar" style="--delay: 2s">
+                <i class="fas fa-user-friends"></i>
+            </div>
+            <div class="avatar" style="--delay: 4s">
+                <i class="fas fa-user-tie"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Contact Cards -->
+    <section id="contact-info" class="interactive-contact">
+        <div class="container">
+            <div class="contact-header-interactive">
+                <div class="contact-badge-interactive">
+                    <i class="fas fa-comments"></i>
+                    <span>Måder At Kontakte Os</span>
+                </div>
+                <h2 class="contact-title-interactive">Vælg Din Foretrukne Måde</h2>
+                <p class="contact-subtitle-interactive">Vi tilbyder flere måder at komme i kontakt med os på. Vælg den der passer dig bedst!</p>
+            </div>
+            
+            <div class="contact-cards-interactive">
+                <div class="contact-card-interactive" onclick="selectContactMethod('email')">
+                    <div class="card-icon-interactive">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="card-content-interactive">
+                        <h3>Email</h3>
+                        <p>info@palestinsk-arv.dk</p>
+                        <span class="response-time">Svar inden for 24 timer</span>
+                    </div>
+                    <div class="card-action-interactive">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                
+                <div class="contact-card-interactive" onclick="selectContactMethod('phone')">
+                    <div class="card-icon-interactive">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="card-content-interactive">
+                        <h3>Telefon</h3>
+                        <p>+45 12 34 56 78</p>
+                        <span class="response-time">Mandag-Fredag 9:00-17:00</span>
+                    </div>
+                    <div class="card-action-interactive">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                
+
+                
+                <div class="contact-card-interactive" onclick="selectContactMethod('chat')">
+                    <div class="card-icon-interactive">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="card-content-interactive">
+                        <h3>Live Chat</h3>
+                        <p>Chat med os online</p>
+                        <span class="response-time">Tilgængelig 24/7</span>
+                    </div>
+                    <div class="card-action-interactive">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conversational Form -->
+    <section id="contact-form" class="conversational-form">
+        <div class="container">
+            <div class="form-layout-conversational">
+                <div class="form-content-conversational">
+                    <div class="form-header-conversational">
+                        <div class="form-badge-conversational">
+                            <i class="fas fa-comment-dots"></i>
+                            <span>Start En Samtale</span>
+                        </div>
+                        <h2 class="form-title-conversational">Fortæl Os Om Dig</h2>
+                        <p class="form-subtitle-conversational">Udfyld formularen nedenfor, og vi vender tilbage til dig hurtigst muligt.</p>
+                    </div>
+                    
+                    <form class="contact-form-conversational" id="contactForm">
+                        <div class="form-step active" data-step="1">
+                            <div class="step-indicator">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Personlige Oplysninger</span>
+                            </div>
+                            
+                            <div class="form-row-conversational">
+                                <div class="form-group-conversational">
+                                    <label for="firstName">Fornavn *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group-conversational">
+                                    <label for="lastName">Efternavn *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row-conversational">
+                                <div class="form-group-conversational">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group-conversational">
+                                    <label for="phone">Telefon</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <button type="button" class="next-step-btn" onclick="nextStep()">
+                                Næste <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="form-step" data-step="2">
+                            <div class="step-indicator">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Hvad Kan Vi Hjælpe Med?</span>
+                            </div>
+                            
+                            <div class="form-group-conversational">
+                                <label for="subject">Emne *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Vælg emne</option>
+                                    <option value="products">Produktspørgsmål</option>
+                                    <option value="shipping">Levering & Returnering</option>
+                                    <option value="culture">Kultur & Historie</option>
+                                    <option value="support">Kundeservice</option>
+                                    <option value="other">Andet</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group-conversational">
+                                <label for="message">Din Besked *</label>
+                                <textarea id="message" name="message" rows="6" required placeholder="Fortæl os hvad vi kan hjælpe dig med..."></textarea>
+                            </div>
+                            
+                            <div class="form-actions-conversational">
+                                <button type="button" class="prev-step-btn" onclick="prevStep()">
+                                    <i class="fas fa-arrow-left"></i> Tilbage
+                                </button>
+                                <button type="button" class="next-step-btn" onclick="nextStep()">
+                                    Næste <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-step" data-step="3">
+                            <div class="step-indicator">
+                                <span class="step-number">3</span>
+                                <span class="step-text">Præferencer</span>
+                            </div>
+                            
+                            <div class="form-group-conversational checkbox-group-conversational">
+                                <label class="checkbox-label-conversational">
+                                    <input type="checkbox" name="newsletter" id="newsletter">
+                                    <span class="checkmark-conversational"></span>
+                                    Jeg vil gerne modtage nyheder og opdateringer
+                                </label>
+                            </div>
+                            
+                            <div class="form-group-conversational checkbox-group-conversational">
+                                <label class="checkbox-label-conversational">
+                                    <input type="checkbox" name="privacy" id="privacy" required>
+                                    <span class="checkmark-conversational"></span>
+                                    Jeg accepterer <a href="privatlivspolitik.html">privatlivspolitikken</a>
+                                </label>
+                            </div>
+                            
+                            <div class="form-actions-conversational">
+                                <button type="button" class="prev-step-btn" onclick="prevStep()">
+                                    <i class="fas fa-arrow-left"></i> Tilbage
+                                </button>
+                                <button type="submit" class="submit-btn-conversational">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Besked
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="form-visual-conversational">
+                    <div class="conversation-illustration">
+                        <div class="illustration-element">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="illustration-element">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="illustration-element">
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Chat Interface -->
+    <section class="faq-chat-interface">
+        <div class="container">
+            <div class="faq-header-chat">
+                <div class="faq-badge-chat">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Ofte Stillede Spørgsmål</span>
+                </div>
+                <h2 class="faq-title-chat">Hurtige Svar</h2>
+                <p class="faq-subtitle-chat">Find svar på de mest almindelige spørgsmål</p>
+            </div>
+            
+            <div class="faq-chat-container">
+                <div class="faq-message user-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hvordan bestiller jeg produkter?</p>
+                    </div>
+                </div>
+                
+                <div class="faq-message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Du kan bestille vores produkter direkte på hjemmesiden ved at tilføje dem til din indkøbskurv og følge checkout-processen. Vi accepterer alle gængse betalingsmetoder.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-message user-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hvor lang tid tager levering?</p>
+                    </div>
+                </div>
+                
+                <div class="faq-message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Standard levering tager 3-5 hverdage i Danmark. Express levering er tilgængelig og tager 1-2 hverdage. International levering tager 7-14 dage.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-message user-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Kan jeg returnere produkter?</p>
+                    </div>
+                </div>
+                
+                <div class="faq-message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Ja, du har 30 dages returret på alle produkter. Produkterne skal returneres i original stand og emballage. Se vores returpolitik for flere detaljer.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-actions-chat">
+                <button class="faq-action-btn" onclick="showMoreFAQs()">
+                    <i class="fas fa-plus"></i>
+                    Se Flere Spørgsmål
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section id="map" class="interactive-map-section">
+        <div class="container">
+            <div class="map-header-interactive">
+                <div class="map-badge-interactive">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Find Os</span>
+                </div>
+                <h2 class="map-title-interactive">Kontakt Information</h2>
+                <p class="map-subtitle-interactive">Vi er her for at hjælpe dig</p>
+            </div>
+            
+            <div class="map-container-interactive">
+                <div class="map-visual-interactive">
+                    <div class="map-placeholder-interactive">
+                        <div class="map-pin">
+                            <i class="fas fa-map-pin"></i>
+                        </div>
+                        <div class="map-info-overlay">
+                            <h3>Palæstinensisk Arv</h3>
+                            <p>Online Butik<br>Danmark</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-details-interactive">
+                    <div class="detail-item-interactive">
+                        <div class="detail-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="detail-content">
+                            <h4>Online Support</h4>
+                            <p>Mandag-Fredag: 9:00-17:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item-interactive">
+                        <div class="detail-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="detail-content">
+                            <h4>Telefon</h4>
+                            <p>+45 12 34 56 78</p>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-item-interactive">
+                        <div class="detail-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="detail-content">
+                            <h4>Email</h4>
+                            <p>info@palestinsk-arv.dk</p>
+                        </div>
+                    </div>
+                    
+                    <a href="mailto:info@palestinsk-arv.dk" class="contact-email-btn">
+                        <i class="fas fa-envelope"></i>
+                        Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="contact-cta-conversational">
+        <div class="container">
+            <div class="cta-content-conversational">
+                <div class="cta-badge-conversational">
+                    <i class="fas fa-heart"></i>
+                    <span>Vi Elsker At Høre Fra Dig</span>
+                </div>
+                <h2>Har du flere spørgsmål?</h2>
+                <p>Vi er her for at hjælpe dig med alt relateret til palæstinensisk kultur og vores produkter. Tøv ikke med at kontakte os.</p>
+                <div class="cta-actions-conversational">
+                    <a href="faq.html" class="cta-btn-conversational primary">
+                        <i class="fas fa-question-circle"></i>
+                        Se FAQ
+                    </a>
+                    <a href="produkter.html" class="cta-btn-conversational secondary">
+                        <i class="fas fa-shopping-bag"></i>
+                        Udforsk Produkter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Indkøbskurv</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">0,00 kr</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Gå til Kassen</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h3>Ønskeliste</h3>
+            <button class="close-wishlist" onclick="toggleWishlist()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <!-- Wishlist items will be displayed here -->
+        </div>
+        <div class="wishlist-footer">
+            <button class="clear-wishlist-btn" onclick="clearWishlist()">Ryd Ønskeliste</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Overlay -->
+    <div class="wishlist-overlay" id="wishlistOverlay" onclick="toggleWishlist()"></div>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Indlæser...</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Palæstinensisk Arv</h3>
+                    <p>Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Hurtige Links</h4>
+                    <a href="index.html">Hjem</a>
+                    <a href="produkter.html">Produkter</a>
+                    <a href="om-os.html">Om Os</a>
+                    <a href="kultur.html">Kultur</a>
+                    <a href="kontakt.html">Kontakt</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Kategorier</h4>
+                    <a href="produkter.html#tøj">Tøj & Mode</a>
+                    <a href="produkter.html#tilbehør">Tilbehør</a>
+                    <a href="kultur.html">Kultur & Historie</a>
+                    <a href="produkter.html#nyheder">Nyheder</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Kundeservice</h4>
+                    <a href="kontakt.html">Kontakt Os</a>
+                    <a href="levering.html">Levering & Returnering</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment">
+                        <span>Betalinger accepteres:</span>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Contact page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Chat bubble animations
+            const chatBubbles = document.querySelectorAll('.chat-bubble');
+            chatBubbles.forEach((bubble, index) => {
+                bubble.style.animationDelay = `${index * 0.5}s`;
+            });
+
+            // Contact form handling
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Tak for din besked! Vi vender tilbage til dig hurtigst muligt.', 'success');
+                    contactForm.reset();
+                    // Reset to first step
+                    showStep(1);
+                });
+            }
+        });
+
+        // Multi-step form functionality
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function showStep(step) {
+            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            document.querySelector(`[data-step="${step}"]`).classList.add('active');
+            currentStep = step;
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                showStep(currentStep + 1);
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                showStep(currentStep - 1);
+            }
+        }
+
+        // Contact method selection
+        function selectContactMethod(method) {
+            const cards = document.querySelectorAll('.contact-card-interactive');
+            cards.forEach(card => card.classList.remove('selected'));
+            
+            event.currentTarget.classList.add('selected');
+            
+            // Show different actions based on method
+            switch(method) {
+                case 'email':
+                    window.location.href = 'mailto:info@palestinsk-arv.dk';
+                    break;
+                case 'phone':
+                    window.location.href = 'tel:+4512345678';
+                    break;
+
+                case 'chat':
+                    showNotification('Live chat kommer snart! Kontakt os i mellemtiden via email eller telefon.', 'info');
+                    break;
+            }
+        }
+
+        // FAQ functionality
+        function showMoreFAQs() {
+            showNotification('Flere FAQ kommer snart! Kontakt os direkte for hjælp.', 'info');
+        }
+
+        // Notification function
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            const container = document.getElementById('notificationContainer');
+            container.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    container.removeChild(notification);
+                }, 300);
+            }, 5000);
+        }
+    </script>
+</body>
+</html> 

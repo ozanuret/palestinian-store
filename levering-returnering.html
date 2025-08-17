@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levering & Returnering - Palæstinensisk Arv Butik</title>
+    <meta name="description" content="Information om levering, returnering og vores kundeservice politikker.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c5530">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Palæstinensisk Arv">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+                            <div class="nav-brand">
+                    <a href="index.html">
+                        <h1>🇵🇸 Palæstinensisk Arv</h1>
+                    </a>
+                </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Hjem</a>
+                <a href="produkter.html" class="nav-link">Produkter</a>
+                <a href="om-os.html" class="nav-link">Om Os</a>
+                <a href="kultur.html" class="nav-link">Kultur</a>
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button class="search-btn" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="wishlist-btn" onclick="toggleWishlist()">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="language-currency-selector">
+                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
+                        <option value="da">🇩🇰 Dansk</option>
+                        <option value="en">🇺🇸 English</option>
+                    </select>
+                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
+                        <option value="DKK">DKK</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Search Bar -->
+        <div class="search-bar" id="searchBar">
+            <div class="search-container">
+                <input type="text" placeholder="Søg efter produkter..." id="searchInput">
+                <button class="search-submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link">Hjem</a>
+            <a href="produkter.html" class="mobile-link">Produkter</a>
+            <a href="om-os.html" class="mobile-link">Om Os</a>
+            <a href="kultur.html" class="mobile-link">Kultur</a>
+            <a href="kontakt.html" class="mobile-link">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Levering & Returnering</h1>
+            <p>Hurtig levering og nem returnering - vi gør det nemt for dig</p>
+        </div>
+    </section>
+
+    <!-- Shipping & Returns Page -->
+    <section class="shipping-returns-page">
+        <div class="container">
+            <!-- Quick Navigation -->
+            <div class="page-navigation">
+                <a href="#shipping" class="nav-link">Levering</a>
+                <a href="#returns" class="nav-link">Returnering</a>
+                <a href="#tracking" class="nav-link">Sporing</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
+
+            <!-- Shipping Section -->
+            <section id="shipping" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h2>Levering</h2>
+                    <p>Vi gør vores bedste for at få dine produkter til dig hurtigt og sikkert</p>
+                </div>
+
+                <div class="shipping-options">
+                    <div class="shipping-option">
+                        <div class="option-header">
+                            <i class="fas fa-truck"></i>
+                            <h3>Standard Levering</h3>
+                            <span class="price">49 kr</span>
+                        </div>
+                        <div class="option-details">
+                            <p><strong>Leveringstid:</strong> 3-5 hverdage</p>
+                            <p><strong>Gratis levering:</strong> På ordrer over 500 kr</p>
+                            <p><strong>Tracking:</strong> Inkluderet</p>
+                            <ul>
+                                <li>Levering til din dør</li>
+                                <li>Email bekræftelse</li>
+                                <li>SMS når pakken er på vej</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="shipping-option featured">
+                        <div class="option-header">
+                            <i class="fas fa-rocket"></i>
+                            <h3>Express Levering</h3>
+                            <span class="price">99 kr</span>
+                        </div>
+                        <div class="option-details">
+                            <p><strong>Leveringstid:</strong> 1-2 hverdage</p>
+                            <p><strong>Prioritet:</strong> Højeste prioritet</p>
+                            <p><strong>Tracking:</strong> Real-time</p>
+                            <ul>
+                                <li>Næste dag levering</li>
+                                <li>Prioriteret behandling</li>
+                                <li>Live tracking</li>
+                                <li>Weekend levering</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="shipping-option">
+                        <div class="option-header">
+                            <i class="fas fa-globe"></i>
+                            <h3>International Levering</h3>
+                            <span class="price">99-199 kr</span>
+                        </div>
+                        <div class="option-details">
+                            <p><strong>Leveringstid:</strong> 5-10 hverdage</p>
+                            <p><strong>Land:</strong> Alle EU lande + USA, Canada</p>
+                            <p><strong>Tracking:</strong> Inkluderet</p>
+                            <ul>
+                                <li>EU: 99 kr</li>
+                                <li>USA/Canada: 149 kr</li>
+                                <li>Andre lande: 199 kr</li>
+                                <li>Told og afgifter inkluderet</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shipping-info">
+                    <div class="info-card">
+                        <h3>Leveringsdetaljer</h3>
+                        <ul>
+                            <li>Alle forsendelser pakkes sikkert og miljøvenligt</li>
+                            <li>Vi bruger kun bæredygtige emballagematerialer</li>
+                            <li>Pakker sendes normalt samme dag hvis bestilt før 14:00</li>
+                            <li>Weekend levering tilgængelig med Express</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Returns Section -->
+            <section id="returns" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h2>Returnering</h2>
+                    <p>Vi vil sikre, at du er 100% tilfreds med dit køb</p>
+                </div>
+
+                <div class="returns-policy">
+                    <div class="policy-card">
+                        <div class="policy-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>30 dages returret</h3>
+                        <p>Du har 30 dage fra modtagelsesdatoen til at returnere dit produkt. Produktet skal være ubrugt og i original emballage.</p>
+                    </div>
+
+                    <div class="policy-card">
+                        <div class="policy-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3>Gratis returnering</h3>
+                        <p>Vi tilbyder gratis returnering for alle danske kunder. Internationale returneringer kan medføre ekstra omkostninger.</p>
+                    </div>
+
+                    <div class="policy-card">
+                        <div class="policy-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3>Hurtig tilbagebetaling</h3>
+                        <p>Pengene tilbagebetales til din oprindelige betalingsmetode inden for 5-10 hverdage efter vi modtager returneringen.</p>
+                    </div>
+                </div>
+
+                <div class="return-process">
+                    <h3>Sådan returnerer du et produkt</h3>
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>Gå til din ordre</h4>
+                            <p>Log ind på din konto og find ordren du vil returnere</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>Vælg returnering</h4>
+                            <p>Klik på "Returner produkt" og udfyld returneringsformularen</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>Print label</h4>
+                            <p>Print returneringslabelen og klistre den på pakken</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h4>Send pakken</h4>
+                            <p>Pak produktet sikkert og send det tilbage med den medfølgende label</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tracking Section -->
+            <section id="tracking" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h2>Sporing af forsendelser</h2>
+                    <p>Hold øje med din pakke hele vejen til din dør</p>
+                </div>
+
+                <div class="tracking-info">
+                    <div class="tracking-card">
+                        <h3>Hvordan sporer jeg min pakke?</h3>
+                        <p>Når din ordre er sendt, modtager du en email med tracking nummer og link. Du kan også spore din pakke direkte fra din ordre i din konto.</p>
+                        
+                        <div class="tracking-features">
+                            <div class="feature">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email bekræftelse</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-sms"></i>
+                                <span>SMS opdateringer</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Mobile app</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-clock"></i>
+                                <span>Real-time status</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h2>Ofte stillede spørgsmål</h2>
+                    <p>Find svar på de mest almindelige spørgsmål om levering og returnering</p>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Hvad hvis min pakke er beskadiget?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Hvis din pakke ankommer beskadiget, tag venligst billeder og kontakt os umiddelbart. Vi vil sende en erstatning eller give dig en fuld refusion.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Kan jeg ændre min leveringsadresse?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Du kan ændre din leveringsadresse inden for 2 timer efter bestilling. Kontakt vores kundeservice for hjælp.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Hvad hvis jeg ikke er hjemme ved levering?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Pakken vil blive afleveret hos en nabo eller på det lokale posthus. Du modtager en seddel med information om, hvor pakken kan afhentes.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Kan jeg returnere et produkt, jeg har brugt?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Produkter skal returneres ubrugte og i original emballage. Hvis du har brugt produktet og det er defekt, kontakter du vores kundeservice.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact CTA -->
+            <div class="contact-cta">
+                <div class="cta-content">
+                    <h2>Har du spørgsmål?</h2>
+                    <p>Vores kundeservice team er klar til at hjælpe dig</p>
+                    <div class="cta-actions">
+                        <a href="kontakt.html" class="cta-btn primary">
+                            <i class="fas fa-envelope"></i>
+                            Kontakt Os
+                        </a>
+                        <a href="faq.html" class="cta-btn secondary">
+                            <i class="fas fa-question-circle"></i>
+                            Se FAQ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Palæstinensisk Arv</h3>
+                    <p>Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Hurtige Links</h4>
+                    <a href="index.html">Hjem</a>
+                    <a href="produkter.html">Produkter</a>
+                    <a href="om-os.html">Om Os</a>
+                    <a href="kultur.html">Kultur</a>
+                    <a href="kontakt.html">Kontakt</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kategorier</h4>
+                    <a href="produkter.html">Tøj & Mode</a>
+                    <a href="produkter.html">Tilbehør</a>
+                    <a href="produkter.html">Kultur & Historie</a>
+                    <a href="produkter.html">Nyheder</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kundeservice</h4>
+                    <a href="kontakt.html">Kontakt Os</a>
+                    <a href="levering-returnering.html">Levering & Returnering</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment">
+                        <span>Betalinger accepteres:</span>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Indkøbskurv</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p>Din kurv er tom</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">0.00 kr</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Gå til Kassen</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h3>Ønskeliste</h3>
+            <button class="close-wishlist" onclick="toggleWishlist()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <p>Din ønskeliste er tom</p>
+        </div>
+        <div class="wishlist-footer">
+            <button class="clear-wishlist-btn" onclick="clearWishlist()">Ryd Ønskeliste</button>
+        </div>
+    </div>
+    <div class="wishlist-overlay" id="wishlistOverlay" onclick="toggleWishlist()"></div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Indlæser...</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.page-navigation a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            const allFaqItems = document.querySelectorAll('.faq-item');
+            allFaqItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html> 
