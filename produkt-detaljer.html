@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkt Detaljer - Palæstinensisk Arv Butik</title>
+    <meta name="description" content="Se detaljer, billeder og køb autentiske palæstinensiske produkter. Vælg størrelse, farve og antal.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h1>🇵🇸 Palæstinensisk Arv</h1>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Hjem</a>
+                <a href="produkter.html" class="nav-link">Produkter</a>
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button class="search-btn" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="wishlist-btn" onclick="toggleWishlist()">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="language-currency-selector">
+                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
+                        <option value="da">🇩🇰 Dansk</option>
+                        <option value="en">🇺🇸 English</option>
+                    </select>
+                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
+                        <option value="DKK">DKK</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link">Hjem</a>
+            <a href="produkter.html" class="mobile-link">Produkter</a>
+            <a href="kontakt.html" class="mobile-link">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail-section">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">Hjem</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="produkter.html">Produkter</a>
+                <i class="fas fa-chevron-right"></i>
+                <span id="productName">Produkt Navn</span>
+            </div>
+
+            <div class="product-detail-container">
+                <!-- Product Images -->
+                <div class="product-images">
+                    <div class="main-image-container">
+                        <img id="mainImage" src="images/free-palestine-black-tshirt.jpg" alt="Produkt billede" class="main-image">
+                        <button class="zoom-btn" onclick="toggleZoom()">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="images/free-palestine-black-tshirt.jpg" alt="Billede 1" class="thumbnail active" onclick="changeMainImage(this, 'images/free-palestine-black-tshirt.jpg')">
+                        <img src="images/free-palestine-white-tshirt.jpg" alt="Billede 2" class="thumbnail" onclick="changeMainImage(this, 'images/free-palestine-white-tshirt.jpg')">
+                        <img src="images/free-palestine-beige-tshirt.jpg" alt="Billede 3" class="thumbnail" onclick="changeMainImage(this, 'images/free-palestine-beige-tshirt.jpg')">
+                        <img src="images/palestine-map-black-tshirt.jpg" alt="Billede 4" class="thumbnail" onclick="changeMainImage(this, 'images/palestine-map-black-tshirt.jpg')">
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <div class="product-header">
+                        <h1 id="productTitle">Free Palestine T-Shirt</h1>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.8 (127 anmeldelser)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">199 kr</span>
+                            <span class="original-price">249 kr</span>
+                            <span class="discount-badge">-20%</span>
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <p>Denne autentiske Free Palestine t-shirt er håndlavet med 100% organisk bomuld og trykt med traditionelle palæstinensiske symboler. Hver t-shirt fortæller en historie om modstandskraft og kulturel stolthed.</p>
+                        
+                        <div class="product-features">
+                            <div class="feature">
+                                <i class="fas fa-leaf"></i>
+                                <span>100% Organisk Bomuld</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-palette"></i>
+                                <span>Håndtrykt Design</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-heart"></i>
+                                <span>Støt Palæstinenske Håndværkere</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span>Gratis Levering over 500 kr</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Color Selection -->
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label class="option-label">Farve:</label>
+                            <div class="color-options">
+                                <button class="color-option active" data-color="sort" style="background-color: #000;" onclick="selectColor(this, 'sort')"></button>
+                                <button class="color-option" data-color="hvid" style="background-color: #fff; border: 1px solid #ddd;" onclick="selectColor(this, 'hvid')"></button>
+                                <button class="color-option" data-color="beige" style="background-color: #f5f5dc;" onclick="selectColor(this, 'beige')"></button>
+                                <button class="color-option" data-color="grøn" style="background-color: #228B22;" onclick="selectColor(this, 'grøn')"></button>
+                            </div>
+                        </div>
+
+                        <!-- Size Selection -->
+                        <div class="option-group">
+                            <label class="option-label">Størrelse:</label>
+                            <div class="size-options">
+                                <button class="size-option" data-size="XS" onclick="selectSize(this, 'XS')">XS</button>
+                                <button class="size-option" data-size="S" onclick="selectSize(this, 'S')">S</button>
+                                <button class="size-option active" data-size="M" onclick="selectSize(this, 'M')">M</button>
+                                <button class="size-option" data-size="L" onclick="selectSize(this, 'L')">L</button>
+                                <button class="size-option" data-size="XL" onclick="selectSize(this, 'XL')">XL</button>
+                                <button class="size-option" data-size="XXL" onclick="selectSize(this, 'XXL')">XXL</button>
+                            </div>
+                            <a href="#" class="size-guide-link">Se størrelsesguide</a>
+                        </div>
+
+                        <!-- Quantity Selection -->
+                        <div class="option-group">
+                            <label class="option-label">Antal:</label>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="changeQuantity(-1)">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" id="quantity" value="1" min="1" max="10" onchange="updateQuantity()">
+                                <button class="quantity-btn" onclick="changeQuantity(1)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="product-actions">
+                        <button class="add-to-cart-btn" onclick="addToCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Tilføj til Kurv</span>
+                        </button>
+                        <button class="wishlist-btn" onclick="addToWishlist()">
+                            <i class="fas fa-heart"></i>
+                            <span>Tilføj til Ønskeliste</span>
+                        </button>
+                        <button class="share-btn" onclick="shareProduct()">
+                            <i class="fas fa-share"></i>
+                            <span>Del</span>
+                        </button>
+                    </div>
+
+                    <!-- Stock Status -->
+                    <div class="stock-status">
+                        <i class="fas fa-check-circle"></i>
+                        <span>På lager - Levering inden for 2-3 hverdage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Tabs -->
+    <section class="product-tabs-section">
+        <div class="container">
+            <div class="product-tabs">
+                <button class="tab-btn active" onclick="showTab('description')">Beskrivelse</button>
+                <button class="tab-btn" onclick="showTab('specifications')">Specifikationer</button>
+                <button class="tab-btn" onclick="showTab('reviews')">Anmeldelser</button>
+                <button class="tab-btn" onclick="showTab('shipping')">Levering & Returnering</button>
+            </div>
+
+            <div class="tab-content">
+                <!-- Description Tab -->
+                <div id="description" class="tab-panel active">
+                    <h3>Produkt Beskrivelse</h3>
+                    <p>Denne Free Palestine t-shirt er mere end bare et stykke tøj - det er et symbol på solidaritet og kulturel stolthed. Hver t-shirt er håndlavet med omhu og respekt for traditionelle palæstinensiske håndværksteknikker.</p>
+                    
+                    <h4>Design & Kvalitet</h4>
+                    <ul>
+                        <li>Håndtrykt med autentiske palæstinensiske symboler</li>
+                        <li>100% organisk bomuld for maksimal komfort</li>
+                        <li>Bæredygtig produktion med respekt for miljøet</li>
+                        <li>Unisex design der passer alle</li>
+                    </ul>
+
+                    <h4>Kulturel Betydning</h4>
+                    <p>Vores designs er inspireret af den rige palæstinensiske kultur og historie. Hver t-shirt fortæller en historie om modstandskraft, skønhed og kulturel stolthed.</p>
+                </div>
+
+                <!-- Specifications Tab -->
+                <div id="specifications" class="tab-panel">
+                    <h3>Produkt Specifikationer</h3>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Materiale:</span>
+                            <span class="spec-value">100% Organisk Bomuld</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Vægt:</span>
+                            <span class="spec-value">180 g/m²</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Tryk:</span>
+                            <span class="spec-value">Håndtrykt</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Oprindelse:</span>
+                            <span class="spec-value">Palæstina</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Vask:</span>
+                            <span class="spec-value">30°C, ikke blegemiddel</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Certificering:</span>
+                            <span class="spec-value">Fair Trade, Organisk</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div id="reviews" class="tab-panel">
+                    <h3>Kundeanmeldelser</h3>
+                    <div class="reviews-summary">
+                        <div class="overall-rating">
+                            <div class="rating-number">4.8</div>
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="total-reviews">Baseret på 127 anmeldelser</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <span class="reviewer-name">Ahmed K.</span>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">2 dage siden</span>
+                        </div>
+                        <p class="review-text">Fantastisk kvalitet og design! T-shirten er meget behagelig at have på og trykket holder perfekt. Støtter gerne palæstinensisk håndværk.</p>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <span class="reviewer-name">Maria S.</span>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">1 uge siden</span>
+                        </div>
+                        <p class="review-text">Købte denne til min mand og han elsker den! Kvaliteten er fremragende og leveringen var hurtig. Kan varmt anbefales!</p>
+                    </div>
+                </div>
+
+                <!-- Shipping Tab -->
+                <div id="shipping" class="tab-panel">
+                    <h3>Levering & Returnering</h3>
+                    <div class="shipping-info">
+                        <h4>Levering</h4>
+                        <ul>
+                            <li><strong>Gratis levering</strong> på ordrer over 500 kr</li>
+                            <li>Standard levering: 2-3 hverdage (49 kr)</li>
+                            <li>Express levering: 1-2 hverdage (99 kr)</li>
+                            <li>Alle ordrer sendes med tracking</li>
+                        </ul>
+
+                        <h4>Returnering</h4>
+                        <ul>
+                            <li>30 dages returret på alle produkter</li>
+                            <li>Gratis returnering på defekte varer</li>
+                            <li>Produktet skal være ubrugt og i original emballage</li>
+                            <li>Kontakt os før returnering</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <h2>Relaterede Produkter</h2>
+            <div class="related-products-grid">
+                <div class="related-product-card" onclick="goToProduct('palestine-map-tshirt')">
+                    <img src="images/palestine-map-white-tshirt.jpg" alt="Palestine Map T-Shirt">
+                    <h3>Palestine Map T-Shirt</h3>
+                    <p class="price">179 kr</p>
+                </div>
+                <div class="related-product-card" onclick="goToProduct('palestine-stripes-tshirt')">
+                    <img src="images/palestine-stripes-black-tshirt.jpg" alt="Palestine Stripes T-Shirt">
+                    <h3>Palestine Stripes T-Shirt</h3>
+                    <p class="price">189 kr</p>
+                </div>
+                <div class="related-product-card" onclick="goToProduct('palestine-pattern-tshirt')">
+                    <img src="images/palestine-pattern-grey-tshirt.jpg" alt="Palestine Pattern T-Shirt">
+                    <h3>Palestine Pattern T-Shirt</h3>
+                    <p class="price">199 kr</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Palæstinensisk Arv</h3>
+                    <p>Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Hurtige Links</h4>
+                    <ul>
+                        <li><a href="index.html">Hjem</a></li>
+                        <li><a href="produkter.html">Produkter</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kategorier</h4>
+                    <ul>
+                        <li><a href="produkter.html">Tøj & Mode</a></li>
+                        <li><a href="produkter.html">Tilbehør</a></li>
+                        <li><a href="produkter.html">Kultur & Historie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kundeservice</h4>
+                    <ul>
+                        <li><a href="kontakt.html">Kontakt Os</a></li>
+                        <li><a href="levering-returnering.html">Levering & Returnering</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privatlivspolitik.html">Privatlivspolitik</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Include products data
+        const products = [
+            {
+                id: 1,
+                name: {
+                    da: "Palæstina Kort T-Shirt - Sort",
+                    en: "Palestine Map T-Shirt - Black"
+                },
+                description: {
+                    da: "Sort t-shirt med Palæstina-kort design fyldt med traditionel keffiyeh-mønster. Arabisk tekst 'فلسطين' (Palæstina) på begge sider af kortet. 100% bomuld.",
+                    en: "Black t-shirt with Palestine map design filled with traditional keffiyeh pattern. Arabic text 'فلسطين' (Palestine) on both sides of the map. 100% cotton."
+                },
+                price: 199.99,
+                image: "images/palestine-map-black-tshirt.jpg",
+                category: "tøj",
+                colors: ["sort", "hvid"],
+                sizes: ["S", "M", "L", "XL"],
+                material: {
+                    da: "100% organisk bomuld",
+                    en: "100% organic cotton"
+                },
+                inStock: true,
+                isNew: true,
+                isTrending: true,
+                onSale: false,
+                rating: 4.8,
+                reviewCount: 24,
+                features: {
+                    da: [
+                        "100% organisk bomuld",
+                        "Håndtrykt design",
+                        "Autentisk palæstinensisk mønster",
+                        "Bæredygtig produktion",
+                        "Støtter palæstinensiske håndværkere"
+                    ]
+                },
+                care: {
+                    da: "Vask ved 30°C, ikke brug blegemiddel",
+                    en: "Wash at 30°C, do not use bleach"
+                }
+            },
+            {
+                id: 2,
+                name: {
+                    da: "Free Palestine T-Shirt - Sort",
+                    en: "Free Palestine T-Shirt - Black"
+                },
+                description: {
+                    da: "Denne autentiske Free Palestine t-shirt er håndlavet med 100% organisk bomuld og trykt med traditionelle palæstinensiske symboler. Hver t-shirt fortæller en historie om modstandskraft og kulturel stolthed.",
+                    en: "This authentic Free Palestine t-shirt is handcrafted with 100% organic cotton and printed with traditional Palestinian symbols. Each t-shirt tells a story of resilience and cultural pride."
+                },
+                price: 199,
+                originalPrice: 249,
+                onSale: true,
+                image: "images/free-palestine-black-tshirt.jpg",
+                category: "tøj",
+                colors: ["sort", "hvid", "beige"],
+                sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+                material: {
+                    da: "100% organisk bomuld",
+                    en: "100% organic cotton"
+                },
+                inStock: true,
+                isNew: false,
+                isTrending: true,
+                rating: 4.8,
+                reviewCount: 127,
+                features: {
+                    da: [
+                        "100% organisk bomuld",
+                        "Håndtrykt design",
+                        "Autentisk palæstinensisk mønster",
+                        "Bæredygtig produktion",
+                        "Støtter palæstinensiske håndværkere"
+                    ]
+                },
+                care: {
+                    da: "Vask ved 30°C, ikke brug blegemiddel",
+                    en: "Wash at 30°C, do not use bleach"
+                }
+            }
+        ];
+        // Product detail page specific JavaScript
+        function changeMainImage(thumbnail, imageSrc) {
+            document.getElementById('mainImage').src = imageSrc;
+            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        function selectColor(button, color) {
+            document.querySelectorAll('.color-option').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            // Update product images based on color selection
+            updateProductImages(color);
+        }
+
+        function selectSize(button, size) {
+            document.querySelectorAll('.size-option').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        }
+
+        function changeQuantity(delta) {
+            const quantityInput = document.getElementById('quantity');
+            let newQuantity = parseInt(quantityInput.value) + delta;
+            if (newQuantity < 1) newQuantity = 1;
+            if (newQuantity > 10) newQuantity = 10;
+            quantityInput.value = newQuantity;
+        }
+
+        function updateQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            let value = parseInt(quantityInput.value);
+            if (value < 1) quantityInput.value = 1;
+            if (value > 10) quantityInput.value = 10;
+        }
+
+        function addToCart() {
+            const color = document.querySelector('.color-option.active').dataset.color;
+            const size = document.querySelector('.size-option.active').dataset.size;
+            const quantity = document.getElementById('quantity').value;
+            
+            // Add to cart logic here
+            alert(`Tilføjet til kurv: ${quantity}x ${document.getElementById('productTitle').textContent} - ${color}, ${size}`);
+            
+            // Update cart count
+            const cartCount = document.getElementById('cartCount');
+            cartCount.textContent = parseInt(cartCount.textContent) + parseInt(quantity);
+        }
+
+        function addToWishlist() {
+            alert('Tilføjet til ønskeliste!');
+            const wishlistCount = document.getElementById('wishlistCount');
+            wishlistCount.textContent = parseInt(wishlistCount.textContent) + 1;
+        }
+
+        function shareProduct() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.getElementById('productTitle').textContent,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link kopieret til udklipsholder!');
+            }
+        }
+
+        function showTab(tabName) {
+            // Hide all tab panels
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab panel
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        function updateProductImages(color) {
+            // Update main image and thumbnails based on color selection
+            const imageMap = {
+                'sort': 'images/free-palestine-black-tshirt.jpg',
+                'hvid': 'images/free-palestine-white-tshirt.jpg',
+                'beige': 'images/free-palestine-beige-tshirt.jpg',
+                'grøn': 'images/free-palestine-black-tshirt.jpg' // Fallback
+            };
+            
+            if (imageMap[color]) {
+                document.getElementById('mainImage').src = imageMap[color];
+            }
+        }
+
+        function goToProduct(productId) {
+            // Navigate to product detail page
+            window.location.href = `produkt-detaljer.html?id=${productId}`;
+        }
+
+        // Load product details based on URL parameters
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            
+            if (productId) {
+                // Load product details based on ID
+                loadProductDetails(productId);
+            }
+        });
+
+        function loadProductDetails(productId) {
+            // Load product data from the products array
+            const product = products.find(p => p.id == productId);
+            
+            if (product) {
+                // Update page title
+                document.title = `${product.name.da || product.name} - Palæstinensisk Arv Butik`;
+                
+                // Update breadcrumb
+                document.getElementById('productName').textContent = product.name.da || product.name;
+                
+                // Update product title
+                document.getElementById('productTitle').textContent = product.name.da || product.name;
+                
+                // Update main image
+                document.getElementById('mainImage').src = product.image;
+                
+                // Update thumbnails based on available colors
+                const thumbnailContainer = document.querySelector('.thumbnail-images');
+                if (product.colors && product.colors.length > 0) {
+                    thumbnailContainer.innerHTML = product.colors.map((color, index) => {
+                        const colorImage = getColorImage(product, color);
+                        return `<img src="${colorImage}" alt="Billede ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage(this, '${colorImage}')">`;
+                    }).join('');
+                }
+                
+                // Update color options
+                const colorOptionsContainer = document.querySelector('.color-options');
+                if (product.colors && product.colors.length > 0) {
+                    colorOptionsContainer.innerHTML = product.colors.map((color, index) => {
+                        const colorCode = getColorCode(color);
+                        return `<button class="color-option ${index === 0 ? 'active' : ''}" data-color="${color}" style="background-color: ${colorCode};" onclick="selectColor(this, '${color}')"></button>`;
+                    }).join('');
+                }
+                
+                // Update price
+                const currentPriceElement = document.querySelector('.current-price');
+                const originalPriceElement = document.querySelector('.original-price');
+                const discountBadgeElement = document.querySelector('.discount-badge');
+                
+                if (product.onSale && product.originalPrice) {
+                    currentPriceElement.textContent = `${product.price} kr`;
+                    originalPriceElement.textContent = `${product.originalPrice} kr`;
+                    const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+                    discountBadgeElement.textContent = `-${discount}%`;
+                    discountBadgeElement.style.display = 'inline-block';
+                } else {
+                    currentPriceElement.textContent = `${product.price} kr`;
+                    originalPriceElement.style.display = 'none';
+                    discountBadgeElement.style.display = 'none';
+                }
+                
+                // Update description
+                const descriptionElement = document.querySelector('.product-description p');
+                descriptionElement.textContent = product.description.da || product.description;
+                
+                // Update features
+                const featuresContainer = document.querySelector('.product-features');
+                if (product.features && product.features.da) {
+                    featuresContainer.innerHTML = product.features.da.map(feature => `
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>${feature}</span>
+                        </div>
+                    `).join('');
+                }
+                
+                // Update specifications
+                const specsContainer = document.querySelector('.specs-grid');
+                if (specsContainer) {
+                    specsContainer.innerHTML = `
+                        <div class="spec-item">
+                            <span class="spec-label">Materiale:</span>
+                            <span class="spec-value">${product.material.da || product.material}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Kategori:</span>
+                            <span class="spec-value">${product.category}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Farver:</span>
+                            <span class="spec-value">${product.colors ? product.colors.join(', ') : 'Standard'}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Størrelser:</span>
+                            <span class="spec-value">${product.sizes ? product.sizes.join(', ') : 'One Size'}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Vask:</span>
+                            <span class="spec-value">${product.care ? product.care.da : '30°C, ikke blegemiddel'}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Rating:</span>
+                            <span class="spec-value">${product.rating || 4.5}/5 (${product.reviewCount || 0} anmeldelser)</span>
+                        </div>
+                    `;
+                }
+            }
+        }
+        
+        function getColorCode(color) {
+            const colorMap = {
+                'sort': '#000000',
+                'hvid': '#ffffff',
+                'beige': '#f5f5dc',
+                'pink': '#ffc0cb',
+                'blå': '#0000ff',
+                'grå': '#808080',
+                'grøn': '#228B22'
+            };
+            return colorMap[color] || '#cccccc';
+        }
+        
+        function getColorImage(product, color) {
+            // For now, return the main product image
+            // In a real implementation, you'd have different images for each color
+            return product.image;
+        }
+    </script>
+</body>
+</html>

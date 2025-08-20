@@ -853,75 +853,10 @@ function displayProducts() {
     });
 }
 
-// Open Product Detail Modal
+// Open Product Detail Page
 function openProductDetail(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
-    
-    currentProductDetail = product;
-    selectedColor = product.colors ? product.colors[0] : null;
-    selectedQuantity = 1;
-    
-    const translatedProduct = getTranslatedProduct(product);
-    
-    const colorOptions = product.colors ? product.colors.map(color => `
-        <div class="color-option ${color === selectedColor ? 'selected' : ''}" onclick="selectColor('${color}')">
-            <span class="color-dot-detail" style="background-color: ${getColorCode(color)}"></span>
-            <span>${translations[currentLanguage][color] || color.charAt(0).toUpperCase() + color.slice(1)}</span>
-        </div>
-    `).join('') : '';
-    
-    productModalBody.innerHTML = `
-        <div class="product-detail-grid">
-            <div class="product-detail-image">
-                <img src="${product.image}" alt="${translatedProduct.imageAlt}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="placeholder" style="display: none;">
-                    <span style="font-size: 4rem;">${getProductEmoji(translatedProduct.category)}</span>
-                </div>
-            </div>
-            <div class="product-detail-info">
-                <h2>${translatedProduct.name}</h2>
-                <div class="product-detail-price">${formatPrice(product.price)}</div>
-                <p class="product-detail-description">${translatedProduct.description}</p>
-                
-                <div class="product-detail-features">
-                    <h3>${translations[currentLanguage].features}</h3>
-                    <ul class="feature-list">
-                        ${translatedProduct.features.map(feature => `<li>${feature}</li>`).join('')}
-                    </ul>
-                </div>
-                
-                ${product.colors && product.colors.length > 1 ? `
-                    <div class="product-detail-colors">
-                        <h3>${translations[currentLanguage].chooseColor}</h3>
-                        <div class="color-options-detail">
-                            ${colorOptions}
-                        </div>
-                    </div>
-                ` : ''}
-                
-                <div class="product-detail-actions">
-                    <div class="quantity-selector">
-                        <button onclick="changeQuantity(-1)">-</button>
-                        <span id="detailQuantity">${selectedQuantity}</span>
-                        <button onclick="changeQuantity(1)">+</button>
-                    </div>
-                    <button class="add-to-cart-detail" onclick="addToCartFromDetail()">
-                        ${translations[currentLanguage].addToCart} - ${formatPrice(product.price * selectedQuantity)}
-                    </button>
-                </div>
-                
-                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e9ecef;">
-                    <p><strong>${translations[currentLanguage].material}:</strong> ${translatedProduct.material}</p>
-                    <p><strong>${translations[currentLanguage].care}:</strong> ${translatedProduct.care}</p>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    productModal.classList.add('open');
-    productModalOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    // Navigate to product detail page with product ID
+    window.location.href = `produkt-detaljer.html?id=${productId}`;
 }
 
 // Close Product Detail Modal
@@ -4250,7 +4185,7 @@ function renderProducts(productsToRender) {
     const currentView = document.querySelector('.view-btn.active').dataset.view;
     
     productsGrid.innerHTML = productsToRender.map(product => `
-        <div class="product-card" data-product-id="${product.id}">
+        <div class="product-card" data-product-id="${product.id}" onclick="openProductDetail(${product.id})" style="cursor: pointer;">
             <div class="product-image">
                 <img src="${product.image}" alt="${product.name.da || product.name}" loading="lazy">
                 <div class="product-badges">
@@ -4259,13 +4194,13 @@ function renderProducts(productsToRender) {
                     ${product.isTrending ? '<span class="product-badge trending">Trending</span>' : ''}
                 </div>
                 <div class="product-actions">
-                    <button class="action-btn" onclick="addToWishlist(${product.id})" title="Tilføj til ønskeliste">
+                    <button class="action-btn" onclick="event.stopPropagation(); addToWishlist(${product.id})" title="Tilføj til ønskeliste">
                         <i class="fas fa-heart"></i>
                     </button>
-                    <button class="action-btn" onclick="compareProduct(${product.id})" title="Sammenlign">
+                    <button class="action-btn" onclick="event.stopPropagation(); compareProduct(${product.id})" title="Sammenlign">
                         <i class="fas fa-balance-scale"></i>
                     </button>
-                    <button class="action-btn" onclick="openProductDetail(${product.id})" title="Se detaljer">
+                    <button class="action-btn" onclick="event.stopPropagation(); openProductDetail(${product.id})" title="Se detaljer">
                         <i class="fas fa-eye"></i>
                     </button>
                 </div>
@@ -4287,7 +4222,7 @@ function renderProducts(productsToRender) {
                         `).join('')}
                     </div>
                 ` : ''}
-                <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+                <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${product.id})">
                     <i class="fas fa-shopping-cart"></i>
                     <span>Tilføj til kurv</span>
                 </button>
