@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generer Placeholder Billeder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .image-item {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #2c5530;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1e3a22;
+        }
+        .download-all {
+            background: #4a7c59;
+            font-size: 16px;
+            padding: 15px 30px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generer Placeholder Billeder for Palæstinensisk Arv Butik</h1>
+        <p>Klik på "Generer" for at oprette placeholder billeder for hvert produkt. Derefter kan du downloade dem alle sammen.</p>
+        
+        <button class="download-all" onclick="downloadAllImages()">Download Alle Billeder</button>
+        
+        <div class="image-grid" id="imageGrid">
+            <!-- Images will be generated here -->
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { name: "Palæstina Kort T-Shirt - Sort", filename: "palestine-map-black-tshirt.jpg", type: "tshirt", color: "black" },
+            { name: "Palæstina Kort T-Shirt - Hvid", filename: "palestine-map-white-tshirt.jpg", type: "tshirt", color: "white" },
+            { name: "FREE PALESTINE T-Shirt - Beige", filename: "free-palestine-beige-tshirt.jpg", type: "tshirt", color: "beige" },
+            { name: "FREE PALESTINE T-Shirt - Sort", filename: "free-palestine-black-tshirt.jpg", type: "tshirt", color: "black" },
+            { name: "FREE PALESTINE T-Shirt - Hvid", filename: "free-palestine-white-tshirt.jpg", type: "tshirt", color: "white" },
+            { name: "Palæstina Vertikale Striber T-Shirt - Hvid", filename: "palestine-stripes-white-tshirt.jpg", type: "tshirt", color: "white" },
+            { name: "Palæstina Vertikale Striber T-Shirt - Sort", filename: "palestine-stripes-black-tshirt.jpg", type: "tshirt", color: "black" },
+            { name: "Palæstina Vertikale Striber T-Shirt - Pink", filename: "palestine-stripes-pink-tshirt.jpg", type: "tshirt", color: "pink" },
+            { name: "Palæstina Vertikale Striber T-Shirt - Blå", filename: "palestine-stripes-blue-tshirt.jpg", type: "tshirt", color: "blue" },
+            { name: "Palæstina Mønster T-Shirt - Grå", filename: "palestine-pattern-grey-tshirt.jpg", type: "tshirt", color: "grey" },
+            { name: "Palæstina Mønster T-Shirt - Pink", filename: "palestine-pattern-pink-tshirt.jpg", type: "tshirt", color: "pink" },
+            { name: "From River to Sea Badge", filename: "from-river-to-sea-badge.jpg", type: "badge" },
+            { name: "Humanity Palestine Badge", filename: "humanity-palestine-badge.jpg", type: "badge" },
+            { name: "Aaron Bushnell Badge", filename: "aaron-bushnell-badge.jpg", type: "badge" }
+        ];
+
+        function generateImage(product) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 400;
+            const ctx = canvas.getContext('2d');
+
+            // Background
+            if (product.type === 'tshirt') {
+                // T-shirt background
+                const colors = {
+                    'black': '#000000',
+                    'white': '#ffffff',
+                    'beige': '#f5f5dc',
+                    'pink': '#ffc0cb',
+                    'blue': '#000080',
+                    'grey': '#808080'
+                };
+                ctx.fillStyle = colors[product.color] || '#ffffff';
+                ctx.fillRect(0, 0, 400, 400);
+
+                // T-shirt shape
+                ctx.fillStyle = '#e0e0e0';
+                ctx.beginPath();
+                ctx.ellipse(200, 150, 80, 60, 0, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                ctx.fillStyle = '#d0d0d0';
+                ctx.fillRect(120, 150, 160, 200);
+                ctx.fillRect(100, 200, 40, 120);
+                ctx.fillRect(260, 200, 40, 120);
+
+                // Design elements
+                if (product.filename.includes('palestine-map')) {
+                    // Palestine map design
+                    ctx.fillStyle = '#2c5530';
+                    ctx.fillRect(150, 180, 100, 60);
+                    ctx.fillStyle = '#4a7c59';
+                    ctx.fillRect(160, 190, 80, 40);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = '12px Arial';
+                    ctx.fillText('فلسطين', 170, 210);
+                } else if (product.filename.includes('free-palestine')) {
+                    // FREE PALESTINE design
+                    ctx.fillStyle = '#2c5530';
+                    ctx.font = 'bold 20px Arial';
+                    ctx.fillText('FREE', 160, 200);
+                    ctx.fillText('PALESTINE', 150, 230);
+                    
+                    // Flag
+                    ctx.fillStyle = '#000000';
+                    ctx.fillRect(180, 250, 40, 8);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(180, 258, 40, 8);
+                    ctx.fillStyle = '#2c5530';
+                    ctx.fillRect(180, 266, 40, 8);
+                    ctx.fillStyle = '#ff0000';
+                    ctx.beginPath();
+                    ctx.moveTo(180, 250);
+                    ctx.lineTo(200, 258);
+                    ctx.lineTo(180, 266);
+                    ctx.fill();
+                } else if (product.filename.includes('stripes')) {
+                    // Vertical stripes
+                    ctx.fillStyle = '#ff0000';
+                    ctx.fillRect(170, 180, 20, 100);
+                    ctx.fillStyle = '#2c5530';
+                    ctx.fillRect(210, 180, 20, 100);
+                    ctx.fillStyle = '#000000';
+                    ctx.font = '16px Arial';
+                    ctx.fillText('فلسطين', 180, 220);
+                } else if (product.filename.includes('pattern')) {
+                    // Pattern design
+                    ctx.fillStyle = '#ffc0cb';
+                    ctx.font = 'bold 18px Arial';
+                    ctx.fillText('فلسطين', 170, 220);
+                    ctx.fillStyle = '#2c5530';
+                    ctx.fillText('FC PALESTINA', 150, 250);
+                }
+            } else if (product.type === 'badge') {
+                // Badge design
+                ctx.fillStyle = '#2c5530';
+                ctx.beginPath();
+                ctx.arc(200, 200, 150, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(200, 200, 140, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                ctx.fillStyle = '#2c5530';
+                ctx.beginPath();
+                ctx.arc(200, 200, 130, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Badge text
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 16px Arial';
+                ctx.textAlign = 'center';
+                
+                if (product.filename.includes('river')) {
+                    ctx.fillText('FROM THE RIVER', 200, 180);
+                    ctx.fillText('TO THE SEA', 200, 200);
+                    ctx.fillText('PALESTINE', 200, 220);
+                    ctx.fillText('WILL BE FREE', 200, 240);
+                } else if (product.filename.includes('humanity')) {
+                    ctx.fillText('ALL UNITED', 200, 180);
+                    ctx.fillText('FOR FREE', 200, 200);
+                    ctx.fillText('HUMANITY', 200, 220);
+                    ctx.fillText('PALESTINE', 200, 240);
+                } else if (product.filename.includes('aaron')) {
+                    ctx.fillText('I WILL NO', 200, 180);
+                    ctx.fillText('LONGER BE', 200, 200);
+                    ctx.fillText('COMPLICIT', 200, 220);
+                    ctx.fillText('IN GENOCIDE', 200, 240);
+                }
+            }
+
+            return canvas;
+        }
+
+        function createImageItem(product) {
+            const div = document.createElement('div');
+            div.className = 'image-item';
+            
+            const canvas = generateImage(product);
+            div.appendChild(canvas);
+            
+            const name = document.createElement('p');
+            name.textContent = product.name;
+            name.style.fontWeight = 'bold';
+            div.appendChild(name);
+            
+            const filename = document.createElement('p');
+            filename.textContent = product.filename;
+            filename.style.color = '#666';
+            filename.style.fontSize = '12px';
+            div.appendChild(filename);
+            
+            const button = document.createElement('button');
+            button.textContent = 'Download';
+            button.onclick = () => downloadImage(canvas, product.filename);
+            div.appendChild(button);
+            
+            return div;
+        }
+
+        function downloadImage(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/jpeg', 0.8);
+            link.click();
+        }
+
+        function downloadAllImages() {
+            products.forEach(product => {
+                const canvas = generateImage(product);
+                setTimeout(() => {
+                    downloadImage(canvas, product.filename);
+                }, products.indexOf(product) * 100);
+            });
+        }
+
+        // Generate all images
+        window.onload = function() {
+            const grid = document.getElementById('imageGrid');
+            products.forEach(product => {
+                grid.appendChild(createImageItem(product));
+            });
+        };
+    </script>
+</body>
+</html> 

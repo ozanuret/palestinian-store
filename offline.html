@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    body { display: flex; min-height: 100vh; align-items: center; justify-content: center; background: #f7f8fa; }
+    .offline-card { background: #fff; border: 1px solid #e9ecef; border-radius: 16px; padding: 32px; max-width: 560px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+    .offline-card h1 { margin-bottom: 12px; }
+    .offline-card p { color: #555; margin: 0 0 16px; }
+    .offline-actions { display: flex; gap: 12px; justify-content: center; margin-top: 8px; }
+    .btn { padding: 10px 16px; border-radius: 10px; border: 1px solid transparent; cursor: pointer; font-weight: 600; }
+    .btn-primary { background: #2c5530; color: #fff; }
+    .btn-outline { border-color: #d1d5db; background: #fff; }
+  </style>
+</head>
+<body>
+  <div class="offline-card">
+    <h1>Du er offline</h1>
+    <p>Det ser ud til, at du ikke har internetforbindelse. Du kan stadig udforske noget indhold, eller prøve igen.</p>
+    <div class="offline-actions">
+      <button class="btn btn-primary" onclick="location.reload()">Prøv igen</button>
+      <a class="btn btn-outline" href="/index.html">Gå til forsiden</a>
+    </div>
+  </div>
+</body>
+</html>

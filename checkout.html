@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Palæstinensisk Arv Butik</title>
+    <meta name="description" content="Sikker checkout og betaling for dine palæstinensiske produkter.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c5530">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Palæstinensisk Arv">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+                            <div class="nav-brand">
+                    <a href="index.html">
+                        <h1>🇵🇸 Palæstinensisk Arv</h1>
+                    </a>
+                </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Hjem</a>
+                <a href="produkter.html" class="nav-link">Produkter</a>
+                <a href="om-os.html" class="nav-link">Om Os</a>
+                <a href="kultur.html" class="nav-link">Kultur</a>
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+                <button class="search-btn" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="wishlist-btn" onclick="toggleWishlist()">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="language-currency-selector">
+                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
+                        <option value="da">🇩🇰 Dansk</option>
+                        <option value="en">🇺🇸 English</option>
+                    </select>
+                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
+                        <option value="DKK">DKK</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Search Bar -->
+        <div class="search-bar" id="searchBar">
+            <div class="search-container">
+                <input type="text" placeholder="Søg efter produkter..." id="searchInput">
+                <button class="search-submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link">Hjem</a>
+            <a href="produkter.html" class="mobile-link">Produkter</a>
+            <a href="om-os.html" class="mobile-link">Om Os</a>
+            <a href="kultur.html" class="mobile-link">Kultur</a>
+            <a href="kontakt.html" class="mobile-link">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Checkout Progress -->
+    <section class="checkout-progress">
+        <div class="container">
+            <div class="progress-steps">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Kurv</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Levering</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Fakturering</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Betaling</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Content -->
+    <section class="checkout-content">
+        <div class="container">
+            <div class="checkout-layout">
+                <!-- Main Checkout Form -->
+                <div class="checkout-main">
+                    <!-- Step 1: Cart Review -->
+                    <div class="checkout-step active" id="step1">
+                        <div class="step-header">
+                            <h2><i class="fas fa-shopping-cart"></i> Din Kurv</h2>
+                            <p>Gennemgå dine produkter før du fortsætter</p>
+                        </div>
+                        
+                        <div class="cart-items-review">
+                            <div class="cart-item">
+                                <div class="item-image">
+                                    <img src="images/free-palestine-black-tshirt.jpg" alt="Free Palestine T-shirt">
+                                </div>
+                                <div class="item-details">
+                                    <h3>Free Palestine T-shirt</h3>
+                                    <p class="item-variant">Sort, Størrelse L</p>
+                                    <div class="item-price">299 kr</div>
+                                </div>
+                                <div class="item-quantity">
+                                    <button class="qty-btn" onclick="updateQuantity(1, -1)">-</button>
+                                    <span class="qty-value">1</span>
+                                    <button class="qty-btn" onclick="updateQuantity(1, 1)">+</button>
+                                </div>
+                                <div class="item-total">299 kr</div>
+                                <button class="remove-item" onclick="removeItem(1)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="cart-item">
+                                <div class="item-image">
+                                    <img src="images/palestine-map-white-tshirt.jpg" alt="Palestine Map T-shirt">
+                                </div>
+                                <div class="item-details">
+                                    <h3>Palestine Map T-shirt</h3>
+                                    <p class="item-variant">Hvid, Størrelse M</p>
+                                    <div class="item-price">349 kr</div>
+                                </div>
+                                <div class="item-quantity">
+                                    <button class="qty-btn" onclick="updateQuantity(2, -1)">-</button>
+                                    <span class="qty-value">1</span>
+                                    <button class="qty-btn" onclick="updateQuantity(2, 1)">+</button>
+                                </div>
+                                <div class="item-total">349 kr</div>
+                                <button class="remove-item" onclick="removeItem(2)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="step-actions">
+                            <a href="produkter.html" class="btn-secondary">
+                                <i class="fas fa-arrow-left"></i>
+                                Fortsæt Shopping
+                            </a>
+                            <button class="btn-primary" onclick="nextStep()">
+                                Fortsæt til Levering
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Shipping -->
+                    <div class="checkout-step" id="step2">
+                        <div class="step-header">
+                            <h2><i class="fas fa-shipping-fast"></i> Leveringsoplysninger</h2>
+                            <p>Indtast din leveringsadresse og vælg leveringsmetode</p>
+                        </div>
+                        
+                        <div class="shipping-form">
+                            <div class="form-section">
+                                <h3>Leveringsadresse</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">Fornavn *</label>
+                                        <input type="text" id="firstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Efternavn *</label>
+                                        <input type="text" id="lastName" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Telefon *</label>
+                                    <input type="tel" id="phone" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="address">Adresse *</label>
+                                    <input type="text" id="address" required>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="postalCode">Postnummer *</label>
+                                        <input type="text" id="postalCode" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="city">By *</label>
+                                        <input type="text" id="city" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="country">Land *</label>
+                                    <select id="country" required>
+                                        <option value="">Vælg land</option>
+                                        <option value="DK" selected>Danmark</option>
+                                        <option value="SE">Sverige</option>
+                                        <option value="NO">Norge</option>
+                                        <option value="DE">Tyskland</option>
+                                        <option value="NL">Holland</option>
+                                        <option value="US">USA</option>
+                                        <option value="CA">Canada</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Leveringsmetode</h3>
+                                <div class="shipping-options">
+                                    <label class="shipping-option">
+                                        <input type="radio" name="shipping" value="standard" checked>
+                                        <div class="option-content">
+                                            <div class="option-header">
+                                                <i class="fas fa-truck"></i>
+                                                <div>
+                                                    <h4>Standard Levering</h4>
+                                                    <p>3-5 hverdage</p>
+                                                </div>
+                                                <div class="option-price">49 kr</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="shipping-option">
+                                        <input type="radio" name="shipping" value="express">
+                                        <div class="option-content">
+                                            <div class="option-header">
+                                                <i class="fas fa-rocket"></i>
+                                                <div>
+                                                    <h4>Express Levering</h4>
+                                                    <p>1-2 hverdage</p>
+                                                </div>
+                                                <div class="option-price">99 kr</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-actions">
+                            <button class="btn-secondary" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Tilbage
+                            </button>
+                            <button class="btn-primary" onclick="nextStep()">
+                                Fortsæt til Fakturering
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Billing -->
+                    <div class="checkout-step" id="step3">
+                        <div class="step-header">
+                            <h2><i class="fas fa-credit-card"></i> Faktureringsoplysninger</h2>
+                            <p>Indtast dine faktureringsoplysninger</p>
+                        </div>
+                        
+                        <div class="billing-form">
+                            <div class="form-section">
+                                <div class="checkbox-group">
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="sameAsShipping" checked>
+                                        <span class="checkmark"></span>
+                                        Faktureringsadresse er samme som leveringsadresse
+                                    </label>
+                                </div>
+                                
+                                <div id="billingFields" style="display: none;">
+                                    <h3>Faktureringsadresse</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="billingFirstName">Fornavn *</label>
+                                            <input type="text" id="billingFirstName">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="billingLastName">Efternavn *</label>
+                                            <input type="text" id="billingLastName">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="billingAddress">Adresse *</label>
+                                        <input type="text" id="billingAddress">
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="billingPostalCode">Postnummer *</label>
+                                            <input type="text" id="billingPostalCode">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="billingCity">By *</label>
+                                            <input type="text" id="billingCity">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="billingCountry">Land *</label>
+                                        <select id="billingCountry">
+                                            <option value="">Vælg land</option>
+                                            <option value="DK" selected>Danmark</option>
+                                            <option value="SE">Sverige</option>
+                                            <option value="NO">Norge</option>
+                                            <option value="DE">Tyskland</option>
+                                            <option value="NL">Holland</option>
+                                            <option value="US">USA</option>
+                                            <option value="CA">Canada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-actions">
+                            <button class="btn-secondary" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Tilbage
+                            </button>
+                            <button class="btn-primary" onclick="nextStep()">
+                                Fortsæt til Betaling
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Payment -->
+                    <div class="checkout-step" id="step4">
+                        <div class="step-header">
+                            <h2><i class="fas fa-lock"></i> Sikker Betaling</h2>
+                            <p>Vælg din foretrukne betalingsmetode</p>
+                        </div>
+                        
+                        <div class="payment-form">
+                            <div class="form-section">
+                                <h3>Betalingsmetode</h3>
+                                <div class="payment-options">
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="card" checked>
+                                        <div class="option-content">
+                                            <div class="option-header">
+                                                <i class="fas fa-credit-card"></i>
+                                                <div>
+                                                    <h4>Kreditkort / Debetkort</h4>
+                                                    <p>Visa, Mastercard, American Express</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="mobilepay">
+                                        <div class="option-content">
+                                            <div class="option-header">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                <div>
+                                                    <h4>MobilePay</h4>
+                                                    <p>Hurtig og sikker betaling</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="paypal">
+                                        <div class="option-content">
+                                            <div class="option-header">
+                                                <i class="fab fa-paypal"></i>
+                                                <div>
+                                                    <h4>PayPal</h4>
+                                                    <p>Betaling via PayPal</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section" id="cardDetails">
+                                <h3>Kortoplysninger</h3>
+                                <div class="form-group">
+                                    <label for="cardNumber">Kortnummer *</label>
+                                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiryDate">Udløbsdato *</label>
+                                        <input type="text" id="expiryDate" placeholder="MM/ÅÅ" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV *</label>
+                                        <input type="text" id="cvv" placeholder="123" maxlength="4">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cardName">Navn på kort *</label>
+                                    <input type="text" id="cardName" placeholder="Som vist på kortet">
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <div class="checkbox-group">
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="saveCard">
+                                        <span class="checkmark"></span>
+                                        Gem kort til fremtidige køb
+                                    </label>
+                                </div>
+                                
+                                <div class="checkbox-group">
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="terms" required>
+                                        <span class="checkmark"></span>
+                                        Jeg accepterer <a href="#" target="_blank">handelsbetingelser</a> og <a href="privatlivspolitik.html" target="_blank">privatlivspolitik</a> *
+                                    </label>
+                                </div>
+                                
+                                <div class="checkbox-group">
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="newsletter">
+                                        <span class="checkmark"></span>
+                                        Tilmeld mig til nyhedsbrev og få 10% rabat på dit næste køb
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-actions">
+                            <button class="btn-secondary" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Tilbage
+                            </button>
+                            <button class="btn-primary" onclick="processPayment()">
+                                <i class="fas fa-lock"></i>
+                                Gennemfør Bestilling
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="checkout-sidebar">
+                    <div class="order-summary">
+                        <h3>Ordreoversigt</h3>
+                        
+                        <div class="summary-items">
+                            <div class="summary-item">
+                                <div class="item-info">
+                                    <span>Free Palestine T-shirt</span>
+                                    <small>Sort, L x 1</small>
+                                </div>
+                                <span class="item-price">299 kr</span>
+                            </div>
+                            
+                            <div class="summary-item">
+                                <div class="item-info">
+                                    <span>Palestine Map T-shirt</span>
+                                    <small>Hvid, M x 1</small>
+                                </div>
+                                <span class="item-price">349 kr</span>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span>648 kr</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Levering</span>
+                                <span>49 kr</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span>697 kr</span>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-features">
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Sikker betaling</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-undo"></i>
+                                <span>30 dages returret</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-truck"></i>
+                                <span>Gratis levering over 500 kr</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Palæstinensisk Arv</h3>
+                    <p>Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Hurtige Links</h4>
+                    <a href="index.html">Hjem</a>
+                    <a href="produkter.html">Produkter</a>
+                    <a href="om-os.html">Om Os</a>
+                    <a href="kultur.html">Kultur</a>
+                    <a href="kontakt.html">Kontakt</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kategorier</h4>
+                    <a href="produkter.html">Tøj & Mode</a>
+                    <a href="produkter.html">Tilbehør</a>
+                    <a href="produkter.html">Kultur & Historie</a>
+                    <a href="produkter.html">Nyheder</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kundeservice</h4>
+                    <a href="kontakt.html">Kontakt Os</a>
+                    <a href="levering-returnering.html">Levering & Returnering</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment">
+                        <span>Betalinger accepteres:</span>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Behandler betaling...</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function nextStep() {
+            if (validateCurrentStep()) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateStepDisplay();
+                }
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        function updateStepDisplay() {
+            // Update progress bar
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                if (index + 1 <= currentStep) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+
+            // Update step content
+            document.querySelectorAll('.checkout-step').forEach((step, index) => {
+                if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+
+        function validateCurrentStep() {
+            const currentStepElement = document.getElementById(`step${currentStep}`);
+            
+            if (currentStep === 1) {
+                // Validate cart has items
+                const cartItems = currentStepElement.querySelectorAll('.cart-item');
+                if (cartItems.length === 0) {
+                    showNotification('Din kurv er tom!', 'error');
+                    return false;
+                }
+            } else if (currentStep === 2) {
+                // Validate shipping form
+                const requiredFields = currentStepElement.querySelectorAll('input[required], select[required]');
+                for (let field of requiredFields) {
+                    if (!field.value.trim()) {
+                        showNotification('Udfyld venligst alle påkrævede felter.', 'error');
+                        field.focus();
+                        return false;
+                    }
+                }
+            } else if (currentStep === 3) {
+                // Validate billing form if different from shipping
+                const sameAsShipping = document.getElementById('sameAsShipping').checked;
+                if (!sameAsShipping) {
+                    const billingFields = currentStepElement.querySelectorAll('#billingFields input[required], #billingFields select[required]');
+                    for (let field of billingFields) {
+                        if (!field.value.trim()) {
+                            showNotification('Udfyld venligst alle faktureringsfelter.', 'error');
+                            field.focus();
+                            return false;
+                        }
+                    }
+                }
+            } else if (currentStep === 4) {
+                // Validate payment form
+                const terms = document.getElementById('terms').checked;
+                if (!terms) {
+                    showNotification('Du skal acceptere handelsbetingelser.', 'error');
+                    return false;
+                }
+
+                const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+                if (selectedPayment === 'card') {
+                    const cardFields = ['cardNumber', 'expiryDate', 'cvv', 'cardName'];
+                    for (let fieldId of cardFields) {
+                        const field = document.getElementById(fieldId);
+                        if (!field.value.trim()) {
+                            showNotification('Udfyld venligst alle kortoplysninger.', 'error');
+                            field.focus();
+                            return false;
+                        }
+                    }
+                }
+            }
+            
+            return true;
+        }
+
+        function updateQuantity(itemId, change) {
+            const qtyElement = event.target.parentElement.querySelector('.qty-value');
+            let currentQty = parseInt(qtyElement.textContent);
+            let newQty = currentQty + change;
+            
+            if (newQty < 1) {
+                newQty = 1;
+            }
+            
+            qtyElement.textContent = newQty;
+            updateItemTotal(itemId, newQty);
+            updateOrderSummary();
+        }
+
+        function updateItemTotal(itemId, quantity) {
+            const itemElement = event.target.closest('.cart-item');
+            const priceElement = itemElement.querySelector('.item-price');
+            const totalElement = itemElement.querySelector('.item-total');
+            
+            const price = parseInt(priceElement.textContent.replace(' kr', ''));
+            const total = price * quantity;
+            
+            totalElement.textContent = total + ' kr';
+        }
+
+        function removeItem(itemId) {
+            const itemElement = event.target.closest('.cart-item');
+            itemElement.style.animation = 'fadeOut 0.3s ease';
+            setTimeout(() => {
+                itemElement.remove();
+                updateOrderSummary();
+                
+                // Check if cart is empty
+                const remainingItems = document.querySelectorAll('.cart-item');
+                if (remainingItems.length === 0) {
+                    showNotification('Din kurv er tom!', 'error');
+                    setTimeout(() => {
+                        window.location.href = 'produkter.html';
+                    }, 2000);
+                }
+            }, 300);
+        }
+
+        function updateOrderSummary() {
+            // This would normally recalculate totals based on cart items
+            // For demo purposes, we'll keep the static values
+        }
+
+        function processPayment() {
+            if (!validateCurrentStep()) {
+                return;
+            }
+
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'flex';
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                document.getElementById('loadingSpinner').style.display = 'none';
+                
+                // Show success message
+                showNotification('Betaling gennemført! Din ordre er bekræftet.', 'success');
+                
+                // Redirect to confirmation page
+                setTimeout(() => {
+                    window.location.href = 'order-confirmation.html';
+                }, 2000);
+            }, 3000);
+        }
+
+        // Handle billing address toggle
+        document.getElementById('sameAsShipping').addEventListener('change', function() {
+            const billingFields = document.getElementById('billingFields');
+            if (this.checked) {
+                billingFields.style.display = 'none';
+            } else {
+                billingFields.style.display = 'block';
+            }
+        });
+
+        // Handle payment method toggle
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const cardDetails = document.getElementById('cardDetails');
+                if (this.value === 'card') {
+                    cardDetails.style.display = 'block';
+                } else {
+                    cardDetails.style.display = 'none';
+                }
+            });
+        });
+
+        // Format card number input
+        document.getElementById('cardNumber').addEventListener('input', function() {
+            let value = this.value.replace(/\s/g, '').replace(/\D/g, '');
+            value = value.replace(/(\d{4})/g, '$1 ').trim();
+            this.value = value;
+        });
+
+        // Format expiry date input
+        document.getElementById('expiryDate').addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            this.value = value;
+        });
+
+        // Initialize checkout
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStepDisplay();
+        });
+    </script>
+</body>
+</html> 

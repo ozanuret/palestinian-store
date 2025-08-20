@@ -1,0 +1,39 @@
+{
+    "name": "Palæstinensisk Arv Butik",
+    "short_name": "Palæstinensisk Arv",
+    "description": "Autentiske palæstinensiske produkter og kultur - Støt håndværkere og fejr arv",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#2c5530",
+    "theme_color": "#2c5530",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "da",
+    "dir": "ltr",
+    "categories": ["shopping", "lifestyle", "fashion"],
+    "icons": [
+        {
+            "src": "/images/palestine-map-black-tshirt.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/palestine-map-white-tshirt.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg",
+            "purpose": "any"
+        }
+    ],
+    "shortcuts": [],
+    "screenshots": [],
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+    "launch_handler": {
+        "client_mode": "navigate-existing"
+    },
+    "handle_links": "preferred"
+} 
