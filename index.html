@@ -49,16 +49,7 @@
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Palæstinensisk Produkter",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Product",
-                        "name": "Palæstina Kort T-Shirt",
-                        "description": "Autentisk palæstinensisk t-shirt med kort design"
-                    }
-                }
-            ]
+            "description": "Autentiske palæstinensiske produkter kommer snart"
         }
     }
     </script>
@@ -161,63 +152,78 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero" id="home" style="min-height: 60vh; padding: 1rem 0;">
         <div class="hero-background">
             <div class="hero-pattern"></div>
             <div class="hero-overlay"></div>
         </div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <div class="hero-badge">
+        <div class="hero-content" style="padding-top: 2rem; margin-top: -2rem; padding: 0 1rem;">
+            <div class="hero-text" style="margin-top: 0; padding-top: 0;">
+                <div class="hero-badge" style="margin-top: 0; margin-bottom: 1rem; font-size: 0.9rem; padding: 0.75rem 1.5rem;">
                     <span>🇵🇸 Palæstinensisk Arv</span>
                 </div>
-                <h1 class="hero-title">
+                <h1 class="hero-title" style="margin-top: 0; margin-bottom: 1rem; font-size: clamp(2rem, 8vw, 4rem);">
                     <span class="hero-line">Autentisk</span>
                     <span class="hero-line highlight">Kultur</span>
                 </h1>
-                <p class="hero-subtitle">Traditionelle tøjer og kulturelle produkter der fejrer palæstinensisk arv og håndværk.</p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Tilfredse Kunder</span>
+                <p class="hero-subtitle" style="margin-top: 0; margin-bottom: 1rem; font-size: clamp(1rem, 4vw, 1.2rem);">Traditionelle tøjer og kulturelle produkter der fejrer palæstinensisk arv og håndværk.</p>
+                <div class="hero-stats" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0;">
+                    <div class="stat-item" style="text-align: center; min-width: 80px;">
+                        <span class="stat-number" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">500+</span>
+                        <span class="stat-label" style="font-size: clamp(0.7rem, 3vw, 0.9rem);">Tilfredse Kunder</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">14</span>
-                        <span class="stat-label">Unikke Produkter</span>
+                    <div class="stat-item" style="text-align: center; min-width: 80px;">
+                        <span class="stat-number" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">0</span>
+                        <span class="stat-label" style="font-size: clamp(0.7rem, 3vw, 0.9rem);">Produkter Kommer Snart</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Håndlavet</span>
+                    <div class="stat-item" style="text-align: center; min-width: 80px;">
+                        <span class="stat-number" style="font-size: clamp(1.5rem, 6vw, 2.5rem);">100%</span>
+                        <span class="stat-label" style="font-size: clamp(0.7rem, 3vw, 0.9rem);">Håndlavet</span>
                     </div>
                 </div>
-                <div class="hero-actions">
-                    <a href="produkter.html" class="cta-btn primary">
+                <div class="hero-actions" style="margin-bottom: 1rem; text-align: center;">
+                    <a href="produkter.html" class="cta-btn primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #ffd700, #ffa500); color: #1a472a; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: clamp(1rem, 4vw, 1.2rem); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(255,215,0,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         <i class="fas fa-shopping-bag"></i>
                         Shop Nu
                     </a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-image">
-                    <div class="floating-card card-1">
-                        <i class="fas fa-tshirt"></i>
-                        <span>Traditionelle Tøjer</span>
-                        <small>Håndtrykt & Broderet</small>
+            
+            <!-- Enhanced Center Cultural Showcase -->
+            <div class="hero-center-showcase" style="margin-top: 3rem;">
+                <div class="cultural-symbol" style="position: relative; width: clamp(150px, 30vw, 200px); height: clamp(150px, 30vw, 200px); margin: 0 auto; background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, rgba(255,165,0,0.1) 50%, transparent 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: pulse 3s ease-in-out infinite;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(2.5rem, 10vw, 4rem); color: #ffd700; text-shadow: 0 0 20px rgba(255,215,0,0.5); animation: rotate 20s linear infinite;">🏺</div>
+                    <div style="position: absolute; top: 20%; left: 20%; font-size: clamp(1.2rem, 4vw, 1.5rem); color: #ffa500; animation: float 4s ease-in-out infinite;">🕊️</div>
+                    <div style="position: absolute; top: 70%; right: 20%; font-size: clamp(1.2rem, 4vw, 1.5rem); color: #ffa500; animation: float 4s ease-in-out infinite; animation-delay: 2s;">🌿</div>
+                    <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); font-size: clamp(1.2rem, 4vw, 1.5rem); color: #ffa500; animation: float 4s ease-in-out infinite; animation-delay: 1s;">🕯️</div>
+                </div>
+                <div class="cultural-quote" style="text-align: center; margin-top: 2rem; padding: clamp(1rem, 4vw, 1.5rem); background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; border: 1px solid rgba(255,215,0,0.3); margin-left: 1rem; margin-right: 1rem;">
+                    <p style="color: white; font-style: italic; font-size: clamp(1rem, 4.5vw, 1.2rem); margin: 0; line-height: 1.5; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        "Kultur er ikke kun arv fra fortiden, men også gave til fremtiden"
+                    </p>
+                    <div style="margin-top: 0.75rem; font-size: clamp(0.8rem, 3.5vw, 0.9rem); color: rgba(255,255,255,0.8);">
+                        - Palæstinensisk Visdom
                     </div>
-                    <div class="floating-card card-2">
-                        <i class="fas fa-star"></i>
-                        <span>Håndlavede Produkter</span>
-                        <small>Autentisk Kvalitet</small>
+                </div>
+                <div class="cultural-elements" style="display: flex; justify-content: center; gap: clamp(1rem, 4vw, 2rem); margin-top: 2rem; flex-wrap: wrap; padding: 0 1rem;">
+                    <div class="element" style="text-align: center; padding: clamp(0.75rem, 3vw, 1rem); background: rgba(255,255,255,0.1); border-radius: 10px; backdrop-filter: blur(5px); border: 1px solid rgba(255,215,0,0.2); transition: transform 0.3s ease; min-width: 100px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="font-size: clamp(1.5rem, 6vw, 2rem); margin-bottom: 0.5rem;">🧵</div>
+                        <div style="color: white; font-size: clamp(0.8rem, 3.5vw, 0.9rem); font-weight: 600;">Broderi</div>
                     </div>
-                    <div class="floating-card card-3">
-                        <i class="fas fa-heart"></i>
-                        <span>Kulturel Stolthed</span>
-                        <small>Støt Lokale Kunstnere</small>
+                    <div class="element" style="text-align: center; padding: clamp(0.75rem, 3vw, 1rem); background: rgba(255,255,255,0.1); border-radius: 10px; backdrop-filter: blur(5px); border: 1px solid rgba(255,215,0,0.2); transition: transform 0.3s ease; min-width: 100px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="font-size: clamp(1.5rem, 6vw, 2rem); margin-bottom: 0.5rem;">🎨</div>
+                        <div style="color: white; font-size: clamp(0.8rem, 3.5vw, 0.9rem); font-weight: 600;">Kunst</div>
+                    </div>
+                    <div class="element" style="text-align: center; padding: clamp(0.75rem, 3vw, 1rem); background: rgba(255,255,255,0.1); border-radius: 10px; backdrop-filter: blur(5px); border: 1px solid rgba(255,215,0,0.2); transition: transform 0.3s ease; min-width: 100px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="font-size: clamp(1.5rem, 6vw, 2rem); margin-bottom: 0.5rem;">🏺</div>
+                        <div style="color: white; font-size: clamp(0.8rem, 3.5vw, 0.9rem); font-weight: 600;">Håndværk</div>
                     </div>
                 </div>
             </div>
+            
+
         </div>
-        <div class="hero-scroll">
+        <div class="hero-scroll" onclick="scrollToCategories()" style="cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(5px)'" onmouseout="this.style.transform='translateY(0)'">
             <span>Udforsk vores samling</span>
             <i class="fas fa-chevron-down"></i>
         </div>
@@ -242,7 +248,7 @@
                         <span class="feature-tag">Broderet</span>
                         <span class="feature-tag">100% Bomuld</span>
                     </div>
-                    <span class="category-count">11 produkter</span>
+                    <span class="category-count">Kommer snart</span>
                     <div class="category-arrow">
                         <i class="fas fa-arrow-right"></i>
                     </div>
@@ -258,7 +264,7 @@
                         <span class="feature-tag">Kulturel</span>
                         <span class="feature-tag">Unikt Design</span>
                     </div>
-                    <span class="category-count">3 produkter</span>
+                    <span class="category-count">Kommer snart</span>
                     <div class="category-arrow">
                         <i class="fas fa-arrow-right"></i>
                     </div>
@@ -283,35 +289,82 @@
         </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="featured-products">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Populære Produkter</h2>
-                <a href="produkter.html" class="view-all-btn">Se Alle Produkter</a>
+    <!-- Coming Soon Section -->
+    <section class="coming-soon-section" style="background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 50%, #4a7c59 100%); padding: clamp(2rem, 8vw, 4rem) 0; position: relative; overflow: hidden;">
+        <!-- Animated Background Elements -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1;">
+            <div style="position: absolute; top: 10%; left: 10%; width: 50px; height: 50px; background: #ffd700; border-radius: 50%; animation: pulse 3s ease-in-out infinite;"></div>
+            <div style="position: absolute; top: 60%; right: 15%; width: 30px; height: 30px; background: #ffa500; border-radius: 50%; animation: pulse 3s ease-in-out infinite; animation-delay: 1s;"></div>
+            <div style="position: absolute; bottom: 20%; left: 20%; width: 40px; height: 40px; background: #ffd700; border-radius: 50%; animation: pulse 3s ease-in-out infinite; animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="container" style="padding: 0 1rem;">
+            <div class="section-header" style="text-align: center; margin-bottom: clamp(2rem, 6vw, 3rem);">
+                <div style="display: inline-flex; align-items: center; gap: clamp(0.5rem, 2vw, 1rem); background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,165,0,0.2)); padding: clamp(0.75rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2rem); border-radius: 50px; margin-bottom: clamp(1.5rem, 4vw, 2rem); border: 1px solid rgba(255,215,0,0.3);">
+                    <i class="fas fa-sparkles" style="color: #ffd700; font-size: clamp(1.2rem, 4vw, 1.5rem); animation: spin 4s linear infinite;"></i>
+                    <span style="color: white; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: clamp(0.8rem, 3vw, 1rem);">Kommer Snart</span>
+                </div>
+                <h2 class="section-title" style="color: white; font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 1rem; text-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                    Nye Produkter Kommer Snart
+                </h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9); font-size: clamp(1rem, 4vw, 1.2rem); max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                    Vi arbejder på at bringe dig de bedste autentiske palæstinensiske produkter
+                </p>
             </div>
-            <div class="products-grid" id="featuredProductsGrid">
-                <!-- Featured products will be loaded here -->
+            
+            <div class="coming-soon-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <div style="display: flex; justify-content: center; gap: clamp(1rem, 4vw, 2rem); margin-bottom: clamp(2rem, 6vw, 3rem); flex-wrap: wrap;">
+                    <div style="text-align: center; padding: clamp(1rem, 4vw, 1.5rem); background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,215,0,0.2); transition: transform 0.3s ease; min-width: 120px;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div style="font-size: clamp(2rem, 8vw, 2.5rem); margin-bottom: 1rem;">🧵</div>
+                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: clamp(0.9rem, 4vw, 1.1rem);">Traditionelle Broderier</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.8rem, 3vw, 0.9rem);">Håndlavet med kærlighed</p>
+                    </div>
+                    <div style="text-align: center; padding: clamp(1rem, 4vw, 1.5rem); background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,215,0,0.2); transition: transform 0.3s ease; min-width: 120px;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div style="font-size: clamp(2rem, 8vw, 2.5rem); margin-bottom: 1rem;">🏺</div>
+                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: clamp(0.9rem, 4vw, 1.1rem);">Kulturelle Smykker</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.8rem, 3vw, 0.9rem);">Autentisk håndværk</p>
+                    </div>
+                    <div style="text-align: center; padding: clamp(1rem, 4vw, 1.5rem); background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,215,0,0.2); transition: transform 0.3s ease; min-width: 120px;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <div style="font-size: clamp(2rem, 8vw, 2.5rem); margin-bottom: 1rem;">👕</div>
+                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: clamp(0.9rem, 4vw, 1.1rem);">Moderne Tøj</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: clamp(0.8rem, 3vw, 0.9rem);">Kulturel stil</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(15px); border-radius: 20px; padding: clamp(1.5rem, 5vw, 2.5rem); border: 1px solid rgba(255,215,0,0.3); margin-bottom: 2rem; margin-left: 1rem; margin-right: 1rem;">
+                    <p style="color: white; font-size: clamp(1rem, 4vw, 1.1rem); line-height: 1.7; margin-bottom: clamp(1.5rem, 4vw, 2rem);">
+                        Vi forbereder en fantastisk samling af traditionelle palæstinensiske produkter. 
+                        <span style="color: #ffd700; font-weight: 600;">Tilmeld dig vores nyhedsbrev</span> for at få besked når de nye produkter er tilgængelige.
+                    </p>
+                    
+                    <div class="coming-soon-form" style="display: flex; gap: clamp(0.5rem, 2vw, 1rem); max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center;">
+                        <input type="email" placeholder="Din email adresse" id="newsletterEmail" style="flex: 1; min-width: 200px; padding: clamp(0.75rem, 3vw, 1rem) clamp(1rem, 4vw, 1.5rem); border: none; border-radius: 50px; background: rgba(255,255,255,0.9); color: #333; font-size: clamp(0.9rem, 4vw, 1rem); outline: none; transition: all 0.3s ease;" onfocus="this.style.background='white'; this.style.boxShadow='0 0 20px rgba(255,215,0,0.3)'" onblur="this.style.background='rgba(255,255,255,0.9)'; this.style.boxShadow='none'">
+                        <button onclick="subscribeNewsletter()" style="padding: clamp(0.75rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2rem); background: linear-gradient(135deg, #ffd700, #ffa500); color: #1a472a; border: none; border-radius: 50px; font-weight: 700; font-size: clamp(0.9rem, 4vw, 1rem); cursor: pointer; transition: all 0.3s ease; white-space: nowrap;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(255,215,0,0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <i class="fas fa-bell" style="margin-right: 0.5rem;"></i>
+                            Tilmeld
+                        </button>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: clamp(0.5rem, 2vw, 1rem); flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.8); font-size: clamp(0.8rem, 3vw, 0.9rem);">
+                        <i class="fas fa-check-circle" style="color: #ffd700;"></i>
+                        <span>Gratis forsendelse</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.8); font-size: clamp(0.8rem, 3vw, 0.9rem);">
+                        <i class="fas fa-check-circle" style="color: #ffd700;"></i>
+                        <span>100% Autentisk</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.8); font-size: clamp(0.8rem, 3vw, 0.9rem);">
+                        <i class="fas fa-check-circle" style="color: #ffd700;"></i>
+                        <span>Støt Håndværkere</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Story Section -->
-    <section class="story">
-        <div class="container">
-            <div class="story-content">
-                <div class="story-text">
-                    <h2>Vores Historie</h2>
-                    <p>Vi er dedikerede til at bevare og dele den rige kulturelle arv fra Palæstina gennem autentiske traditionelle tøjer og håndlavede produkter. Hvert stykke fortæller en historie om modstandskraft, skønhed og kulturel stolthed.</p>
-                    <p>Vores produkter er omhyggeligt udvalgt til at repræsentere de forskelligartede traditioner og kunstneriske udtryk af palæstinensisk kultur, fra traditionel broderi til moderne fortolkninger af klassiske designs.</p>
-                    <a href="om-os.html" class="story-btn">Læs Mere</a>
-                </div>
-                <div class="story-image">
-                    <div class="story-pattern"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Values Section -->
     <section class="values">
@@ -332,13 +385,7 @@
                     <h3>Bæredygtighed</h3>
                     <p>Alle vores produkter er fremstillet med bæredygtige materialer</p>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Kulturel Bevarelse</h3>
-                    <p>Vi bevarer og fejrer palæstinensisk kultur og traditioner</p>
-                </div>
+
                 <div class="value-card">
                     <div class="value-icon">
                         <i class="fas fa-award"></i>
@@ -355,7 +402,7 @@
         <div class="container">
             <div class="newsletter-content">
                 <h2>Tilmeld dig vores nyhedsbrev</h2>
-                <p>Få de seneste nyheder om nye produkter og særlige tilbud</p>
+                <p style="color: white;">Få de seneste nyheder om nye produkter og særlige tilbud</p>
                 <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
                     <input type="email" placeholder="Din email adresse" required>
                     <button type="submit">Tilmeld</button>
@@ -486,5 +533,16 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function scrollToCategories() {
+            const categoriesSection = document.querySelector('.categories');
+            if (categoriesSection) {
+                categoriesSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    </script>
 </body>
 </html> 

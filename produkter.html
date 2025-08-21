@@ -116,8 +116,8 @@
                             <div style="position: absolute; top: -10px; right: -10px; width: 20px; height: 20px; background: linear-gradient(135deg, #ffd700, #ffa500); border-radius: 50%; animation: pulse 2s ease-in-out infinite;"></div>
                         </div>
                         <div class="stat" style="text-align: center; position: relative;">
-                            <div class="stat-number" style="font-size: 3.5rem; font-weight: 900; color: #ffd700; margin-bottom: 0.75rem; text-shadow: 0 4px 15px rgba(255,215,0,0.4); animation: numberPulse 2s ease-in-out infinite; animation-delay: 0.5s;">50+</div>
-                            <div class="stat-label" style="font-size: 1rem; color: rgba(255,255,255,0.9); text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Unikke Produkter</div>
+                            <div class="stat-number" style="font-size: 3.5rem; font-weight: 900; color: #ffd700; margin-bottom: 0.75rem; text-shadow: 0 4px 15px rgba(255,215,0,0.4); animation: numberPulse 2s ease-in-out infinite; animation-delay: 0.5s;">0</div>
+                            <div class="stat-label" style="font-size: 1rem; color: rgba(255,255,255,0.9); text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Produkter Kommer Snart</div>
                             <div style="position: absolute; top: -10px; right: -10px; width: 20px; height: 20px; background: linear-gradient(135deg, #ffd700, #ffa500); border-radius: 50%; animation: pulse 2s ease-in-out infinite; animation-delay: 0.5s;"></div>
                         </div>
                         <div class="stat" style="text-align: center; position: relative;">
@@ -129,26 +129,10 @@
                     
                     <!-- Premium Action Buttons -->
                     <div class="action-buttons" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; position: relative; z-index: 10; margin-top: 0.5rem; margin-bottom: 2rem;">
-                        <button onclick="showTrendingProducts()" style="display: flex; align-items: center; gap: 1rem; background: linear-gradient(135deg, #ffd700, #ffa500); color: #1a472a; border: none; padding: 1.25rem 2.5rem; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.4s ease; box-shadow: 0 8px 25px rgba(255,215,0,0.4); position: relative; overflow: hidden; z-index: 10;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 35px rgba(255,215,0,0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(255,215,0,0.4)'">
-                            <i class="fas fa-fire" style="font-size: 1.2rem;"></i>
-                            <span>Trending</span>
+                        <button onclick="showComingSoon()" style="display: flex; align-items: center; gap: 1rem; background: linear-gradient(135deg, #ffd700, #ffa500); color: #1a472a; border: none; padding: 1.25rem 2.5rem; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.4s ease; box-shadow: 0 8px 25px rgba(255,215,0,0.4); position: relative; overflow: hidden; z-index: 10;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 35px rgba(255,215,0,0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px rgba(255,215,0,0.4)'">
+                            <i class="fas fa-clock" style="font-size: 1.2rem;"></i>
+                            <span>Kommer Snart</span>
                             <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s ease;"></div>
-                        </button>
-                        <button onclick="showNewArrivals()" style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.12); color: white; border: 2px solid rgba(255,255,255,0.4); padding: 1.25rem 2.5rem; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.4s ease; backdrop-filter: blur(15px); position: relative; overflow: hidden; z-index: 10;" onmouseover="this.style.transform='translateY(-3px)'; this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.12)'">
-                            <i class="fas fa-sparkles" style="font-size: 1.2rem;"></i>
-                            <span>Nye Produkter</span>
-                            <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease;"></div>
-                        </button>
-                        <button onclick="showBestSellers()" style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.12); color: white; border: 2px solid rgba(255,255,255,0.4); padding: 1.25rem 2.5rem; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.4s ease; backdrop-filter: blur(15px); position: relative; overflow: hidden; z-index: 10;" onmouseover="this.style.transform='translateY(-3px)'; this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.12)'">
-                            <i class="fas fa-crown" style="font-size: 1.2rem;"></i>
-                            <span>Bestsellers</span>
-                            <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease;"></div>
-                        </button>
-                        <button onclick="showSaleItems()" style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.12); color: white; border: 2px solid rgba(255,255,255,0.4); padding: 1.25rem 2.5rem; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.4s ease; backdrop-filter: blur(15px); position: relative; overflow: hidden; z-index: 10;" onmouseover="this.style.transform='translateY(-3px)'; this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.12)'">
-                            <i class="fas fa-tag" style="font-size: 1.2rem;"></i>
-                            <span>Tilbud</span>
-                            <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease;"></div>
-                        </button>
                         </button>
                     </div>
                 </div>
@@ -180,7 +164,6 @@
                             <h3 style="color: white; font-size: 1.4rem; margin-bottom: 0.75rem; font-weight: 700; text-align: center; position: relative; z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Kulturel Stolthed</h3>
                             <p style="color: rgba(255,255,255,0.95); font-size: 1rem; font-weight: 400; text-align: center; position: relative; z-index: 2; line-height: 1.4;">Støt palæstinensisk arv</p>
                         </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -195,317 +178,18 @@
         </div>
     </section>
 
-    <!-- Smart Filter Bar -->
-    <section class="smart-filter-bar">
+    <!-- Coming Soon Section -->
+    <section class="coming-soon-section">
         <div class="container">
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-category="all" onclick="filterByCategory('all')">
-                    <i class="fas fa-th"></i>
-                    <span>Alle</span>
-                </button>
-                <button class="filter-tab" data-category="tøj" onclick="filterByCategory('tøj')">
-                    <i class="fas fa-tshirt"></i>
-                    <span>Tøj & Mode</span>
-                </button>
-                <button class="filter-tab" data-category="tilbehør" onclick="filterByCategory('tilbehør')">
-                    <i class="fas fa-gem"></i>
-                    <span>Tilbehør</span>
-                </button>
-                <button class="filter-tab" data-category="håndværk" onclick="filterByCategory('håndværk')">
-                    <i class="fas fa-hands"></i>
-                    <span>Håndværk</span>
-                </button>
-                <button class="filter-tab" data-category="hjem" onclick="filterByCategory('hjem')">
-                    <i class="fas fa-home"></i>
-                    <span>Hjem & Dekoration</span>
-                </button>
-            </div>
-            
-            <div class="filter-controls">
-                <button class="filter-toggle" onclick="toggleAdvancedFilters()">
-                    <i class="fas fa-sliders-h"></i>
-                    <span>Filtre</span>
-                </button>
-                <div class="view-controls">
-                    <button class="view-btn active" data-view="grid" onclick="changeView('grid')">
-                        <i class="fas fa-th"></i>
-                    </button>
-                    <button class="view-btn" data-view="list" onclick="changeView('list')">
-                        <i class="fas fa-list"></i>
-                    </button>
-                    <button class="view-btn" data-view="masonry" onclick="changeView('masonry')">
-                        <i class="fas fa-th-large"></i>
-                    </button>
+            <div class="coming-soon-content">
+                <div class="coming-soon-icon">
+                    <i class="fas fa-clock"></i>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Advanced Filters Panel -->
-    <section class="advanced-filters" id="advancedFilters">
-        <div class="container">
-            <div class="filters-grid">
-                <!-- Price Range -->
-                <div class="filter-group">
-                    <h4>Pris Range</h4>
-                    <div class="price-slider">
-                        <input type="range" id="minPrice" min="0" max="500" value="0" oninput="updatePriceRange()">
-                        <input type="range" id="maxPrice" min="0" max="500" value="500" oninput="updatePriceRange()">
-                        <div class="price-display">
-                            <span id="minPriceDisplay">0 kr</span>
-                            <span>-</span>
-                            <span id="maxPriceDisplay">500 kr</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Colors -->
-                <div class="filter-group">
-                    <h4>Farver</h4>
-                    <div class="color-filters">
-                        <label class="color-option">
-                            <input type="checkbox" value="sort">
-                            <span class="color-dot" style="background: #000;"></span>
-                            <span>Sort</span>
-                        </label>
-                        <label class="color-option">
-                            <input type="checkbox" value="hvid">
-                            <span class="color-dot" style="background: #fff; border: 1px solid #ddd;"></span>
-                            <span>Hvid</span>
-                        </label>
-                        <label class="color-option">
-                            <input type="checkbox" value="beige">
-                            <span class="color-dot" style="background: #f5f5dc;"></span>
-                            <span>Beige</span>
-                        </label>
-                        <label class="color-option">
-                            <input type="checkbox" value="pink">
-                            <span class="color-dot" style="background: #ffc0cb;"></span>
-                            <span>Pink</span>
-                        </label>
-                        <label class="color-option">
-                            <input type="checkbox" value="blå">
-                            <span class="color-dot" style="background: #0000ff;"></span>
-                            <span>Blå</span>
-                        </label>
-                        <label class="color-option">
-                            <input type="checkbox" value="grå">
-                            <span class="color-dot" style="background: #808080;"></span>
-                            <span>Grå</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Size -->
-                <div class="filter-group">
-                    <h4>Størrelse</h4>
-                    <div class="size-filters">
-                        <label class="size-option">
-                            <input type="checkbox" value="xs">
-                            <span>XS</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="checkbox" value="s">
-                            <span>S</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="checkbox" value="m">
-                            <span>M</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="checkbox" value="l">
-                            <span>L</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="checkbox" value="xl">
-                            <span>XL</span>
-                        </label>
-                        <label class="size-option">
-                            <input type="checkbox" value="xxl">
-                            <span>XXL</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Material -->
-                <div class="filter-group">
-                    <h4>Materiale</h4>
-                    <div class="material-filters">
-                        <label class="material-option">
-                            <input type="checkbox" value="bomuld">
-                            <span>Bomuld</span>
-                        </label>
-                        <label class="material-option">
-                            <input type="checkbox" value="silke">
-                            <span>Silke</span>
-                        </label>
-                        <label class="material-option">
-                            <input type="checkbox" value="uld">
-                            <span>Uld</span>
-                        </label>
-                        <label class="material-option">
-                            <input type="checkbox" value="læder">
-                            <span>Læder</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Availability -->
-                <div class="filter-group">
-                    <h4>Tilgængelighed</h4>
-                    <div class="availability-filters">
-                        <label class="availability-option">
-                            <input type="checkbox" value="på-lager">
-                            <span>På lager</span>
-                        </label>
-                        <label class="availability-option">
-                            <input type="checkbox" value="tilbud">
-                            <span>På tilbud</span>
-                        </label>
-                        <label class="availability-option">
-                            <input type="checkbox" value="nyhed">
-                            <span>Nyheder</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="filter-actions">
-                <button class="apply-filters-btn" onclick="applyFilters()">
-                    <i class="fas fa-check"></i>
-                    <span>Anvend Filtre</span>
-                </button>
-                <button class="clear-filters-btn" onclick="clearAllFilters()">
-                    <i class="fas fa-times"></i>
-                    <span>Ryd Alle</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products-section">
-        <div class="container">
-            <!-- Products Header -->
-            <div class="products-header">
-                <div class="products-info">
-                    <h2 id="productsTitle">Alle Produkter</h2>
-                    <p id="productsSubtitle">Udforsk vores samling af autentiske palæstinensiske produkter</p>
-                    <div class="products-meta">
-                        <span id="productsCount">14 produkter</span>
-                        <span class="separator">•</span>
-                        <span id="activeFilters">Ingen filtre aktive</span>
-                    </div>
-                </div>
-                
-                <div class="products-controls">
-                    <div class="sort-control">
-                        <label for="sortSelect">Sorter efter:</label>
-                        <select id="sortSelect" onchange="sortProducts()">
-                            <option value="featured">Anbefalet</option>
-                            <option value="price-low">Pris: Lav til Høj</option>
-                            <option value="price-high">Pris: Høj til Lav</option>
-                            <option value="name">Navn: A-Z</option>
-                            <option value="newest">Nyeste</option>
-                            <option value="popular">Mest Populære</option>
-                            <option value="rating">Højeste Rating</option>
-                        </select>
-                    </div>
-                    
-                    <div class="display-controls">
-                        <span>Vis:</span>
-                        <select id="itemsPerPage" onchange="changeItemsPerPage()">
-                            <option value="12">12</option>
-                            <option value="24">24</option>
-                            <option value="48">48</option>
-                        </select>
-                        <span>per side</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI Recommendations -->
-            <div class="ai-recommendations" id="aiRecommendations">
-                <div class="recommendations-header">
-                    <i class="fas fa-brain"></i>
-                    <h3>Intelligente Anbefalinger</h3>
-                    <p>Baseret på dine tidligere interaktioner</p>
-                </div>
-                <div class="recommendations-grid" id="recommendationsGrid">
-                    <!-- AI recommendations will be loaded here -->
-                </div>
-            </div>
-            
-            <!-- Products Grid -->
-            <div class="products-container">
-                <div class="products-grid" id="productsGrid">
-                    <!-- Products will be loaded here -->
-                </div>
-                
-                <!-- Loading State -->
-                <div class="products-loading" id="productsLoading">
-                    <div class="loading-spinner">
-                        <div class="spinner"></div>
-                        <p>Indlæser produkter...</p>
-                    </div>
-                </div>
-                
-                <!-- Empty State -->
-                <div class="products-empty" id="productsEmpty" style="display: none;">
-                    <div class="empty-state">
-                        <i class="fas fa-search"></i>
-                        <h3>Ingen produkter fundet</h3>
-                        <p>Prøv at justere dine filtre eller søge efter noget andet</p>
-                        <button class="reset-filters-btn" onclick="resetFilters()">
-                            <i class="fas fa-refresh"></i>
-                            <span>Nulstil Filtre</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Enhanced Pagination -->
-            <div class="products-pagination" id="productsPagination">
-                <div class="pagination-info">
-                    <span>Viser <span id="showingStart">1</span>-<span id="showingEnd">12</span> af <span id="totalProducts">14</span> produkter</span>
-                </div>
-                
-                <div class="pagination-controls">
-                    <button class="pagination-btn" onclick="changePage(-1)" id="prevPage">
-                        <i class="fas fa-chevron-left"></i>
-                        <span>Forrige</span>
-                    </button>
-                    
-                    <div class="page-numbers" id="pageNumbers">
-                        <!-- Page numbers will be generated here -->
-                    </div>
-                    
-                    <button class="pagination-btn" onclick="changePage(1)" id="nextPage">
-                        <span>Næste</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Smart Product Comparison -->
-    <section class="comparison-bar" id="comparisonBar" style="display: none;">
-        <div class="container">
-            <div class="comparison-content">
-                <div class="comparison-info">
-                    <i class="fas fa-balance-scale"></i>
-                    <span>Produkt sammenligning (<span id="comparisonCount">0</span>)</span>
-                </div>
-                <div class="comparison-actions">
-                    <button class="compare-btn" onclick="compareProducts()">
-                        <i class="fas fa-eye"></i>
-                        <span>Sammenlign</span>
-                    </button>
-                    <button class="clear-comparison-btn" onclick="clearComparison()">
-                        <i class="fas fa-times"></i>
-                        <span>Ryd</span>
-                    </button>
+                <h2>Nye Produkter Kommer Snart</h2>
+                <p>Vi arbejder på at bringe dig de bedste autentiske palæstinensiske produkter. Tilmeld dig vores nyhedsbrev for at få besked når de nye produkter er tilgængelige.</p>
+                <div class="coming-soon-form">
+                    <input type="email" placeholder="Din email adresse" id="newsletterEmail">
+                    <button onclick="subscribeNewsletter()">Tilmeld</button>
                 </div>
             </div>
         </div>
@@ -560,30 +244,6 @@
     <div class="loading-spinner" id="loadingSpinner">
         <div class="spinner"></div>
         <p>Indlæser...</p>
-    </div>
-
-    <!-- Enhanced Product Modal -->
-    <div class="product-modal" id="productModal">
-        <div class="product-modal-overlay" id="productModalOverlay" onclick="closeProductModal()"></div>
-        <div class="product-modal-content">
-            <div class="product-modal-header">
-                <h2 id="modalProductTitle"></h2>
-                <div class="modal-actions">
-                    <button class="modal-action-btn" onclick="addToWishlist()" id="wishlistBtn">
-                        <i class="fas fa-heart"></i>
-                    </button>
-                    <button class="modal-action-btn" onclick="compareProduct()" id="compareBtn">
-                        <i class="fas fa-balance-scale"></i>
-                    </button>
-                    <button class="close-modal" onclick="closeProductModal()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="product-modal-body" id="productModalBody">
-                <!-- Product details will be loaded here -->
-            </div>
-        </div>
     </div>
 
     <!-- Footer -->
