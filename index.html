@@ -65,7 +65,8 @@
     <link rel="dns-prefetch" href="//www.google-analytics.com">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css?v=1.0">
+    <link rel="stylesheet" href="./styles.min.css?v=1.0">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2c5530">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -89,6 +90,20 @@
     <!-- Performance -->
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
+    
+    <!-- Critical CSS for GitHub Pages -->
+    <style>
+        /* Basic fallback styles */
+        body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        .header { background: #1a472a; color: white; padding: 1rem 0; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .nav-brand h1 { margin: 0; font-size: 1.5rem; }
+        .nav-menu { display: flex; gap: 2rem; }
+        .nav-link { color: white; text-decoration: none; }
+        .hero { background: linear-gradient(135deg, #0f2e1a 0%, #1a472a 100%); color: white; padding: 4rem 0; }
+        .footer { background: #1a472a; color: white; padding: 2rem 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+    </style>
 </head>
 <body>
     <!-- Header -->
