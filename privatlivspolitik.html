@@ -25,7 +25,14 @@
                 </div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">Hjem</a>
-                <a href="produkter.html" class="nav-link">Produkter</a>
+                <div style="position: relative;">
+                    <a href="produkter.html" class="nav-link">Produkter</a>
+                    <div class="nav-dropdown">
+                        <a href="produkter.html" class="dropdown-item">Alle Produkter</a>
+                        <a href="tøj.html" class="dropdown-item">Tøj</a>
+                        <a href="tilbehør.html" class="dropdown-item">Tilbehør</a>
+                    </div>
+                </div>
                 <a href="kontakt.html" class="nav-link">Kontakt</a>
             </div>
             <div class="nav-actions">
@@ -92,7 +99,7 @@
                 <a href="#data-collection" class="nav-link">Dataindsamling</a>
                 <a href="#data-use" class="nav-link">Brug af Data</a>
                 <a href="#data-sharing" class="nav-link">Deling af Data</a>
-                <a href="#cookies" class="nav-link">Cookies</a>
+
                 <a href="#rights" class="nav-link">Dine Rettigheder</a>
                 <a href="#security" class="nav-link">Sikkerhed</a>
                 <a href="#contact" class="nav-link">Kontakt</a>
@@ -258,59 +265,7 @@
                 </div>
             </section>
 
-            <!-- Cookies Section -->
-            <section id="cookies" class="content-section">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-cookie-bite"></i>
-                    </div>
-                    <h2>Cookies og tracking</h2>
-                    <p>Vi bruger cookies for at forbedre din oplevelse på vores website</p>
-                </div>
 
-                <div class="cookies-info">
-                    <div class="cookie-types">
-                        <div class="cookie-type">
-                            <h3>Nødvendige cookies</h3>
-                            <p>Disse cookies er nødvendige for, at website kan fungere korrekt. De kan ikke deaktiveres.</p>
-                            <ul>
-                                <li>Shopping kurv funktionalitet</li>
-                                <li>Login og sikkerhed</li>
-                                <li>Grundlæggende website funktioner</li>
-                            </ul>
-                        </div>
-
-                        <div class="cookie-type">
-                            <h3>Præference cookies</h3>
-                            <p>Disse cookies husker dine valg og præferencer for at give dig en bedre oplevelse.</p>
-                            <ul>
-                                <li>Sprog og valuta indstillinger</li>
-                                <li>Produktpræferencer</li>
-                                <li>Website indstillinger</li>
-                            </ul>
-                        </div>
-
-                        <div class="cookie-type">
-                            <h3>Analytics cookies</h3>
-                            <p>Disse cookies hjælper os med at forstå, hvordan du bruger vores website.</p>
-                            <ul>
-                                <li>Besøgsstatistikker</li>
-                                <li>Populære produkter</li>
-                                <li>Website performance</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="cookie-controls">
-                        <h3>Kontrol over cookies</h3>
-                        <p>Du kan når som helst ændre dine cookie-indstillinger i din browser eller kontakte os for hjælp.</p>
-                        <button class="cookie-settings-btn">
-                            <i class="fas fa-cog"></i>
-                            Cookie Indstillinger
-                        </button>
-                    </div>
-                </div>
-            </section>
 
             <!-- Rights Section -->
             <section id="rights" class="content-section">
@@ -477,7 +432,7 @@
                                     <option value="data-access">Anmodning om data</option>
                                     <option value="data-correction">Rettelse af data</option>
                                     <option value="data-deletion">Sletning af data</option>
-                                    <option value="cookies">Cookies og tracking</option>
+            
                                     <option value="other">Andet</option>
                                 </select>
                             </div>
@@ -616,10 +571,7 @@
             });
         });
 
-        // Cookie settings button
-        document.querySelector('.cookie-settings-btn').addEventListener('click', function() {
-            alert('Cookie indstillinger vil blive implementeret her. Du kan i mellemtiden ændre dine cookie-indstillinger i din browser.');
-        });
+
 
         // Form submission
         document.querySelector('.contact-form form').addEventListener('submit', function(e) {
