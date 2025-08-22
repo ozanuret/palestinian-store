@@ -505,8 +505,8 @@
                     <a href="produkter.html" class="nav-link active">Produkter</a>
                     <div class="nav-dropdown">
                         <a href="produkter.html" class="dropdown-item">Alle Produkter</a>
-                        <a href="produkter.html?category=tøj" class="dropdown-item">Tøj</a>
-                        <a href="produkter.html?category=tilbehør" class="dropdown-item">Tilbehør</a>
+                        <a href="tøj.html" class="dropdown-item">Tøj</a>
+                        <a href="tilbehør.html" class="dropdown-item">Tilbehør</a>
                     </div>
                 </div>
                 <a href="kontakt.html" class="nav-link">Kontakt</a>
@@ -766,50 +766,73 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Palæstinensisk Arv</h3>
-                    <p>Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+    <footer class="footer" style="background: linear-gradient(135deg, #0f2d14 0%, #1a472a 25%, #2d5a3d 50%, #4a7c59 75%, #6b9c7a 100%); color: white; padding: 3rem 0 1.5rem; position: relative; overflow: hidden; box-shadow: 0 -10px 30px rgba(0,0,0,0.3);">
+        <!-- Animated background elements -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%); animation: float 20s ease-in-out infinite;"></div>
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px); opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                <div class="footer-section" style="position: relative;">
+                    <h3 style="color: white; font-weight: 600; font-size: 1.2rem; margin-bottom: 0.8rem; position: relative; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        🇵🇸 Palæstinensisk Arv
+                        <div style="position: absolute; bottom: -4px; left: 0; width: 30px; height: 2px; background: linear-gradient(90deg, #ffd700, #ffed4e); border-radius: 1px;"></div>
+                    </h3>
+                    <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.4; font-size: 0.85rem; margin-bottom: 1rem; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social" style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background: rgba(255,255,255,0.15); border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);" onmouseover="this.style.transform='scale(1.1)'; this.style.background='rgba(255,215,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(255,255,255,0.15)';">
+                            <i class="fab fa-facebook" style="font-size: 0.9rem;"></i>
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background: rgba(255,255,255,0.15); border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);" onmouseover="this.style.transform='scale(1.1)'; this.style.background='rgba(255,215,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(255,255,255,0.15)';">
+                            <i class="fab fa-instagram" style="font-size: 0.9rem;"></i>
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background: rgba(255,255,255,0.15); border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);" onmouseover="this.style.transform='scale(1.1)'; this.style.background='rgba(255,215,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(255,255,255,0.15)';">
+                            <i class="fab fa-twitter" style="font-size: 0.9rem;"></i>
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background: rgba(255,255,255,0.15); border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);" onmouseover="this.style.transform='scale(1.1)'; this.style.background='rgba(255,215,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(255,255,255,0.15)';">
+                            <i class="fab fa-youtube" style="font-size: 0.9rem;"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Hurtige Links</h4>
-                    <a href="index.html">Hjem</a>
-                    <a href="produkter.html">Produkter</a>
-                    <a href="om-os.html">Om Os</a>
-                    <a href="kultur.html">Kultur</a>
-                    <a href="kontakt.html">Kontakt</a>
+                <div class="footer-section" style="position: relative;">
+                    <h4 style="color: white; font-weight: 600; font-size: 1rem; margin-bottom: 0.8rem; position: relative; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        🚀 Hurtige Links
+                        <div style="position: absolute; bottom: -3px; left: 0; width: 25px; height: 1px; background: linear-gradient(90deg, #ffd700, #ffed4e); border-radius: 1px;"></div>
+                    </h4>
+                    <a href="index.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🏠 Hjem</a>
+                    <a href="produkter.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🛍️ Produkter</a>
+
+                    <a href="kontakt.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">📞 Kontakt</a>
                 </div>
-                <div class="footer-section">
-                    <h4>Kategorier</h4>
-                    <a href="produkter.html?category=tøj">Tøj & Mode</a>
-                    <a href="produkter.html?category=tilbehør">Tilbehør</a>
-                    <a href="kultur.html">Kultur & Historie</a>
-                    <a href="produkter.html?category=nyheder">Nyheder</a>
+                <div class="footer-section" style="position: relative;">
+                    <h4 style="color: white; font-weight: 600; font-size: 1rem; margin-bottom: 0.8rem; position: relative; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        📂 Kategorier
+                        <div style="position: absolute; bottom: -3px; left: 0; width: 25px; height: 1px; background: linear-gradient(90deg, #ffd700, #ffed4e); border-radius: 1px;"></div>
+                    </h4>
+                    <a href="tøj.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">👕 Tøj & Mode</a>
+                    <a href="tilbehør.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">💍 Tilbehør</a>
+
+                    <a href="produkter.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🆕 Nyheder</a>
                 </div>
-                <div class="footer-section">
-                    <h4>Kundeservice</h4>
-                    <a href="kontakt.html">Kontakt Os</a>
-                    <a href="levering-returnering.html">Levering & Returnering</a>
-                    <a href="faq.html">FAQ</a>
-                    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+                <div class="footer-section" style="position: relative;">
+                    <h4 style="color: white; font-weight: 600; font-size: 1rem; margin-bottom: 0.8rem; position: relative; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        🛎️ Kundeservice
+                        <div style="position: absolute; bottom: -3px; left: 0; width: 25px; height: 1px; background: linear-gradient(90deg, #ffd700, #ffed4e); border-radius: 1px;"></div>
+                    </h4>
+                    <a href="kontakt.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">💬 Kontakt Os</a>
+                    <a href="levering-returnering.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🚚 Levering & Returnering</a>
+                    <a href="faq.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">❓ FAQ</a>
+                    <a href="privatlivspolitik.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🔒 Privatlivspolitik</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
-                    <div class="footer-payment">
-                        <span>Betalinger accepteres:</span>
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                        <i class="fab fa-cc-paypal"></i>
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 1rem; position: relative;">
+                <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);"></div>
+                <div class="footer-bottom-content" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.75rem; margin: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment" style="color: rgba(255, 255, 255, 0.8); display: flex; align-items: center; gap: 0.3rem;">
+                        <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.75rem; font-weight: 500;">💳 Betalinger:</span>
+                        <i class="fab fa-cc-visa" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-mastercard" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-paypal" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='scale(1)'"></i>
                     </div>
                 </div>
             </div>
