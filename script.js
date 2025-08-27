@@ -4718,6 +4718,10 @@ document.addEventListener('click', function(event) {
 // Test if functions are accessible globally
 window.toggleLanguageDropdown = toggleLanguageDropdown;
 window.toggleCurrencyDropdown = toggleCurrencyDropdown;
+window.toggleCart = toggleCart;
+window.toggleWishlist = toggleWishlist;
+window.toggleSearch = toggleSearch;
+window.toggleMobileMenu = toggleMobileMenu;
 window.changeLanguage = changeLanguage;
 window.changeCurrency = changeCurrency;
 
