@@ -3,9 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt Os - Palæstinensisk Arv Butik</title>
-    <meta name="description" content="Kontakt Palæstinensisk Arv Butik. Vi er her for at hjælpe dig med spørgsmål om produkter, levering og mere.">
-    <link rel="stylesheet" href="styles.css?v=1.3">
+    <title>Kontakt Os - Palæstinensisk Arv Butik | Support & Hjælp</title>
+    <meta name="description" content="Kontakt Palæstinensisk Arv Butik for support, spørgsmål om produkter, levering og mere. Vi er her for at hjælpe dig med alt relateret til autentiske palæstinensiske produkter.">
+    <meta name="keywords" content="kontakt palæstinensisk arv, support, kundeservice, hjælp, spørgsmål, levering, returnering">
+    <meta name="author" content="Palæstinensisk Arv Butik">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://palestinensisk-arv.dk/kontakt.html">
+    <meta property="og:title" content="Kontakt Os - Palæstinensisk Arv Butik">
+    <meta property="og:description" content="Kontakt Palæstinensisk Arv Butik for support og hjælp med autentiske palæstinensiske produkter.">
+    <meta property="og:image" content="https://palestinensisk-arv.dk/images/contact-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Palæstinensisk Arv Butik">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://palestinensisk-arv.dk/kontakt.html">
+    <meta property="twitter:title" content="Kontakt Os - Palæstinensisk Arv Butik">
+    <meta property="twitter:description" content="Kontakt Palæstinensisk Arv Butik for support og hjælp med autentiske palæstinensiske produkter.">
+    <meta property="twitter:image" content="https://palestinensisk-arv.dk/images/contact-twitter.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Kontakt Palæstinensisk Arv Butik",
+        "description": "Kontakt os for support og hjælp med autentiske palæstinensiske produkter",
+        "url": "https://palestinensisk-arv.dk/kontakt.html",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Palæstinensisk Arv Butik",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "info@palestinensisk-arv.dk",
+                "availableLanguage": ["Danish", "English"]
+            }
+        }
+    }
+    </script>
+    
+    <!-- Performance optimizations -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <link rel="stylesheet" href="styles.css?v=1.4">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -43,15 +93,45 @@
                     <span class="cart-count" id="cartCount">0</span>
                 </button>
                 <div class="language-currency-selector">
-                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
-                        <option value="da">🇩🇰 Dansk</option>
-                        <option value="en">🇺🇸 English</option>
-                    </select>
-                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
-                        <option value="DKK">DKK</option>
-                        <option value="EUR">EUR</option>
-                        <option value="USD">USD</option>
-                    </select>
+                    <div class="selector-container">
+                        <button class="selector-btn language-selector-btn" onclick="toggleLanguageDropdown()">
+                            <span class="selector-icon">🌍</span>
+                            <span class="selector-text" id="currentLanguageDisplay">🇩🇰 Dansk</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown language-dropdown" id="languageDropdown">
+                            <div class="dropdown-item" onclick="console.log('Dansk clicked'); changeLanguage('da')">
+                                <span class="flag">🇩🇰</span>
+                                <span class="text">Dansk</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('English clicked'); changeLanguage('en')">
+                                <span class="flag">🇺🇸</span>
+                                <span class="text">English</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="selector-container">
+                        <button class="selector-btn currency-selector-btn" onclick="toggleCurrencyDropdown()">
+                            <span class="selector-icon">💰</span>
+                            <span class="selector-text" id="currentCurrencyDisplay">DKK</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown currency-dropdown" id="currencyDropdown">
+                            <div class="dropdown-item" onclick="console.log('DKK clicked'); changeCurrency('DKK')">
+                                <span class="currency-symbol">kr</span>
+                                <span class="text">DKK</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('EUR clicked'); changeCurrency('EUR')">
+                                <span class="currency-symbol">€</span>
+                                <span class="text">EUR</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('USD clicked'); changeCurrency('USD')">
+                                <span class="currency-symbol">$</span>
+                                <span class="text">USD</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
@@ -329,6 +409,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="performance-optimizations.js"></script>
     <script>
         // Contact page specific JavaScript
         document.addEventListener('DOMContentLoaded', function() {

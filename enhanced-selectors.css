@@ -1,0 +1,158 @@
+/* Enhanced Language and Currency Selectors */
+.language-currency-selector {
+    display: flex !important;
+    gap: 0.75rem !important;
+    align-items: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+.selector-container {
+    position: relative !important;
+}
+
+.selector-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    background: #2d5a2d !important; /* Palestinian green background */
+    border: 1px solid #4a7c59 !important;
+    color: white !important;
+    padding: 0.6rem 1rem !important;
+    border-radius: 12px !important;
+    font-size: 0.875rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    min-width: 120px !important;
+    justify-content: space-between !important;
+    text-decoration: none !important;
+    outline: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 101 !important;
+}
+
+.selector-btn:hover {
+    background: #4a7c59 !important; /* Lighter green on hover */
+    border-color: #5a8c69 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.selector-btn:active {
+    transform: translateY(0) !important;
+}
+
+.selector-icon {
+    font-size: 1rem !important;
+    opacity: 0.9 !important;
+}
+
+.selector-text {
+    font-weight: 500 !important;
+    flex: 1 !important;
+    text-align: center !important;
+}
+
+.selector-arrow {
+    font-size: 0.75rem !important;
+    opacity: 0.7 !important;
+    transition: transform 0.3s ease !important;
+}
+
+.selector-btn.active .selector-arrow {
+    transform: rotate(180deg) !important;
+}
+
+.selector-dropdown {
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    margin-top: 0.5rem !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-10px) !important;
+    transition: all 0.3s ease !important;
+    z-index: 1000 !important;
+    min-width: 140px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden !important;
+}
+
+.selector-dropdown.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.selector-dropdown .dropdown-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem 1rem !important;
+    color: #333 !important;
+    text-decoration: none !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    background: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.selector-dropdown .dropdown-item:last-child {
+    border-bottom: none !important;
+}
+
+.selector-dropdown .dropdown-item:hover {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    color: #2c5530 !important;
+    transform: translateX(3px) !important;
+}
+
+.selector-dropdown .dropdown-item .flag {
+    font-size: 1.1rem !important;
+    width: 20px !important;
+    text-align: center !important;
+}
+
+.selector-dropdown .dropdown-item .currency-symbol {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #059669 !important;
+    width: 20px !important;
+    text-align: center !important;
+}
+
+.selector-dropdown .dropdown-item .text {
+    flex: 1 !important;
+}
+
+@media (max-width: 768px) {
+    .language-currency-selector {
+        gap: 0.5rem !important;
+    }
+    
+    .selector-btn {
+        min-width: 100px !important;
+        padding: 0.5rem 0.75rem !important;
+    }
+    
+    .selector-text {
+        font-size: 0.8rem !important;
+    }
+    
+    .selector-dropdown {
+        min-width: 120px !important;
+    }
+}
+
+

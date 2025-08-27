@@ -628,6 +628,22 @@ document.addEventListener('DOMContentLoaded', function() {
         if (languageSelector) languageSelector.value = currentLanguage;
         if (currencySelector) currencySelector.value = currentCurrency;
         
+        // Initialize dropdown displays
+        const languageDisplay = document.getElementById('currentLanguageDisplay');
+        const currencyDisplay = document.getElementById('currentCurrencyDisplay');
+        
+        if (languageDisplay) {
+            if (currentLanguage === 'da') {
+                languageDisplay.textContent = '🇩🇰 Dansk';
+            } else if (currentLanguage === 'en') {
+                languageDisplay.textContent = '🇺🇸 English';
+            }
+        }
+        
+        if (currencyDisplay) {
+            currencyDisplay.textContent = currentCurrency;
+        }
+        
         // Update displays
         updateLanguage();
         updateCurrency();
@@ -1071,27 +1087,124 @@ function loadCartFromLocalStorage() {
 // Load cart from localStorage on page load
 loadCartFromLocalStorage();
 
-// Close cart when clicking outside
+// Enhanced click-outside-to-close functionality for all pop-ups
 document.addEventListener('click', function(e) {
+    // Cart sidebar - close when clicking overlay
     if (e.target === cartOverlay) {
         toggleCart();
     }
+    
+    // Wishlist sidebar - close when clicking overlay
     if (e.target === wishlistOverlay) {
         toggleWishlist();
     }
+    
+    // Search bar - close when clicking outside
+    const searchBar = document.getElementById('searchBar');
+    const searchBtn = document.querySelector('.search-btn');
+    if (searchBar && searchBar.classList.contains('open') && 
+        !searchBar.contains(e.target) && 
+        !searchBtn.contains(e.target)) {
+        searchBar.classList.remove('open');
+    }
+    
+    // Language dropdown - close when clicking outside
+    const languageDropdown = document.getElementById('languageDropdown');
+    const languageBtn = document.querySelector('.language-selector-btn');
+    if (languageDropdown && languageDropdown.classList.contains('show') && 
+        !languageDropdown.contains(e.target) && 
+        !languageBtn.contains(e.target)) {
+        languageDropdown.classList.remove('show');
+        languageBtn.classList.remove('active');
+    }
+    
+    // Currency dropdown - close when clicking outside
+    const currencyDropdown = document.getElementById('currencyDropdown');
+    const currencyBtn = document.querySelector('.currency-selector-btn');
+    if (currencyDropdown && currencyDropdown.classList.contains('show') && 
+        !currencyDropdown.contains(e.target) && 
+        !currencyBtn.contains(e.target)) {
+        currencyDropdown.classList.remove('show');
+        currencyBtn.classList.remove('active');
+    }
+    
+    // Product modal - close when clicking overlay
+    const productModal = document.getElementById('productModal');
+    const productModalOverlay = document.getElementById('productModalOverlay');
+    if (productModal && productModalOverlay && 
+        productModal.style.display !== 'none' && 
+        e.target === productModalOverlay) {
+        closeProductModal();
+    }
+    
+    // Quick view modal - close when clicking outside
+    const quickViewModal = document.getElementById('quickViewModal');
+    if (quickViewModal && quickViewModal.style.display === 'flex' && 
+        !quickViewModal.contains(e.target)) {
+        closeQuickView();
+    }
+    
+    // Mobile menu - close when clicking outside
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    if (mobileMenu && mobileMenu.classList.contains('open') && 
+        !mobileMenu.contains(e.target) && 
+        !mobileMenuBtn.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+    }
 });
 
-// Keyboard navigation
+// Enhanced keyboard navigation for all pop-ups
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-        if (cartSidebar.classList.contains('open')) {
+        // Close cart sidebar
+        if (cartSidebar && cartSidebar.classList.contains('open')) {
             toggleCart();
         }
-        if (wishlistSidebar.classList.contains('open')) {
+        
+        // Close wishlist sidebar
+        if (wishlistSidebar && wishlistSidebar.classList.contains('open')) {
             toggleWishlist();
         }
-        if (productModal.classList.contains('open')) {
+        
+        // Close product modal
+        const productModal = document.getElementById('productModal');
+        if (productModal && productModal.style.display !== 'none') {
             closeProductModal();
+        }
+        
+        // Close quick view modal
+        const quickViewModal = document.getElementById('quickViewModal');
+        if (quickViewModal && quickViewModal.style.display === 'flex') {
+            closeQuickView();
+        }
+        
+        // Close search bar
+        const searchBar = document.getElementById('searchBar');
+        if (searchBar && searchBar.classList.contains('open')) {
+            searchBar.classList.remove('open');
+        }
+        
+        // Close language dropdown
+        const languageDropdown = document.getElementById('languageDropdown');
+        const languageBtn = document.querySelector('.language-selector-btn');
+        if (languageDropdown && languageDropdown.classList.contains('show')) {
+            languageDropdown.classList.remove('show');
+            languageBtn.classList.remove('active');
+        }
+        
+        // Close currency dropdown
+        const currencyDropdown = document.getElementById('currencyDropdown');
+        const currencyBtn = document.querySelector('.currency-selector-btn');
+        if (currencyDropdown && currencyDropdown.classList.contains('show')) {
+            currencyDropdown.classList.remove('show');
+            currencyBtn.classList.remove('active');
+        }
+        
+        // Close mobile menu
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
         }
     }
 });
@@ -1192,8 +1305,7 @@ const translations = {
         // Navigation
         home: 'Hjem',
         products: 'Produkter',
-        about: 'Om Os',
-        culture: 'Kultur',
+
         contact: 'Kontakt',
         
         // Products
@@ -1271,7 +1383,7 @@ const translations = {
         statProducts: 'Unikke Produkter',
         statHandmade: 'Håndlavet',
         shopNow: 'Shop Nu',
-        learnCulture: 'Lær Om Kultur',
+
         floatingCard1Title: 'Traditionelle Tøjer',
         floatingCard1Subtitle: 'Håndtrykt & Broderet',
         floatingCard2Title: 'Håndlavede Produkter',
@@ -1285,8 +1397,6 @@ const translations = {
         clothingDesc: 'Traditionelle og moderne palæstinensiske tøjdesigns med autentiske mønstre og symboler',
         accessoriesTitle: 'Tilbehør',
         accessoriesDesc: 'Badges, smykker og andre kulturelle tilbehør der fejrer palæstinensisk arv',
-        cultureTitle: 'Kultur & Historie',
-        cultureDesc: 'Lær om palæstinensisk kultur, traditioner og den rige historie bag vores produkter',
         popularProducts: 'Populære Produkter',
         viewAllProducts: 'Se Alle Produkter',
         ourStory: 'Vores Historie',
@@ -1330,14 +1440,109 @@ const translations = {
         supportArtisans: 'Støt palæstinensiske håndværkere',
         newsletterTitle: 'Tilmeld dig vores nyhedsbrev',
         newsletterText: 'Få de seneste nyheder om nye produkter, kulturelle begivenheder og særlige tilbud',
-        heroTitle: 'Fejr Palæstinensisk Arv'
+        heroTitle: 'Fejr Palæstinensisk Arv',
+        
+        // Page titles and headers
+        contactUs: 'Kontakt Os',
+        faq: 'FAQ',
+        frequentlyAskedQuestions: 'Ofte Stillede Spørgsmål',
+        deliveryReturns: 'Levering & Returnering',
+        privacyPolicy: 'Privatlivspolitik',
+        orderConfirmation: 'Ordre Bekræftet',
+        
+        // FAQ categories
+        allQuestions: 'Alle Spørgsmål',
+        products: 'Produkter',
+        shipping: 'Levering',
+        returns: 'Returnering',
+        payment: 'Betaling',
+        support: 'Support',
+        
+        // FAQ questions and answers
+        faqProductQuality: 'Hvad er kvaliteten af jeres produkter?',
+        faqProductQualityAnswer: 'Alle vores produkter er håndlavet af erfarne palæstinensiske håndværkere med de bedste materialer. Vi garanterer høj kvalitet og autenticitet.',
+        faqShippingTime: 'Hvor lang tid tager levering?',
+        faqShippingTimeAnswer: 'Standard levering tager 3-5 hverdage i Danmark. Express levering er tilgængelig for hurtigere levering.',
+        faqReturns: 'Kan jeg returnere produkter?',
+        faqReturnsAnswer: 'Ja, du kan returnere produkter inden for 30 dage. Kontakt os før returnering.',
+        faqPayment: 'Hvilke betalingsmetoder accepterer I?',
+        faqPaymentAnswer: 'Vi accepterer alle større kreditkort, MobilePay og bankoverførsel.',
+        faqSupport: 'Hvordan kan jeg få hjælp?',
+        faqSupportAnswer: 'Du kan kontakte os via email eller gennem vores FAQ sektion. Vi svarer inden for 24 timer.',
+        
+        // Contact page
+        contactMethods: 'Kontaktmetoder',
+        emailSupport: 'Email Support',
+        emailSupportDesc: 'Få svar på dine spørgsmål inden for 24 timer',
+        faqSection: 'FAQ',
+        faqSectionDesc: 'Find hurtige svar på ofte stillede spørgsmål',
+        seeFAQ: 'Se FAQ',
+        
+        // Delivery and returns
+        shippingOptions: 'Leveringsmuligheder',
+        shippingOptionsDesc: 'Vælg den leveringsmetode der passer dig bedst',
+        standardShipping: 'Standard Levering',
+        expressShipping: 'Express Levering',
+        popular: 'POPULÆR',
+        deliveryDays: 'hverdage',
+        deliveryToDoor: 'Levering til din dør',
+        emailConfirmation: 'Email bekræftelse',
+        smsNotification: 'SMS når pakken er på vej',
+        freeOver500: 'Gratis over 500 kr',
+        nextDayDelivery: 'Næste dag levering',
+        trackingNumber: 'Tracking nummer',
+        prioritySupport: 'Prioriteret support',
+        
+        // Return policy
+        returnPolicy: 'Returneringspolitik',
+        returnPolicyDesc: 'Nem og fair returnering',
+        returnWithin30: 'Returner inden for 30 dage',
+        returnWithin30Desc: 'Du kan returnere produkter i original tilstand inden for 30 dage',
+        contactBeforeReturn: 'Kontakt os før returnering',
+        contactBeforeReturnDesc: 'Kontakt os før du sender produkter tilbage',
+        damagedProducts: 'Beskadigede produkter',
+        damagedProductsDesc: 'Hvis et produkt ankommer beskadiget, tag venligst billeder og kontakt os umiddelbart',
+        
+        // Common phrases
+        findQuickAnswers: 'Find hurtige svar på ofte stillede spørgsmål',
+        chooseShippingMethod: 'Vælg den leveringsmetode der passer dig bedst',
+        easyAndFair: 'Nem og fair returnering',
+        originalCondition: 'original tilstand',
+        takePhotos: 'tag venligst billeder',
+        contactImmediately: 'kontakt os umiddelbart',
+        replacementOrRefund: 'erstatning eller give dig en fuld refusion',
+        backToHome: 'Tilbage til Hjem',
+        shopMoreProducts: 'Shop Flere Produkter',
+        orderDetails: 'Ordre Detaljer',
+        orderId: 'Ordre ID',
+        date: 'Dato',
+        status: 'Status',
+        confirmed: 'Bekræftet',
+        loading: 'Indlæser...',
+        thankYouForOrder: 'Tak for din ordre!',
+        paymentConfirmed: 'Din betaling er bekræftet og din ordre er under behandling',
+        
+        // Coming soon section
+        comingSoon: 'Kommer Snart',
+        newProductsComingSoon: 'Nye Produkter Kommer Snart',
+        workingOnBestProducts: 'Vi arbejder på at bringe dig de bedste autentiske palæstinensiske produkter',
+        
+        // Product categories
+        traditionalEmbroidery: 'Traditionelle Broderier',
+        handmadeWithLove: 'Håndlavet med kærlighed',
+        authenticCraftsmanship: 'Autentisk håndværk',
+        modernClothing: 'Moderne Tøj',
+        culturalStyle: 'Kulturel stil',
+        
+        // Newsletter section
+        preparingCollection: 'Vi forbereder en fantastisk samling af traditionelle palæstinensiske produkter. Tilmeld dig vores nyhedsbrev for at få besked når de nye produkter er tilgængelige.',
+        subscribe: 'Tilmeld'
     },
     en: {
         // Navigation
         home: 'Home',
         products: 'Products',
-        about: 'About Us',
-        culture: 'Culture',
+
         contact: 'Contact',
         
         // Products
@@ -1382,6 +1587,102 @@ const translations = {
         newsletterTitle: 'Subscribe to our newsletter',
         newsletterText: 'Get the latest news about new products, cultural events and special offers',
         heroTitle: 'Celebrate Palestinian Heritage',
+        
+        // Page titles and headers
+        contactUs: 'Contact Us',
+        faq: 'FAQ',
+        frequentlyAskedQuestions: 'Frequently Asked Questions',
+        deliveryReturns: 'Delivery & Returns',
+        privacyPolicy: 'Privacy Policy',
+        orderConfirmation: 'Order Confirmed',
+        
+        // FAQ categories
+        allQuestions: 'All Questions',
+        products: 'Products',
+        shipping: 'Shipping',
+        returns: 'Returns',
+        payment: 'Payment',
+        support: 'Support',
+        
+        // FAQ questions and answers
+        faqProductQuality: 'What is the quality of your products?',
+        faqProductQualityAnswer: 'All our products are handcrafted by experienced Palestinian artisans with the best materials. We guarantee high quality and authenticity.',
+        faqShippingTime: 'How long does shipping take?',
+        faqShippingTimeAnswer: 'Standard shipping takes 3-5 business days in Denmark. Express shipping is available for faster delivery.',
+        faqReturns: 'Can I return products?',
+        faqReturnsAnswer: 'Yes, you can return products within 30 days. Contact us before returning.',
+        faqPayment: 'What payment methods do you accept?',
+        faqPaymentAnswer: 'We accept all major credit cards, MobilePay and bank transfer.',
+        faqSupport: 'How can I get help?',
+        faqSupportAnswer: 'You can contact us via email or through our FAQ section. We respond within 24 hours.',
+        
+        // Contact page
+        contactMethods: 'Contact Methods',
+        emailSupport: 'Email Support',
+        emailSupportDesc: 'Get answers to your questions within 24 hours',
+        faqSection: 'FAQ',
+        faqSectionDesc: 'Find quick answers to frequently asked questions',
+        seeFAQ: 'See FAQ',
+        
+        // Delivery and returns
+        shippingOptions: 'Shipping Options',
+        shippingOptionsDesc: 'Choose the shipping method that suits you best',
+        standardShipping: 'Standard Shipping',
+        expressShipping: 'Express Shipping',
+        popular: 'POPULAR',
+        deliveryDays: 'business days',
+        deliveryToDoor: 'Delivery to your door',
+        emailConfirmation: 'Email confirmation',
+        smsNotification: 'SMS when package is on the way',
+        freeOver500: 'Free over 500 kr',
+        nextDayDelivery: 'Next day delivery',
+        trackingNumber: 'Tracking number',
+        prioritySupport: 'Priority support',
+        
+        // Return policy
+        returnPolicy: 'Return Policy',
+        returnPolicyDesc: 'Easy and fair returns',
+        returnWithin30: 'Return within 30 days',
+        returnWithin30Desc: 'You can return products in original condition within 30 days',
+        contactBeforeReturn: 'Contact us before returning',
+        contactBeforeReturnDesc: 'Contact us before sending products back',
+        damagedProducts: 'Damaged products',
+        damagedProductsDesc: 'If a product arrives damaged, please take photos and contact us immediately',
+        
+        // Common phrases
+        findQuickAnswers: 'Find quick answers to frequently asked questions',
+        chooseShippingMethod: 'Choose the shipping method that suits you best',
+        easyAndFair: 'Easy and fair returns',
+        originalCondition: 'original condition',
+        takePhotos: 'please take photos',
+        contactImmediately: 'contact us immediately',
+        replacementOrRefund: 'replacement or give you a full refund',
+        backToHome: 'Back to Home',
+        shopMoreProducts: 'Shop More Products',
+        orderDetails: 'Order Details',
+        orderId: 'Order ID',
+        date: 'Date',
+        status: 'Status',
+        confirmed: 'Confirmed',
+        loading: 'Loading...',
+        thankYouForOrder: 'Thank you for your order!',
+        paymentConfirmed: 'Your payment is confirmed and your order is being processed',
+        
+        // Coming soon section
+        comingSoon: 'Coming Soon',
+        newProductsComingSoon: 'New Products Coming Soon',
+        workingOnBestProducts: 'We are working to bring you the best authentic Palestinian products',
+        
+        // Product categories
+        traditionalEmbroidery: 'Traditional Embroidery',
+        handmadeWithLove: 'Handmade with Love',
+        authenticCraftsmanship: 'Authentic Craftsmanship',
+        modernClothing: 'Modern Clothing',
+        culturalStyle: 'Cultural Style',
+        
+        // Newsletter section
+        preparingCollection: 'We are preparing an amazing collection of traditional Palestinian products. Subscribe to our newsletter to be notified when new products are available.',
+        subscribe: 'Subscribe',
         
         // Cart & Wishlist
         cart: 'Shopping Cart',
@@ -1429,7 +1730,7 @@ const translations = {
         statProducts: 'Unique Products',
         statHandmade: 'Handmade',
         shopNow: 'Shop Now',
-        learnCulture: 'Learn About Culture',
+
         floatingCard1Title: 'Traditional Clothing',
         floatingCard1Subtitle: 'Hand-Printed & Embroidered',
         floatingCard2Title: 'Handcrafted Products',
@@ -1443,8 +1744,6 @@ const translations = {
         clothingDesc: 'Traditional and modern Palestinian clothing designs with authentic patterns and symbols',
         accessoriesTitle: 'Accessories',
         accessoriesDesc: 'Badges, jewelry and other cultural accessories that celebrate Palestinian heritage',
-        cultureTitle: 'Culture & History',
-        cultureDesc: 'Learn about Palestinian culture, traditions and the rich history behind our products',
         popularProducts: 'Popular Products',
         viewAllProducts: 'View All Products',
         ourStory: 'Our Story',
@@ -1505,8 +1804,6 @@ function updateLanguage() {
         const href = link.getAttribute('href');
         if (href === 'index.html') link.textContent = translations[currentLanguage].home;
         if (href === 'produkter.html') link.textContent = translations[currentLanguage].products;
-        if (href === 'om-os.html') link.textContent = translations[currentLanguage].about;
-        if (href === 'kultur.html') link.textContent = translations[currentLanguage].culture;
         if (href === 'kontakt.html') link.textContent = translations[currentLanguage].contact;
     });
     
@@ -1516,8 +1813,6 @@ function updateLanguage() {
         const href = link.getAttribute('href');
         if (href === 'index.html') link.textContent = translations[currentLanguage].home;
         if (href === 'produkter.html') link.textContent = translations[currentLanguage].products;
-        if (href === 'om-os.html') link.textContent = translations[currentLanguage].about;
-        if (href === 'kultur.html') link.textContent = translations[currentLanguage].culture;
         if (href === 'kontakt.html') link.textContent = translations[currentLanguage].contact;
     });
     
@@ -1654,6 +1949,12 @@ function updateAllContent() {
     // Update all forms and inputs
     updateAllForms();
     
+    // Update all links
+    updateAllLinks();
+    
+    // Update all spans and other text elements
+    updateAllSpans();
+    
     // Update all product information
     updateAllProducts();
     
@@ -1668,6 +1969,11 @@ function updateAllTextContent() {
     // Update all headings
     document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
         const text = heading.textContent.toLowerCase();
+        
+        // Skip the hero title that contains "Autentisk Kultur" - preserve this text
+        if (heading.querySelector('#hero-autentisk') || heading.querySelector('#hero-kultur')) {
+            return; // Skip this heading
+        }
         
         // Hero section
         if (text.includes('fejr') && text.includes('palæstinensisk') && text.includes('arv')) {
@@ -1696,6 +2002,49 @@ function updateAllTextContent() {
         if (text.includes('privatlivspolitik') || text.includes('privacy policy')) {
             heading.textContent = translations[currentLanguage].privacyPolicy;
         }
+        
+        // Page specific headings
+        if (text.includes('kontakt os') || text.includes('contact us')) {
+            heading.textContent = translations[currentLanguage].contactUs;
+        }
+        if (text.includes('ofte stillede spørgsmål') || text.includes('frequently asked questions')) {
+            heading.textContent = translations[currentLanguage].frequentlyAskedQuestions;
+        }
+        if (text.includes('levering & returnering') || text.includes('delivery & returns')) {
+            heading.textContent = translations[currentLanguage].deliveryReturns;
+        }
+        if (text.includes('ordre bekræftet') || text.includes('order confirmed')) {
+            heading.textContent = translations[currentLanguage].orderConfirmation;
+        }
+        if (text.includes('leveringsmuligheder') || text.includes('shipping options')) {
+            heading.textContent = translations[currentLanguage].shippingOptions;
+        }
+        if (text.includes('returneringspolitik') || text.includes('return policy')) {
+            heading.textContent = translations[currentLanguage].returnPolicy;
+        }
+        if (text.includes('kategorier') || text.includes('categories')) {
+            heading.textContent = translations[currentLanguage].categories;
+        }
+        
+        // Coming soon section
+        if (text.includes('kommer snart') || text.includes('coming soon')) {
+            heading.textContent = translations[currentLanguage].comingSoon;
+        }
+        if (text.includes('nye produkter kommer snart') || text.includes('new products coming soon')) {
+            heading.textContent = translations[currentLanguage].newProductsComingSoon;
+        }
+        if (text.includes('traditionelle broderier') || text.includes('traditional embroidery')) {
+            heading.textContent = translations[currentLanguage].traditionalEmbroidery;
+        }
+        if (text.includes('autentisk håndværk') || text.includes('authentic craftsmanship')) {
+            heading.textContent = translations[currentLanguage].authenticCraftsmanship;
+        }
+        if (text.includes('moderne tøj') || text.includes('modern clothing')) {
+            heading.textContent = translations[currentLanguage].modernClothing;
+        }
+        if (text.includes('kulturel stil') || text.includes('cultural style')) {
+            heading.textContent = translations[currentLanguage].culturalStyle;
+        }
     });
     
     // Update all paragraphs
@@ -1716,6 +2065,43 @@ function updateAllTextContent() {
         }
         if (text.includes('støt palæstinensiske håndværkere')) {
             paragraph.textContent = translations[currentLanguage].supportArtisans;
+        }
+        
+        // Page specific content
+        if (text.includes('vi er her for at hjælpe dig')) {
+            paragraph.textContent = translations[currentLanguage].emailSupportDesc;
+        }
+        if (text.includes('find hurtige svar')) {
+            paragraph.textContent = translations[currentLanguage].faqSectionDesc;
+        }
+        if (text.includes('vælg den leveringsmetode')) {
+            paragraph.textContent = translations[currentLanguage].shippingOptionsDesc;
+        }
+        if (text.includes('nem og fair returnering')) {
+            paragraph.textContent = translations[currentLanguage].returnPolicyDesc;
+        }
+        if (text.includes('du kan returnere produkter i original tilstand')) {
+            paragraph.textContent = translations[currentLanguage].returnWithin30Desc;
+        }
+        if (text.includes('kontakt os før du sender produkter tilbage')) {
+            paragraph.textContent = translations[currentLanguage].contactBeforeReturnDesc;
+        }
+        if (text.includes('hvis et produkt ankommer beskadiget')) {
+            paragraph.textContent = translations[currentLanguage].damagedProductsDesc;
+        }
+        if (text.includes('din betaling er bekræftet')) {
+            paragraph.textContent = translations[currentLanguage].paymentConfirmed;
+        }
+        
+        // Coming soon section
+        if (text.includes('vi arbejder på at bringe dig de bedste')) {
+            paragraph.textContent = translations[currentLanguage].workingOnBestProducts;
+        }
+        if (text.includes('håndlavet med kærlighed') || text.includes('handmade with love')) {
+            paragraph.textContent = translations[currentLanguage].handmadeWithLove;
+        }
+        if (text.includes('vi forbereder en fantastisk samling')) {
+            paragraph.textContent = translations[currentLanguage].preparingCollection;
         }
     });
 }
@@ -1746,6 +2132,41 @@ function updateAllButtons() {
         if (text.includes('søg') || text.includes('search')) {
             button.textContent = translations[currentLanguage].search;
         }
+        
+        // FAQ and page specific buttons
+        if (text.includes('alle spørgsmål') || text.includes('all questions')) {
+            button.textContent = translations[currentLanguage].allQuestions;
+        }
+        if (text.includes('se faq') || text.includes('see faq')) {
+            button.textContent = translations[currentLanguage].seeFAQ;
+        }
+        if (text.includes('tilbage til hjem') || text.includes('back to home')) {
+            button.textContent = translations[currentLanguage].backToHome;
+        }
+        if (text.includes('shop flere produkter') || text.includes('shop more products')) {
+            button.textContent = translations[currentLanguage].shopMoreProducts;
+        }
+        if (text.includes('tilmeld') || text.includes('subscribe')) {
+            button.textContent = translations[currentLanguage].subscribe;
+        }
+    });
+    
+    // Update FAQ category buttons
+    document.querySelectorAll('.faq-category-btn').forEach(btn => {
+        const text = btn.textContent.toLowerCase();
+        if (text.includes('alle spørgsmål') || text.includes('all questions')) {
+            btn.textContent = translations[currentLanguage].allQuestions;
+        } else if (text.includes('produkter') || text.includes('products')) {
+            btn.textContent = translations[currentLanguage].products;
+        } else if (text.includes('levering') || text.includes('shipping')) {
+            btn.textContent = translations[currentLanguage].shipping;
+        } else if (text.includes('returnering') || text.includes('returns')) {
+            btn.textContent = translations[currentLanguage].returns;
+        } else if (text.includes('betaling') || text.includes('payment')) {
+            btn.textContent = translations[currentLanguage].payment;
+        } else if (text.includes('support')) {
+            btn.textContent = translations[currentLanguage].support;
+        }
     });
 }
 
@@ -1765,6 +2186,67 @@ function updateAllForms() {
         }
         if (placeholder.includes('besked') || placeholder.includes('message')) {
             input.placeholder = translations[currentLanguage].messagePlaceholder;
+        }
+        if (placeholder.includes('your email address') || placeholder.includes('din email adresse')) {
+            input.placeholder = translations[currentLanguage].emailPlaceholder;
+        }
+    });
+}
+
+function updateAllLinks() {
+    // Update all links
+    document.querySelectorAll('a').forEach(link => {
+        const text = link.textContent.toLowerCase();
+        
+        if (text.includes('kontakt os') || text.includes('contact us')) {
+            link.textContent = translations[currentLanguage].contactUs;
+        }
+        if (text.includes('faq')) {
+            link.textContent = translations[currentLanguage].faq;
+        }
+        if (text.includes('levering & returnering') || text.includes('delivery & returns')) {
+            link.textContent = translations[currentLanguage].deliveryReturns;
+        }
+        if (text.includes('privatlivspolitik') || text.includes('privacy policy')) {
+            link.textContent = translations[currentLanguage].privacyPolicy;
+        }
+        if (text.includes('se faq') || text.includes('see faq')) {
+            link.textContent = translations[currentLanguage].seeFAQ;
+        }
+        if (text.includes('tilbage til hjem') || text.includes('back to home')) {
+            link.textContent = translations[currentLanguage].backToHome;
+        }
+        if (text.includes('shop flere produkter') || text.includes('shop more products')) {
+            link.textContent = translations[currentLanguage].shopMoreProducts;
+        }
+    });
+}
+
+function updateAllSpans() {
+    // Update all span elements
+    document.querySelectorAll('span').forEach(span => {
+        const text = span.textContent.toLowerCase();
+        
+        if (text.includes('ordre detaljer') || text.includes('order details')) {
+            span.textContent = translations[currentLanguage].orderDetails;
+        }
+        if (text.includes('ordre id') || text.includes('order id')) {
+            span.textContent = translations[currentLanguage].orderId;
+        }
+        if (text.includes('dato') || text.includes('date')) {
+            span.textContent = translations[currentLanguage].date;
+        }
+        if (text.includes('status')) {
+            span.textContent = translations[currentLanguage].status;
+        }
+        if (text.includes('bekræftet') || text.includes('confirmed')) {
+            span.textContent = translations[currentLanguage].confirmed;
+        }
+        if (text.includes('indlæser') || text.includes('loading')) {
+            span.textContent = translations[currentLanguage].loading;
+        }
+        if (text.includes('tak for din ordre') || text.includes('thank you for your order')) {
+            span.textContent = translations[currentLanguage].thankYouForOrder;
         }
     });
 }
@@ -1860,10 +2342,15 @@ function updateHomePageContent() {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
         const lines = heroTitle.querySelectorAll('.hero-line');
-        if (lines.length >= 3) {
-            lines[0].textContent = translations[currentLanguage].heroTitle1;
-            lines[1].textContent = translations[currentLanguage].heroTitle2;
-            lines[2].textContent = translations[currentLanguage].heroTitle3;
+        // Preserve "Autentisk Kultur" text - don't translate these specific elements
+        const autentiskElement = document.getElementById('hero-autentisk');
+        const kulturElement = document.getElementById('hero-kultur');
+        
+        if (autentiskElement) {
+            autentiskElement.textContent = 'Autentisk';
+        }
+        if (kulturElement) {
+            kulturElement.textContent = 'Kultur';
         }
     }
     
@@ -1885,8 +2372,6 @@ function updateHomePageContent() {
     ctaButtons.forEach(btn => {
         if (btn.textContent.includes('Shop Nu') || btn.textContent.includes('Shop Now')) {
             btn.innerHTML = `<i class="fas fa-shopping-bag"></i> ${translations[currentLanguage].shopNow}`;
-        } else if (btn.textContent.includes('Lær Om Kultur') || btn.textContent.includes('Learn About Culture')) {
-            btn.innerHTML = `<i class="fas fa-book-open"></i> ${translations[currentLanguage].learnCulture}`;
         }
     });
     
@@ -1934,16 +2419,12 @@ function updateHomePageContent() {
             title.textContent = translations[currentLanguage].clothingTitle;
         } else if (index === 1 && title) {
             title.textContent = translations[currentLanguage].accessoriesTitle;
-        } else if (index === 2 && title) {
-            title.textContent = translations[currentLanguage].cultureTitle;
         }
         
         if (index === 0 && desc) {
             desc.textContent = translations[currentLanguage].clothingDesc;
         } else if (index === 1 && desc) {
             desc.textContent = translations[currentLanguage].accessoriesDesc;
-        } else if (index === 2 && desc) {
-            desc.textContent = translations[currentLanguage].cultureDesc;
         }
     });
     
@@ -2221,11 +2702,16 @@ function loadWishlistFromLocalStorage() {
     }
 }
 
-// Enhanced notification system
+// Enhanced notification system with accessibility
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
+    
+    // Add accessibility attributes
+    notification.setAttribute('role', 'alert');
+    notification.setAttribute('aria-live', 'polite');
+    notification.setAttribute('aria-atomic', 'true');
     
     if (notificationContainer) {
         notificationContainer.appendChild(notification);
@@ -4090,4 +4576,154 @@ function addToWishlist(productId) {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // This will be called by the main initialization
+});
+
+// Enhanced Language and Currency Selector Functions
+function toggleLanguageDropdown() {
+    console.log('toggleLanguageDropdown called');
+    
+    const dropdown = document.getElementById('languageDropdown');
+    const btn = document.querySelector('.language-selector-btn');
+    
+    console.log('Language dropdown:', dropdown);
+    console.log('Language button:', btn);
+    
+    if (!dropdown || !btn) {
+        console.warn('Language dropdown elements not found');
+        return;
+    }
+    
+    // Close currency dropdown if open
+    const currencyDropdown = document.getElementById('currencyDropdown');
+    const currencyBtn = document.querySelector('.currency-selector-btn');
+    if (currencyDropdown && currencyBtn) {
+        currencyDropdown.classList.remove('show');
+        currencyBtn.classList.remove('active');
+    }
+    
+    // Toggle language dropdown
+    const wasVisible = dropdown.classList.contains('show');
+    dropdown.classList.toggle('show');
+    btn.classList.toggle('active');
+    
+    console.log('Language dropdown toggled. Was visible:', wasVisible, 'Now visible:', dropdown.classList.contains('show'));
+}
+
+function toggleCurrencyDropdown() {
+    console.log('toggleCurrencyDropdown called');
+    
+    const dropdown = document.getElementById('currencyDropdown');
+    const btn = document.querySelector('.currency-selector-btn');
+    
+    console.log('Currency dropdown:', dropdown);
+    console.log('Currency button:', btn);
+    
+    if (!dropdown || !btn) {
+        console.warn('Currency dropdown elements not found');
+        return;
+    }
+    
+    // Close language dropdown if open
+    const languageDropdown = document.getElementById('languageDropdown');
+    const languageBtn = document.querySelector('.language-selector-btn');
+    if (languageDropdown && languageBtn) {
+        languageDropdown.classList.remove('show');
+        languageBtn.classList.remove('active');
+    }
+    
+    // Toggle currency dropdown
+    const wasVisible = dropdown.classList.contains('show');
+    dropdown.classList.toggle('show');
+    btn.classList.toggle('active');
+    
+    console.log('Currency dropdown toggled. Was visible:', wasVisible, 'Now visible:', dropdown.classList.contains('show'));
+}
+
+function changeLanguage(lang) {
+    console.log('Changing language to:', lang);
+    
+    currentLanguage = lang;
+    localStorage.setItem('selectedLanguage', currentLanguage);
+    
+    const display = document.getElementById('currentLanguageDisplay');
+    if (display) {
+        if (lang === 'da') {
+            display.textContent = '🇩🇰 Dansk';
+        } else if (lang === 'en') {
+            display.textContent = '🇺🇸 English';
+        }
+    }
+    
+    toggleLanguageDropdown();
+    
+    // Update language immediately without page refresh
+    updateLanguage();
+    updateAllContent();
+    
+    // Ensure "Autentisk Kultur" stays preserved after all updates
+    const autentiskElement = document.getElementById('hero-autentisk');
+    const kulturElement = document.getElementById('hero-kultur');
+    
+    if (autentiskElement) {
+        autentiskElement.textContent = 'Autentisk';
+    }
+    if (kulturElement) {
+        kulturElement.textContent = 'Kultur';
+    }
+    
+    showNotification(`Sprog ændret til ${lang === 'da' ? 'Dansk' : 'English'}`, 'success');
+}
+
+function changeCurrency(curr) {
+    console.log('Changing currency to:', curr);
+    
+    currentCurrency = curr;
+    localStorage.setItem('selectedCurrency', currentCurrency);
+    
+    const display = document.getElementById('currentCurrencyDisplay');
+    if (display) {
+        display.textContent = curr;
+    }
+    
+    toggleCurrencyDropdown();
+    
+    // Update all prices on the page
+    updateCurrency();
+    
+    showNotification(`Valuta ændret til ${curr}`, 'success');
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(event) {
+    const languageContainer = document.querySelector('.language-selector-btn');
+    const currencyContainer = document.querySelector('.currency-selector-btn');
+    
+    if (languageContainer && !languageContainer.contains(event.target)) {
+        const dropdown = document.getElementById('languageDropdown');
+        if (dropdown) {
+            dropdown.classList.remove('show');
+            languageContainer.classList.remove('active');
+        }
+    }
+    
+    if (currencyContainer && !currencyContainer.contains(event.target)) {
+        const dropdown = document.getElementById('currencyDropdown');
+        if (dropdown) {
+            dropdown.classList.remove('show');
+            currencyContainer.classList.remove('active');
+        }
+    }
+});
+
+// Test if functions are accessible globally
+window.toggleLanguageDropdown = toggleLanguageDropdown;
+window.toggleCurrencyDropdown = toggleCurrencyDropdown;
+window.changeLanguage = changeLanguage;
+window.changeCurrency = changeCurrency;
+
+console.log('Language and currency functions loaded:', {
+    toggleLanguageDropdown: typeof toggleLanguageDropdown,
+    toggleCurrencyDropdown: typeof toggleCurrencyDropdown,
+    changeLanguage: typeof changeLanguage,
+    changeCurrency: typeof changeCurrency
 });

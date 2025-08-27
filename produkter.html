@@ -3,9 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produkter - Palæstinensisk Arv Butik</title>
-    <meta name="description" content="Udforsk vores samling af autentiske palæstinensiske produkter. Tøj, tilbehør og kulturelle varer af højeste kvalitet.">
-    <link rel="stylesheet" href="styles.css?v=1.3">
+    <title>Palæstinensisk Produkter - Autentiske Tøj, Tilbehør & Kultur | Palæstinensisk Arv</title>
+    <meta name="description" content="Udforsk vores eksklusive samling af autentiske palæstinensiske produkter. Tøj, tilbehør, keffiyeh, smykker og kulturelle varer af højeste kvalitet. Støt palæstinensiske håndværkere.">
+    <meta name="keywords" content="palæstinensisk tøj, keffiyeh, palæstina produkter, autentisk kultur, håndværk, fair trade, bæredygtig mode, palæstinensisk tilbehør">
+    <meta name="author" content="Palæstinensisk Arv Butik">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://palestinensisk-arv.dk/produkter.html">
+    <meta property="og:title" content="Palæstinensisk Produkter - Autentiske Tøj, Tilbehør & Kultur">
+    <meta property="og:description" content="Udforsk vores eksklusive samling af autentiske palæstinensiske produkter. Støt palæstinensiske håndværkere.">
+    <meta property="og:image" content="https://palestinensisk-arv.dk/images/products-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Palæstinensisk Arv Butik">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://palestinensisk-arv.dk/produkter.html">
+    <meta property="twitter:title" content="Palæstinensisk Produkter - Autentiske Tøj, Tilbehør & Kultur">
+    <meta property="twitter:description" content="Udforsk vores eksklusive samling af autentiske palæstinensiske produkter. Støt palæstinensiske håndværkere.">
+    <meta property="twitter:image" content="https://palestinensisk-arv.dk/images/products-twitter.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Palæstinensisk Produkter",
+        "description": "Autentiske palæstinensiske produkter og kultur",
+        "url": "https://palestinensisk-arv.dk/produkter.html",
+        "image": "https://palestinensisk-arv.dk/images/products-collection.jpg",
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "Product",
+                    "name": "Palæstina Kort T-Shirt",
+                    "description": "Sort t-shirt med Palæstina-kort design",
+                    "image": "https://palestinensisk-arv.dk/images/palestine-map-black-tshirt.jpg",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "199.99",
+                        "priceCurrency": "DKK",
+                        "availability": "https://schema.org/InStock"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <!-- Performance optimizations -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <link rel="stylesheet" href="styles.css?v=1.4">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -524,15 +582,45 @@
                     <span class="cart-count" id="cartCount">0</span>
                 </button>
                 <div class="language-currency-selector">
-                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
-                        <option value="da">🇩🇰 Dansk</option>
-                        <option value="en">🇺🇸 English</option>
-                    </select>
-                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
-                        <option value="DKK">DKK</option>
-                        <option value="EUR">EUR</option>
-                        <option value="USD">USD</option>
-                    </select>
+                    <div class="selector-container">
+                        <button class="selector-btn language-selector-btn" onclick="toggleLanguageDropdown()">
+                            <span class="selector-icon">🌍</span>
+                            <span class="selector-text" id="currentLanguageDisplay">🇩🇰 Dansk</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown language-dropdown" id="languageDropdown">
+                            <div class="dropdown-item" onclick="console.log('Dansk clicked'); changeLanguage('da')">
+                                <span class="flag">🇩🇰</span>
+                                <span class="text">Dansk</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('English clicked'); changeLanguage('en')">
+                                <span class="flag">🇺🇸</span>
+                                <span class="text">English</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="selector-container">
+                        <button class="selector-btn currency-selector-btn" onclick="toggleCurrencyDropdown()">
+                            <span class="selector-icon">💰</span>
+                            <span class="selector-text" id="currentCurrencyDisplay">DKK</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown currency-dropdown" id="currencyDropdown">
+                            <div class="dropdown-item" onclick="console.log('DKK clicked'); changeCurrency('DKK')">
+                                <span class="currency-symbol">kr</span>
+                                <span class="text">DKK</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('EUR clicked'); changeCurrency('EUR')">
+                                <span class="currency-symbol">€</span>
+                                <span class="text">EUR</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('USD clicked'); changeCurrency('USD')">
+                                <span class="currency-symbol">$</span>
+                                <span class="text">USD</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
@@ -582,11 +670,11 @@
                     </h3>
                     <div class="filter-options">
                         <label class="filter-option">
-                            <input type="checkbox" value="tøj" onchange="applyFilters()">
-                            <span>Tøj & Mode</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="tilbehør" onchange="applyFilters()">
+                                                    <input type="checkbox" id="filter-tøj" name="filter-tøj" value="tøj" onchange="applyFilters()">
+                        <span>Tøj & Mode</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-tilbehør" name="filter-tilbehør" value="tilbehør" onchange="applyFilters()">
                             <span>Tilbehør</span>
                         </label>
                     </div>
@@ -600,27 +688,27 @@
                     </h3>
                     <div class="filter-options">
                         <label class="filter-option">
-                            <input type="checkbox" value="XS" onchange="applyFilters()">
-                            <span>XS</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="S" onchange="applyFilters()">
-                            <span>S</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="M" onchange="applyFilters()">
-                            <span>M</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="L" onchange="applyFilters()">
-                            <span>L</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="XL" onchange="applyFilters()">
-                            <span>XL</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="XXL" onchange="applyFilters()">
+                                                    <input type="checkbox" id="filter-size-xs" name="filter-size-xs" value="XS" onchange="applyFilters()">
+                        <span>XS</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-size-s" name="filter-size-s" value="S" onchange="applyFilters()">
+                        <span>S</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-size-m" name="filter-size-m" value="M" onchange="applyFilters()">
+                        <span>M</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-size-l" name="filter-size-l" value="L" onchange="applyFilters()">
+                        <span>L</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-size-xl" name="filter-size-xl" value="XL" onchange="applyFilters()">
+                        <span>XL</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-size-xxl" name="filter-size-xxl" value="XXL" onchange="applyFilters()">
                             <span>XXL</span>
                         </label>
                     </div>
@@ -634,23 +722,23 @@
                     </h3>
                     <div class="filter-options">
                         <label class="filter-option">
-                            <input type="checkbox" value="sort" onchange="applyFilters()">
-                            <span>Sort</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="hvid" onchange="applyFilters()">
-                            <span>Hvid</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="grøn" onchange="applyFilters()">
-                            <span>Grøn</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="rød" onchange="applyFilters()">
-                            <span>Rød</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="sort-hvid" onchange="applyFilters()">
+                                                    <input type="checkbox" id="filter-color-sort" name="filter-color-sort" value="sort" onchange="applyFilters()">
+                        <span>Sort</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-color-hvid" name="filter-color-hvid" value="hvid" onchange="applyFilters()">
+                        <span>Hvid</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-color-grøn" name="filter-color-grøn" value="grøn" onchange="applyFilters()">
+                        <span>Grøn</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-color-rød" name="filter-color-rød" value="rød" onchange="applyFilters()">
+                        <span>Rød</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-color-sort-hvid" name="filter-color-sort-hvid" value="sort-hvid" onchange="applyFilters()">
                             <span>Sort/Hvid</span>
                         </label>
                     </div>
@@ -1111,5 +1199,6 @@
             }
         });
     </script>
+    <script src="performance-optimizations.js"></script>
 </body>
 </html> 
