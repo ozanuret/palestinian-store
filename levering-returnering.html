@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Levering & Returnering - Palæstinensisk Arv Butik</title>
     <meta name="description" content="Information om levering, returnering og vores kundeservice politikker.">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1.3">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2c5530">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,15 +18,15 @@
     <!-- Header -->
     <header class="header">
         <nav class="navbar">
-                            <div class="nav-brand">
-                    <a href="index.html">
-                        <h1>🇵🇸 Palæstinensisk Arv</h1>
-                    </a>
-                </div>
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h1>🇵🇸 Palæstinensisk Arv</h1>
+                </a>
+            </div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">Hjem</a>
                 <div style="position: relative;">
-                    <a href="produkter.html" class="nav-link">Produkter</a>
+                <a href="produkter.html" class="nav-link">Produkter</a>
                     <div class="nav-dropdown">
                         <a href="produkter.html" class="dropdown-item">Alle Produkter</a>
                         <a href="tøj.html" class="dropdown-item">Tøj</a>
@@ -48,15 +48,45 @@
                     <span class="cart-count" id="cartCount">0</span>
                 </button>
                 <div class="language-currency-selector">
-                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
-                        <option value="da">🇩🇰 Dansk</option>
-                        <option value="en">🇺🇸 English</option>
-                    </select>
-                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
-                        <option value="DKK">DKK</option>
-                        <option value="EUR">EUR</option>
-                        <option value="USD">USD</option>
-                    </select>
+                    <div class="selector-container">
+                        <button class="selector-btn language-selector-btn" onclick="toggleLanguageDropdown()">
+                            <span class="selector-icon">🌍</span>
+                            <span class="selector-text" id="currentLanguageDisplay">🇩🇰 Dansk</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown language-dropdown" id="languageDropdown">
+                            <div class="dropdown-item" onclick="console.log('Dansk clicked'); changeLanguage('da')">
+                                <span class="flag">🇩🇰</span>
+                                <span class="text">Dansk</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('English clicked'); changeLanguage('en')">
+                                <span class="flag">🇺🇸</span>
+                                <span class="text">English</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="selector-container">
+                        <button class="selector-btn currency-selector-btn" onclick="toggleCurrencyDropdown()">
+                            <span class="selector-icon">💰</span>
+                            <span class="selector-text" id="currentCurrencyDisplay">DKK</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown currency-dropdown" id="currencyDropdown">
+                            <div class="dropdown-item" onclick="console.log('DKK clicked'); changeCurrency('DKK')">
+                                <span class="currency-symbol">kr</span>
+                                <span class="text">DKK</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('EUR clicked'); changeCurrency('EUR')">
+                                <span class="currency-symbol">€</span>
+                                <span class="text">EUR</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('USD clicked'); changeCurrency('USD')">
+                                <span class="currency-symbol">$</span>
+                                <span class="text">USD</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
@@ -82,329 +112,286 @@
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Levering & Returnering</h1>
-            <p>Hurtig levering og nem returnering - vi gør det nemt for dig</p>
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(135deg, #2c5530 0%, #4a7c59 50%, #6ba084 100%); padding: 6rem 0 4rem; text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,215,0,0.05) 10px, rgba(255,215,0,0.05) 20px); pointer-events: none;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <h1 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 1rem; font-family: 'Playfair Display', serif; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Levering & Returnering</h1>
+            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto; line-height: 1.6; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Hurtig levering og nem returnering - vi gør det nemt for dig</p>
         </div>
     </section>
 
-    <!-- Shipping & Returns Page -->
-    <section class="shipping-returns-page">
+    <!-- Shipping Options -->
+    <section style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);">
         <div class="container">
-            <!-- Quick Navigation -->
-            <div class="page-navigation">
-                <a href="#shipping" class="nav-link">Levering</a>
-                <a href="#returns" class="nav-link">Returnering</a>
-                <a href="#tracking" class="nav-link">Sporing</a>
-                <a href="#faq" class="nav-link">FAQ</a>
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: #2c5530; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Leveringsmuligheder</h2>
+                <p style="color: #6c757d; font-size: 1.1rem;">Vælg den leveringsmetode der passer dig bedst</p>
             </div>
 
-            <!-- Shipping Section -->
-            <section id="shipping" class="content-section">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-shipping-fast"></i>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                
+                <!-- Standard Shipping -->
+                <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(44,85,48,0.1); border: 2px solid #e8f5e8; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 5px 15px rgba(44,85,48,0.3);">
+                            <i class="fas fa-truck" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; font-weight: 600; color: #2c5530; margin-bottom: 0.5rem;">Standard Levering</h3>
+                        <div style="font-size: 2rem; font-weight: 700; color: #4a7c59; margin-bottom: 1rem;">49 kr</div>
                     </div>
-                    <h2>Levering</h2>
-                    <p>Vi gør vores bedste for at få dine produkter til dig hurtigt og sikkert</p>
-                </div>
-
-                <div class="shipping-options">
-                    <div class="shipping-option">
-                        <div class="option-header">
-                            <i class="fas fa-truck"></i>
-                            <h3>Standard Levering</h3>
-                            <span class="price">49 kr</span>
-                        </div>
-                        <div class="option-details">
-                            <p><strong>Leveringstid:</strong> 3-5 hverdage</p>
-                            <p><strong>Gratis levering:</strong> På ordrer over 500 kr</p>
-                            <p><strong>Tracking:</strong> Inkluderet</p>
-                            <ul>
-                                <li>Levering til din dør</li>
-                                <li>Email bekræftelse</li>
-                                <li>SMS når pakken er på vej</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="shipping-option featured">
-                        <div class="option-header">
-                            <i class="fas fa-rocket"></i>
-                            <h3>Express Levering</h3>
-                            <span class="price">99 kr</span>
-                        </div>
-                        <div class="option-details">
-                            <p><strong>Leveringstid:</strong> 1-2 hverdage</p>
-                            <p><strong>Prioritet:</strong> Højeste prioritet</p>
-                            <p><strong>Tracking:</strong> Real-time</p>
-                            <ul>
-                                <li>Næste dag levering</li>
-                                <li>Prioriteret behandling</li>
-                                <li>Live tracking</li>
-                                <li>Weekend levering</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="shipping-option">
-                        <div class="option-header">
-                            <i class="fas fa-globe"></i>
-                            <h3>International Levering</h3>
-                            <span class="price">99-199 kr</span>
-                        </div>
-                        <div class="option-details">
-                            <p><strong>Leveringstid:</strong> 5-10 hverdage</p>
-                            <p><strong>Land:</strong> Alle EU lande + USA, Canada</p>
-                            <p><strong>Tracking:</strong> Inkluderet</p>
-                            <ul>
-                                <li>EU: 99 kr</li>
-                                <li>USA/Canada: 149 kr</li>
-                                <li>Andre lande: 199 kr</li>
-                                <li>Told og afgifter inkluderet</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="shipping-info">
-                    <div class="info-card">
-                        <h3>Leveringsdetaljer</h3>
-                        <ul>
-                            <li>Alle forsendelser pakkes sikkert og miljøvenligt</li>
-                            <li>Vi bruger kun bæredygtige emballagematerialer</li>
-                            <li>Pakker sendes normalt samme dag hvis bestilt før 14:00</li>
-                            <li>Weekend levering tilgængelig med Express</li>
+                    <div style="text-align: center;">
+                        <p style="color: #6c757d; margin-bottom: 1rem;"><strong>3-5 hverdage</strong></p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ Levering til din dør</li>
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ Email bekræftelse</li>
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ SMS når pakken er på vej</li>
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ Gratis over 500 kr</li>
                         </ul>
                     </div>
                 </div>
-            </section>
 
-            <!-- Returns Section -->
-            <section id="returns" class="content-section">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-undo"></i>
-                    </div>
-                    <h2>Returnering</h2>
-                    <p>Vi vil sikre, at du er 100% tilfreds med dit køb</p>
-                </div>
-
-                <div class="returns-policy">
-                    <div class="policy-card">
-                        <div class="policy-icon">
-                            <i class="fas fa-calendar-alt"></i>
+                <!-- Express Shipping -->
+                <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(44,85,48,0.1); border: 2px solid #ffd700; position: relative; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #ffd700; color: #2c5530; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 600; font-size: 0.9rem;">POPULÆR</div>
+                    <div style="text-align: center; margin-bottom: 2rem; margin-top: 1rem;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 5px 15px rgba(255,215,0,0.3);">
+                            <i class="fas fa-rocket" style="font-size: 2rem; color: #2c5530;"></i>
                         </div>
-                        <h3>30 dages returret</h3>
-                        <p>Du har 30 dage fra modtagelsesdatoen til at returnere dit produkt. Produktet skal være ubrugt og i original emballage.</p>
+                        <h3 style="font-size: 1.5rem; font-weight: 600; color: #2c5530; margin-bottom: 0.5rem;">Express Levering</h3>
+                        <div style="font-size: 2rem; font-weight: 700; color: #4a7c59; margin-bottom: 1rem;">99 kr</div>
                     </div>
-
-                    <div class="policy-card">
-                        <div class="policy-icon">
-                            <i class="fas fa-shipping-fast"></i>
-                        </div>
-                        <h3>Gratis returnering</h3>
-                        <p>Vi tilbyder gratis returnering for alle danske kunder. Internationale returneringer kan medføre ekstra omkostninger.</p>
-                    </div>
-
-                    <div class="policy-card">
-                        <div class="policy-icon">
-                            <i class="fas fa-credit-card"></i>
-                        </div>
-                        <h3>Hurtig tilbagebetaling</h3>
-                        <p>Pengene tilbagebetales til din oprindelige betalingsmetode inden for 5-10 hverdage efter vi modtager returneringen.</p>
+                    <div style="text-align: center;">
+                        <p style="color: #6c757d; margin-bottom: 1rem;"><strong>1-2 hverdage</strong></p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ Næste dag levering</li>
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ Prioriteret behandling</li>
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ Live tracking</li>
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ Weekend levering</li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="return-process">
-                    <h3>Sådan returnerer du et produkt</h3>
-                    <div class="process-steps">
-                        <div class="step">
-                            <div class="step-number">1</div>
-                            <h4>Gå til din ordre</h4>
-                            <p>Log ind på din konto og find ordren du vil returnere</p>
+                <!-- International Shipping -->
+                <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(44,85,48,0.1); border: 2px solid #e8f5e8; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4a7c59 0%, #6ba084 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: 0 5px 15px rgba(74,124,89,0.3);">
+                            <i class="fas fa-globe" style="font-size: 2rem; color: white;"></i>
                         </div>
-                        <div class="step">
-                            <div class="step-number">2</div>
-                            <h4>Vælg returnering</h4>
-                            <p>Klik på "Returner produkt" og udfyld returneringsformularen</p>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">3</div>
-                            <h4>Print label</h4>
-                            <p>Print returneringslabelen og klistre den på pakken</p>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">4</div>
-                            <h4>Send pakken</h4>
-                            <p>Pak produktet sikkert og send det tilbage med den medfølgende label</p>
-                        </div>
+                        <h3 style="font-size: 1.5rem; font-weight: 600; color: #2c5530; margin-bottom: 0.5rem;">International</h3>
+                        <div style="font-size: 2rem; font-weight: 700; color: #4a7c59; margin-bottom: 1rem;">99-199 kr</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <p style="color: #6c757d; margin-bottom: 1rem;"><strong>5-10 hverdage</strong></p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ EU: 99 kr</li>
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ USA/Canada: 149 kr</li>
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ Andre lande: 199 kr</li>
+                            <li style="padding: 0.5rem 0; color: #6c757d;">✓ Told inkluderet</li>
+                        </ul>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Tracking Section -->
-            <section id="tracking" class="content-section">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-search-location"></i>
+    <!-- Returns Section -->
+    <section style="padding: 4rem 0; background: white;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: #2c5530; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Returnering</h2>
+                <p style="color: #6c757d; font-size: 1.1rem;">Vi vil sikre, at du er 100% tilfreds med dit køb</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(44,85,48,0.3);">
+                        <i class="fas fa-calendar-alt" style="font-size: 1.5rem; color: white;"></i>
                     </div>
-                    <h2>Sporing af forsendelser</h2>
-                    <p>Hold øje med din pakke hele vejen til din dør</p>
+                    <h3 style="font-size: 1.3rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">30 dages returret</h3>
+                    <p style="color: #6c757d; line-height: 1.6;">Du har 30 dage fra modtagelsesdatoen til at returnere dit produkt. Produktet skal være ubrugt og i original emballage.</p>
                 </div>
 
-                <div class="tracking-info">
-                    <div class="tracking-card">
-                        <h3>Hvordan sporer jeg min pakke?</h3>
-                        <p>Når din ordre er sendt, modtager du en email med tracking nummer og link. Du kan også spore din pakke direkte fra din ordre i din konto.</p>
-                        
-                        <div class="tracking-features">
-                            <div class="feature">
-                                <i class="fas fa-envelope"></i>
-                                <span>Email bekræftelse</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-sms"></i>
-                                <span>SMS opdateringer</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-mobile-alt"></i>
-                                <span>Mobile app</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-clock"></i>
-                                <span>Real-time status</span>
-                            </div>
-                        </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #4a7c59 0%, #6ba084 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(74,124,89,0.3);">
+                        <i class="fas fa-shipping-fast" style="font-size: 1.5rem; color: white;"></i>
                     </div>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section id="faq" class="content-section">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-question-circle"></i>
-                    </div>
-                    <h2>Ofte stillede spørgsmål</h2>
-                    <p>Find svar på de mest almindelige spørgsmål om levering og returnering</p>
+                    <h3 style="font-size: 1.3rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">Gratis returnering</h3>
+                    <p style="color: #6c757d; line-height: 1.6;">Vi tilbyder gratis returnering for alle danske kunder. Internationale returneringer kan medføre ekstra omkostninger.</p>
                 </div>
 
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>Hvad hvis min pakke er beskadiget?</h3>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Hvis din pakke ankommer beskadiget, tag venligst billeder og kontakt os umiddelbart. Vi vil sende en erstatning eller give dig en fuld refusion.</p>
-                        </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #6ba084 0%, #8bc4a8 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(107,160,132,0.3);">
+                        <i class="fas fa-credit-card" style="font-size: 1.5rem; color: white;"></i>
                     </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">Hurtig tilbagebetaling</h3>
+                    <p style="color: #6c757d; line-height: 1.6;">Pengene tilbagebetales til din oprindelige betalingsmetode inden for 5-10 hverdage efter vi modtager returneringen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>Kan jeg ændre min leveringsadresse?</h3>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Du kan ændre din leveringsadresse inden for 2 timer efter bestilling. Kontakt vores kundeservice for hjælp.</p>
-                        </div>
-                    </div>
+    <!-- Return Process -->
+    <section style="padding: 4rem 0; background: linear-gradient(135deg, #e8f5e8 0%, #f8f9fa 100%);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: #2c5530; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Sådan returnerer du</h2>
+                <p style="color: #6c757d; font-size: 1.1rem;">Fire simple trin til nem returnering</p>
+            </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>Hvad hvis jeg ikke er hjemme ved levering?</h3>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Pakken vil blive afleveret hos en nabo eller på det lokale posthus. Du modtager en seddel med information om, hvor pakken kan afhentes.</p>
-                        </div>
-                    </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                
+                <div style="text-align: center; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(44,85,48,0.1); border: 2px solid #e8f5e8;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: 700; color: white;">1</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">Gå til din ordre</h3>
+                    <p style="color: #6c757d; line-height: 1.6;">Log ind på din konto og find ordren du vil returnere</p>
+                </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <h3>Kan jeg returnere et produkt, jeg har brugt?</h3>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Produkter skal returneres ubrugte og i original emballage. Hvis du har brugt produktet og det er defekt, kontakter du vores kundeservice.</p>
-                        </div>
+                <div style="text-align: center; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(44,85,48,0.1); border: 2px solid #e8f5e8;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #4a7c59 0%, #6ba084 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: 700; color: white;">2</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">Vælg returnering</h3>
+                    <p style="color: #6c757d; line-height: 1.6;">Klik på "Returner produkt" og udfyld returneringsformularen</p>
+                </div>
+
+                <div style="text-align: center; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(44,85,48,0.1); border: 2px solid #e8f5e8;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #6ba084 0%, #8bc4a8 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: 700; color: white;">3</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">Print label</h3>
+                    <p style="color: #6c757d; line-height: 1.6;">Print returneringslabelen og klistre den på pakken</p>
+                </div>
+
+                <div style="text-align: center; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(44,85,48,0.1); border: 2px solid #e8f5e8;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #8bc4a8 0%, #a8d4c0 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: 700; color: white;">4</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">Send pakken</h3>
+                    <p style="color: #6c757d; line-height: 1.6;">Pak produktet sikkert og send det tilbage med den medfølgende label</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="padding: 4rem 0; background: white;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: #2c5530; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Ofte stillede spørgsmål</h2>
+                <p style="color: #6c757d; font-size: 1.1rem;">Find svar på de mest almindelige spørgsmål</p>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="border: 2px solid #e8f5e8; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; background: white; box-shadow: 0 2px 10px rgba(44,85,48,0.1);">
+                    <button onclick="toggleFAQ(this)" style="width: 100%; padding: 1.5rem; background: white; border: none; text-align: left; font-weight: 600; color: #2c5530; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.background='#e8f5e8'" onmouseout="this.style.background='white'">
+                        Hvad hvis min pakke er beskadiget?
+                        <i class="fas fa-chevron-down" style="transition: transform 0.3s ease; color: #2c5530;"></i>
+                    </button>
+                    <div style="padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+                        <p style="padding: 1.5rem 0; color: #6c757d; line-height: 1.6; margin: 0;">Hvis din pakke ankommer beskadiget, tag venligst billeder og kontakt os umiddelbart. Vi vil sende en erstatning eller give dig en fuld refusion.</p>
                     </div>
                 </div>
-            </section>
 
-            <!-- Contact CTA -->
-            <div class="contact-cta">
-                <div class="cta-content">
-                    <h2>Har du spørgsmål?</h2>
-                    <p>Vores kundeservice team er klar til at hjælpe dig</p>
-                    <div class="cta-actions">
-                        <a href="kontakt.html" class="cta-btn primary">
-                            <i class="fas fa-envelope"></i>
-                            Kontakt Os
-                        </a>
-                        <a href="faq.html" class="cta-btn secondary">
-                            <i class="fas fa-question-circle"></i>
-                            Se FAQ
-                        </a>
+                <div style="border: 2px solid #e8f5e8; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; background: white; box-shadow: 0 2px 10px rgba(44,85,48,0.1);">
+                    <button onclick="toggleFAQ(this)" style="width: 100%; padding: 1.5rem; background: white; border: none; text-align: left; font-weight: 600; color: #2c5530; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.background='#e8f5e8'" onmouseout="this.style.background='white'">
+                        Kan jeg ændre min leveringsadresse?
+                        <i class="fas fa-chevron-down" style="transition: transform 0.3s ease; color: #2c5530;"></i>
+                    </button>
+                    <div style="padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+                        <p style="padding: 1.5rem 0; color: #6c757d; line-height: 1.6; margin: 0;">Du kan ændre din leveringsadresse inden for 2 timer efter bestilling. Kontakt vores kundeservice for hjælp.</p>
                     </div>
                 </div>
+
+                <div style="border: 2px solid #e8f5e8; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; background: white; box-shadow: 0 2px 10px rgba(44,85,48,0.1);">
+                    <button onclick="toggleFAQ(this)" style="width: 100%; padding: 1.5rem; background: white; border: none; text-align: left; font-weight: 600; color: #2c5530; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.background='#e8f5e8'" onmouseout="this.style.background='white'">
+                        Hvad hvis jeg ikke er hjemme ved levering?
+                        <i class="fas fa-chevron-down" style="transition: transform 0.3s ease; color: #2c5530;"></i>
+                    </button>
+                    <div style="padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+                        <p style="padding: 1.5rem 0; color: #6c757d; line-height: 1.6; margin: 0;">Pakken vil blive afleveret hos en nabo eller på det lokale posthus. Du modtager en seddel med information om, hvor pakken kan afhentes.</p>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid #e8f5e8; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; background: white; box-shadow: 0 2px 10px rgba(44,85,48,0.1);">
+                    <button onclick="toggleFAQ(this)" style="width: 100%; padding: 1.5rem; background: white; border: none; text-align: left; font-weight: 600; color: #2c5530; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.background='#e8f5e8'" onmouseout="this.style.background='white'">
+                        Kan jeg returnere et produkt, jeg har brugt?
+                        <i class="fas fa-chevron-down" style="transition: transform 0.3s ease; color: #2c5530;"></i>
+                    </button>
+                    <div style="padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+                        <p style="padding: 1.5rem 0; color: #6c757d; line-height: 1.6; margin: 0;">Produkter skal returneres ubrugte og i original emballage. Hvis du har brugt produktet og det er defekt, kontakter du vores kundeservice.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section style="padding: 4rem 0; background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Har du spørgsmål?</h2>
+            <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 2rem;">Vores kundeservice team er klar til at hjælpe dig</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="kontakt.html" style="display: inline-block; background: #ffd700; color: #2c5530; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.background='#ffed4e'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#ffd700'; this.style.transform='translateY(0)'">
+                    <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                    Kontakt Os
+                </a>
+                <a href="faq.html" style="display: inline-block; background: transparent; color: white; padding: 1rem 2rem; text-decoration: none; border: 2px solid white; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.background='white'; this.style.color='#2c5530'" onmouseout="this.style.background='transparent'; this.style.color='white'">
+                    <i class="fas fa-question-circle" style="margin-right: 0.5rem;"></i>
+                    Se FAQ
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Palæstinensisk Arv</h3>
-                    <p>Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
-                    <div class="footer-social">
-                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <footer style="background: linear-gradient(135deg, #1a472a 0%, #2c5530 25%, #4a7c59 50%, #6ba084 75%, #8bc4a8 100%); color: white; padding: 3rem 0 1.5rem; position: relative; overflow: hidden; box-shadow: 0 -10px 30px rgba(0,0,0,0.3); border-top: 3px solid #ffd700;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,215,0,0.03) 10px, rgba(255,215,0,0.03) 20px); pointer-events: none;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div class="footer-section" style="text-align: center;">
+                    <h3 style="color: #ffd700; font-size: 1.2rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 700;">🇵🇸 Palæstinensisk Arv</h3>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.85rem; line-height: 1.5; margin-bottom: 1.5rem;">Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social" style="display: flex; justify-content: center; gap: 1rem;">
+                        <a href="#" title="Facebook" style="color: #ffd700; font-size: 1.1rem; transition: all 0.3s ease; text-shadow: 0 2px 4px rgba(0,0,0,0.3);" onmouseover="this.style.color='white'; this.style.transform='translateY(-2px)'" onmouseout="this.style.color='#ffd700'; this.style.transform='translateY(0)'"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram" style="color: #ffd700; font-size: 1.1rem; transition: all 0.3s ease; text-shadow: 0 2px 4px rgba(0,0,0,0.3);" onmouseover="this.style.color='white'; this.style.transform='translateY(-2px)'" onmouseout="this.style.color='#ffd700'; this.style.transform='translateY(0)'"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="TikTok" style="color: #ffd700; font-size: 1.1rem; transition: all 0.3s ease; text-shadow: 0 2px 4px rgba(0,0,0,0.3);" onmouseover="this.style.color='white'; this.style.transform='translateY(-2px)'" onmouseout="this.style.color='#ffd700'; this.style.transform='translateY(0)'"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Hurtige Links</h4>
-                    <a href="index.html">Hjem</a>
-                    <a href="produkter.html">Produkter</a>
-                    <a href="om-os.html">Om Os</a>
-                    <a href="kultur.html">Kultur</a>
-                    <a href="kontakt.html">Kontakt</a>
+                <div class="footer-section" style="text-align: center;">
+                    <h4 style="color: #ffd700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 600;">🚀 Hurtige Links</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="index.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateX(0)'">🏠 Hjem</a>
+                        <a href="produkter.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateX(0)'">🛍️ Produkter</a>
+                        <a href="kontakt.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateX(0)'">📞 Kontakt</a>
+                    </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Kategorier</h4>
-                    <a href="produkter.html">Tøj & Mode</a>
-                    <a href="produkter.html">Tilbehør</a>
-                    <a href="produkter.html">Kultur & Historie</a>
-                    <a href="produkter.html">Nyheder</a>
+                <div class="footer-section" style="text-align: center;">
+                    <h4 style="color: #ffd700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 600;">📂 Kategorier</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="tøj.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateX(0)'">👕 Tøj & Mode</a>
+                        <a href="tilbehør.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateX(0)'">💍 Tilbehør</a>
+                        <a href="produkter.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateX(0)'">🆕 Nyheder</a>
+                    </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Kundeservice</h4>
-                    <a href="kontakt.html">Kontakt Os</a>
-                    <a href="levering-returnering.html">Levering & Returnering</a>
-                    <a href="faq.html">FAQ</a>
-                    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+                <div class="footer-section" style="text-align: center;">
+                    <h4 style="color: #ffd700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 600;">🛎️ Kundeservice</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="kontakt.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateX(0)'">💬 Kontakt Os</a>
+                        <a href="levering-returnering.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateX(0)'">🚚 Levering & Returnering</a>
+                        <a href="faq.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateX(0)'">❓ FAQ</a>
+                        <a href="privatlivspolitik.html" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='translateX(0)'">🔒 Privatlivspolitik</a>
+                    </div>
                 </div>
             </div>
             
-            <div class="footer-bottom">
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255,215,0,0.3); padding-top: 1.5rem; text-align: center;">
                 <div class="footer-bottom-content">
-                    <p>&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
-                    <div class="footer-payment">
-                        <span>Betalinger accepteres:</span>
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                        <i class="fab fa-cc-paypal"></i>
-                        <i class="fab fa-cc-apple-pay"></i>
+                    <p style="color: rgba(255,255,255,0.75); font-size: 0.75rem; margin-bottom: 1rem;">© 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment" style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                        <span style="color: rgba(255,255,255,0.75); font-size: 0.75rem;">Betalinger accepteres:</span>
+                        <i class="fab fa-cc-visa" style="color: #ffd700; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); transition: all 0.3s ease;" onmouseover="this.style.color='white'; this.style.transform='scale(1.2)'" onmouseout="this.style.color='#ffd700'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-mastercard" style="color: #ffd700; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); transition: all 0.3s ease;" onmouseover="this.style.color='white'; this.style.transform='scale(1.2)'" onmouseout="this.style.color='#ffd700'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-paypal" style="color: #ffd700; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); transition: all 0.3s ease;" onmouseover="this.style.color='white'; this.style.transform='scale(1.2)'" onmouseout="this.style.color='#ffd700'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-apple-pay" style="color: #ffd700; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); transition: all 0.3s ease;" onmouseover="this.style.color='white'; this.style.transform='scale(1.2)'" onmouseout="this.style.color='#ffd700'; this.style.transform='scale(1)'"></i>
                     </div>
                 </div>
             </div>
@@ -460,34 +447,19 @@
 
     <script src="script.js"></script>
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('.page-navigation a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
+        // FAQ toggle functionality
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
             
-            // Close all FAQ items
-            const allFaqItems = document.querySelectorAll('.faq-item');
-            allFaqItems.forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Open clicked item if it wasn't active
-            if (!isActive) {
-                faqItem.classList.add('active');
+            if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.padding = '0 1.5rem';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.style.maxHeight = '0px';
+                content.style.padding = '0 1.5rem';
+                icon.style.transform = 'rotate(0deg)';
             }
         }
     </script>

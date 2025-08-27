@@ -3,9 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt Os - Palæstinensisk Arv Butik</title>
-    <meta name="description" content="Kontakt Palæstinensisk Arv Butik. Vi er her for at hjælpe dig med spørgsmål om produkter, levering og mere.">
-    <link rel="stylesheet" href="styles.css?v=1.2">
+    <title>Kontakt Os - Palæstinensisk Arv Butik | Support & Hjælp</title>
+    <meta name="description" content="Kontakt Palæstinensisk Arv Butik for support, spørgsmål om produkter, levering og mere. Vi er her for at hjælpe dig med alt relateret til autentiske palæstinensiske produkter.">
+    <meta name="keywords" content="kontakt palæstinensisk arv, support, kundeservice, hjælp, spørgsmål, levering, returnering">
+    <meta name="author" content="Palæstinensisk Arv Butik">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://palestinensisk-arv.dk/kontakt.html">
+    <meta property="og:title" content="Kontakt Os - Palæstinensisk Arv Butik">
+    <meta property="og:description" content="Kontakt Palæstinensisk Arv Butik for support og hjælp med autentiske palæstinensiske produkter.">
+    <meta property="og:image" content="https://palestinensisk-arv.dk/images/contact-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Palæstinensisk Arv Butik">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://palestinensisk-arv.dk/kontakt.html">
+    <meta property="twitter:title" content="Kontakt Os - Palæstinensisk Arv Butik">
+    <meta property="twitter:description" content="Kontakt Palæstinensisk Arv Butik for support og hjælp med autentiske palæstinensiske produkter.">
+    <meta property="twitter:image" content="https://palestinensisk-arv.dk/images/contact-twitter.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Kontakt Palæstinensisk Arv Butik",
+        "description": "Kontakt os for support og hjælp med autentiske palæstinensiske produkter",
+        "url": "https://palestinensisk-arv.dk/kontakt.html",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Palæstinensisk Arv Butik",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "info@palestinensisk-arv.dk",
+                "availableLanguage": ["Danish", "English"]
+            }
+        }
+    }
+    </script>
+    
+    <!-- Performance optimizations -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <link rel="stylesheet" href="styles.css?v=1.4">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -21,7 +71,7 @@
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">Hjem</a>
                 <div style="position: relative;">
-                    <a href="produkter.html" class="nav-link">Produkter</a>
+                <a href="produkter.html" class="nav-link">Produkter</a>
                     <div class="nav-dropdown">
                         <a href="produkter.html" class="dropdown-item">Alle Produkter</a>
                         <a href="tøj.html" class="dropdown-item">Tøj</a>
@@ -43,15 +93,45 @@
                     <span class="cart-count" id="cartCount">0</span>
                 </button>
                 <div class="language-currency-selector">
-                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
-                        <option value="da">🇩🇰 Dansk</option>
-                        <option value="en">🇺🇸 English</option>
-                    </select>
-                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
-                        <option value="DKK">DKK</option>
-                        <option value="EUR">EUR</option>
-                        <option value="USD">USD</option>
-                    </select>
+                    <div class="selector-container">
+                        <button class="selector-btn language-selector-btn" onclick="toggleLanguageDropdown()">
+                            <span class="selector-icon">🌍</span>
+                            <span class="selector-text" id="currentLanguageDisplay">🇩🇰 Dansk</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown language-dropdown" id="languageDropdown">
+                            <div class="dropdown-item" onclick="console.log('Dansk clicked'); changeLanguage('da')">
+                                <span class="flag">🇩🇰</span>
+                                <span class="text">Dansk</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('English clicked'); changeLanguage('en')">
+                                <span class="flag">🇺🇸</span>
+                                <span class="text">English</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="selector-container">
+                        <button class="selector-btn currency-selector-btn" onclick="toggleCurrencyDropdown()">
+                            <span class="selector-icon">💰</span>
+                            <span class="selector-text" id="currentCurrencyDisplay">DKK</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown currency-dropdown" id="currencyDropdown">
+                            <div class="dropdown-item" onclick="console.log('DKK clicked'); changeCurrency('DKK')">
+                                <span class="currency-symbol">kr</span>
+                                <span class="text">DKK</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('EUR clicked'); changeCurrency('EUR')">
+                                <span class="currency-symbol">€</span>
+                                <span class="text">EUR</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('USD clicked'); changeCurrency('USD')">
+                                <span class="currency-symbol">$</span>
+                                <span class="text">USD</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
@@ -77,416 +157,152 @@
         </div>
     </header>
 
-    <!-- Conversational Hero Section -->
-    <section class="contact-hero-conversational">
-        <div class="chat-bubble-container">
-            <div class="chat-bubble bubble-1">
-                <div class="bubble-content">
-                    <i class="fas fa-hand-wave"></i>
-                    <span>Hej! Hvordan kan vi hjælpe dig?</span>
-                </div>
-            </div>
-            <div class="chat-bubble bubble-2">
-                <div class="bubble-content">
-                    <i class="fas fa-heart"></i>
-                    <span>Vi elsker at høre fra vores kunder</span>
-                </div>
-            </div>
-            <div class="chat-bubble bubble-3">
-                <div class="bubble-content">
-                    <i class="fas fa-clock"></i>
-                    <span>Vi svarer inden for 24 timer</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="hero-center-conversational">
-            <div class="hero-badge-conversational">
-                <span>🇵🇸 Lad Os Snakke</span>
-            </div>
-            <h1 class="hero-title-conversational">
-                <span class="title-line-1">Kontakt</span>
-                <span class="title-line-2">Os</span>
-            </h1>
-            <p class="hero-subtitle-conversational">Vi er her for at hjælpe dig med alle spørgsmål om vores produkter, levering og palæstinensisk kultur. Lad os skabe en forbindelse.</p>
-            <div class="hero-actions-conversational">
-                <a href="#contact-form" class="cta-btn-conversational primary">
-                    <i class="fas fa-comment"></i>
-                    Start En Samtale
-                </a>
-                <a href="#contact-info" class="cta-btn-conversational secondary">
-                    <i class="fas fa-phone"></i>
-                    Ring Til Os
-                </a>
-            </div>
-        </div>
-        
-        <div class="floating-avatars">
-            <div class="avatar" style="--delay: 0s">
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="avatar" style="--delay: 2s">
-                <i class="fas fa-user-friends"></i>
-            </div>
-            <div class="avatar" style="--delay: 4s">
-                <i class="fas fa-user-tie"></i>
-            </div>
+    <!-- Contact Hero Section -->
+    <section class="contact-hero" style="background: linear-gradient(135deg, #2c5530 0%, #4a7c59 50%, #6ba084 100%); padding: 6rem 0 4rem; text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,215,0,0.05) 10px, rgba(255,215,0,0.05) 20px); pointer-events: none;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <h1 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 1rem; font-family: 'Playfair Display', serif; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Kontakt Os</h1>
+            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto; line-height: 1.6; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Vi er her for at hjælpe dig med alle spørgsmål om vores produkter og service.</p>
         </div>
     </section>
 
-    <!-- Interactive Contact Cards -->
-    <section id="contact-info" class="interactive-contact">
+    <!-- Contact Methods -->
+    <section class="contact-methods" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);">
         <div class="container">
-            <div class="contact-header-interactive">
-                <div class="contact-badge-interactive">
-                    <i class="fas fa-comments"></i>
-                    <span>Måder At Kontakte Os</span>
-                </div>
-                <h2 class="contact-title-interactive">Vælg Din Foretrukne Måde</h2>
-                <p class="contact-subtitle-interactive">Vi tilbyder flere måder at komme i kontakt med os på. Vælg den der passer dig bedst!</p>
-            </div>
-            
-            <div class="contact-cards-interactive">
-                <div class="contact-card-interactive" onclick="selectContactMethod('email')">
-                    <div class="card-icon-interactive">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="card-content-interactive">
-                        <h3>Email</h3>
-                        <p>info@palestinsk-arv.dk</p>
-                        <span class="response-time">Svar inden for 24 timer</span>
-                    </div>
-                    <div class="card-action-interactive">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto;">
                 
-                <div class="contact-card-interactive" onclick="selectContactMethod('phone')">
-                    <div class="card-icon-interactive">
-                        <i class="fas fa-phone"></i>
+                <!-- Email Contact -->
+                <div style="text-align: center; padding: 3rem 2rem; background: white; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 2px solid #e8f5e8;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(44,85,48,0.15)'; this.style.borderColor='#2c5530'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='#e8f5e8'">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 5px 15px rgba(44,85,48,0.3);">
+                        <i class="fas fa-envelope" style="font-size: 2rem; color: white;"></i>
                     </div>
-                    <div class="card-content-interactive">
-                        <h3>Telefon</h3>
-                        <p>+45 12 34 56 78</p>
-                        <span class="response-time">Mandag-Fredag 9:00-17:00</span>
-                    </div>
-                    <div class="card-action-interactive">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </div>
-                
-
-                
-                <div class="contact-card-interactive" onclick="selectContactMethod('chat')">
-                    <div class="card-icon-interactive">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <div class="card-content-interactive">
-                        <h3>Live Chat</h3>
-                        <p>Chat med os online</p>
-                        <span class="response-time">Tilgængelig 24/7</span>
-                    </div>
-                    <div class="card-action-interactive">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Conversational Form -->
-    <section id="contact-form" class="conversational-form">
-        <div class="container">
-            <div class="form-layout-conversational">
-                <div class="form-content-conversational">
-                    <div class="form-header-conversational">
-                        <div class="form-badge-conversational">
-                            <i class="fas fa-comment-dots"></i>
-                            <span>Start En Samtale</span>
-                        </div>
-                        <h2 class="form-title-conversational">Fortæl Os Om Dig</h2>
-                        <p class="form-subtitle-conversational">Udfyld formularen nedenfor, og vi vender tilbage til dig hurtigst muligt.</p>
-                    </div>
-                    
-                    <form class="contact-form-conversational" id="contactForm">
-                        <div class="form-step active" data-step="1">
-                            <div class="step-indicator">
-                                <span class="step-number">1</span>
-                                <span class="step-text">Personlige Oplysninger</span>
-                            </div>
-                            
-                            <div class="form-row-conversational">
-                                <div class="form-group-conversational">
-                                    <label for="firstName">Fornavn *</label>
-                                    <input type="text" id="firstName" name="firstName" required>
-                                </div>
-                                <div class="form-group-conversational">
-                                    <label for="lastName">Efternavn *</label>
-                                    <input type="text" id="lastName" name="lastName" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row-conversational">
-                                <div class="form-group-conversational">
-                                    <label for="email">Email *</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <div class="form-group-conversational">
-                                    <label for="phone">Telefon</label>
-                                    <input type="tel" id="phone" name="phone">
-                                </div>
-                            </div>
-                            
-                            <button type="button" class="next-step-btn" onclick="nextStep()">
-                                Næste <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="form-step" data-step="2">
-                            <div class="step-indicator">
-                                <span class="step-number">2</span>
-                                <span class="step-text">Hvad Kan Vi Hjælpe Med?</span>
-                            </div>
-                            
-                            <div class="form-group-conversational">
-                                <label for="subject">Emne *</label>
-                                <select id="subject" name="subject" required>
-                                    <option value="">Vælg emne</option>
-                                    <option value="products">Produktspørgsmål</option>
-                                    <option value="shipping">Levering & Returnering</option>
-                                    <option value="culture">Kultur & Historie</option>
-                                    <option value="support">Kundeservice</option>
-                                    <option value="other">Andet</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group-conversational">
-                                <label for="message">Din Besked *</label>
-                                <textarea id="message" name="message" rows="6" required placeholder="Fortæl os hvad vi kan hjælpe dig med..."></textarea>
-                            </div>
-                            
-                            <div class="form-actions-conversational">
-                                <button type="button" class="prev-step-btn" onclick="prevStep()">
-                                    <i class="fas fa-arrow-left"></i> Tilbage
-                                </button>
-                                <button type="button" class="next-step-btn" onclick="nextStep()">
-                                    Næste <i class="fas fa-arrow-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="form-step" data-step="3">
-                            <div class="step-indicator">
-                                <span class="step-number">3</span>
-                                <span class="step-text">Præferencer</span>
-                            </div>
-                            
-                            <div class="form-group-conversational checkbox-group-conversational">
-                                <label class="checkbox-label-conversational">
-                                    <input type="checkbox" name="newsletter" id="newsletter">
-                                    <span class="checkmark-conversational"></span>
-                                    Jeg vil gerne modtage nyheder og opdateringer
-                                </label>
-                            </div>
-                            
-                            <div class="form-group-conversational checkbox-group-conversational">
-                                <label class="checkbox-label-conversational">
-                                    <input type="checkbox" name="privacy" id="privacy" required>
-                                    <span class="checkmark-conversational"></span>
-                                    Jeg accepterer <a href="privatlivspolitik.html">privatlivspolitikken</a>
-                                </label>
-                            </div>
-                            
-                            <div class="form-actions-conversational">
-                                <button type="button" class="prev-step-btn" onclick="prevStep()">
-                                    <i class="fas fa-arrow-left"></i> Tilbage
-                                </button>
-                                <button type="submit" class="submit-btn-conversational">
-                                    <i class="fas fa-paper-plane"></i>
-                                    Send Besked
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                
-                <div class="form-visual-conversational">
-                    <div class="conversation-illustration">
-                        <div class="illustration-element">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <div class="illustration-element">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div class="illustration-element">
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Chat Interface -->
-    <section class="faq-chat-interface">
-        <div class="container">
-            <div class="faq-header-chat">
-                <div class="faq-badge-chat">
-                    <i class="fas fa-question-circle"></i>
-                    <span>Ofte Stillede Spørgsmål</span>
-                </div>
-                <h2 class="faq-title-chat">Hurtige Svar</h2>
-                <p class="faq-subtitle-chat">Find svar på de mest almindelige spørgsmål</p>
-            </div>
-            
-            <div class="faq-chat-container">
-                <div class="faq-message user-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="message-content">
-                        <p>Hvordan bestiller jeg produkter?</p>
-                    </div>
-                </div>
-                
-                <div class="faq-message bot-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="message-content">
-                        <p>Du kan bestille vores produkter direkte på hjemmesiden ved at tilføje dem til din indkøbskurv og følge checkout-processen. Vi accepterer alle gængse betalingsmetoder.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-message user-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="message-content">
-                        <p>Hvor lang tid tager levering?</p>
-                    </div>
-                </div>
-                
-                <div class="faq-message bot-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="message-content">
-                        <p>Standard levering tager 3-5 hverdage i Danmark. Express levering er tilgængelig og tager 1-2 hverdage. International levering tager 7-14 dage.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-message user-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="message-content">
-                        <p>Kan jeg returnere produkter?</p>
-                    </div>
-                </div>
-                
-                <div class="faq-message bot-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="message-content">
-                        <p>Ja, du har 30 dages returret på alle produkter. Produkterne skal returneres i original stand og emballage. Se vores returpolitik for flere detaljer.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="faq-actions-chat">
-                <button class="faq-action-btn" onclick="showMoreFAQs()">
-                    <i class="fas fa-plus"></i>
-                    Se Flere Spørgsmål
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Map Section -->
-    <section id="map" class="interactive-map-section">
-        <div class="container">
-            <div class="map-header-interactive">
-                <div class="map-badge-interactive">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Find Os</span>
-                </div>
-                <h2 class="map-title-interactive">Kontakt Information</h2>
-                <p class="map-subtitle-interactive">Vi er her for at hjælpe dig</p>
-            </div>
-            
-            <div class="map-container-interactive">
-                <div class="map-visual-interactive">
-                    <div class="map-placeholder-interactive">
-                        <div class="map-pin">
-                            <i class="fas fa-map-pin"></i>
-                        </div>
-                        <div class="map-info-overlay">
-                            <h3>Palæstinensisk Arv</h3>
-                            <p>Online Butik<br>Danmark</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="map-details-interactive">
-                    <div class="detail-item-interactive">
-                        <div class="detail-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="detail-content">
-                            <h4>Online Support</h4>
-                            <p>Mandag-Fredag: 9:00-17:00</p>
-                        </div>
-                    </div>
-                    
-                    <div class="detail-item-interactive">
-                        <div class="detail-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="detail-content">
-                            <h4>Telefon</h4>
-                            <p>+45 12 34 56 78</p>
-                        </div>
-                    </div>
-                    
-                    <div class="detail-item-interactive">
-                        <div class="detail-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="detail-content">
-                            <h4>Email</h4>
-                            <p>info@palestinsk-arv.dk</p>
-                        </div>
-                    </div>
-                    
-                    <a href="mailto:info@palestinsk-arv.dk" class="contact-email-btn">
-                        <i class="fas fa-envelope"></i>
-                        Send Email
+                    <h3 style="font-size: 1.5rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">Email Support</h3>
+                    <p style="color: #6c757d; margin-bottom: 1.5rem; line-height: 1.6;">Få svar på dine spørgsmål inden for 24 timer</p>
+                    <a href="mailto:info@palestinsk-arv.dk" style="display: inline-block; background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 3px 10px rgba(44,85,48,0.2);" onmouseover="this.style.background='linear-gradient(135deg, #1a472a 0%, #2c5530 100%)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(44,85,48,0.3)'" onmouseout="this.style.background='linear-gradient(135deg, #2c5530 0%, #4a7c59 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 10px rgba(44,85,48,0.2)'">
+                        info@palestinsk-arv.dk
                     </a>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Call to Action -->
-    <section class="contact-cta-conversational">
-        <div class="container">
-            <div class="cta-content-conversational">
-                <div class="cta-badge-conversational">
-                    <i class="fas fa-heart"></i>
-                    <span>Vi Elsker At Høre Fra Dig</span>
-                </div>
-                <h2>Har du flere spørgsmål?</h2>
-                <p>Vi er her for at hjælpe dig med alt relateret til palæstinensisk kultur og vores produkter. Tøv ikke med at kontakte os.</p>
-                <div class="cta-actions-conversational">
-                    <a href="faq.html" class="cta-btn-conversational primary">
-                        <i class="fas fa-question-circle"></i>
+                <!-- FAQ -->
+                <div style="text-align: center; padding: 3rem 2rem; background: white; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 2px solid #e8f5e8;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(44,85,48,0.15)'; this.style.borderColor='#2c5530'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='#e8f5e8'">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4a7c59 0%, #6ba084 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 5px 15px rgba(74,124,89,0.3);">
+                        <i class="fas fa-question-circle" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">FAQ</h3>
+                    <p style="color: #6c757d; margin-bottom: 1.5rem; line-height: 1.6;">Find hurtige svar på ofte stillede spørgsmål</p>
+                    <a href="faq.html" style="display: inline-block; background: linear-gradient(135deg, #4a7c59 0%, #6ba084 100%); color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 3px 10px rgba(74,124,89,0.2);" onmouseover="this.style.background='linear-gradient(135deg, #2c5530 0%, #4a7c59 100%)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(74,124,89,0.3)'" onmouseout="this.style.background='linear-gradient(135deg, #4a7c59 0%, #6ba084 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 10px rgba(74,124,89,0.2)'">
                         Se FAQ
                     </a>
-                    <a href="produkter.html" class="cta-btn-conversational secondary">
-                        <i class="fas fa-shopping-bag"></i>
-                        Udforsk Produkter
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section" style="padding: 4rem 0; background: linear-gradient(135deg, #e8f5e8 0%, #f8f9fa 100%);">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(44,85,48,0.1); border: 2px solid #e8f5e8;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; font-weight: 700; color: #2c5530; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Send os en besked</h2>
+                    <p style="color: #6c757d; font-size: 1.1rem;">Udfyld formularen nedenfor, og vi vender tilbage til dig hurtigst muligt.</p>
+                </div>
+
+                <form id="contactForm" style="display: grid; gap: 2rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <label for="firstName" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Fornavn *</label>
+                            <input type="text" id="firstName" name="firstName" required style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'">
+                        </div>
+                        <div>
+                            <label for="lastName" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Efternavn *</label>
+                            <input type="text" id="lastName" name="lastName" required style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Email *</label>
+                            <input type="email" id="email" name="email" required style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'">
+                        </div>
+                        <div>
+                            <label for="phone" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Telefon</label>
+                            <input type="tel" id="phone" name="phone" style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="subject" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Emne *</label>
+                        <select id="subject" name="subject" required style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease; background: white;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'">
+                            <option value="">Vælg emne</option>
+                            <option value="products">Produktspørgsmål</option>
+                            <option value="shipping">Levering & Returnering</option>
+                            <option value="support">Kundeservice</option>
+                            <option value="other">Andet</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Besked *</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Fortæl os hvad vi kan hjælpe dig med..." style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease; resize: vertical;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'"></textarea>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
+                        <input type="checkbox" id="privacy" name="privacy" required style="width: 20px; height: 20px; accent-color: #2c5530;">
+                        <label for="privacy" style="color: #6c757d; font-size: 0.9rem;">
+                            Jeg accepterer <a href="privatlivspolitik.html" style="color: #2c5530; text-decoration: underline;">privatlivspolitikken</a> *
+                        </label>
+                    </div>
+
+                    <button type="submit" style="background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); color: white; padding: 1.5rem 3rem; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 1rem; box-shadow: 0 5px 15px rgba(44,85,48,0.3);" onmouseover="this.style.background='linear-gradient(135deg, #1a472a 0%, #2c5530 100%)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(44,85,48,0.4)'" onmouseout="this.style.background='linear-gradient(135deg, #2c5530 0%, #4a7c59 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(44,85,48,0.3)'">
+                        Send Besked
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Preview -->
+    <section class="faq-preview" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: #2c5530; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Ofte Stillede Spørgsmål</h2>
+                <p style="color: #6c757d; font-size: 1.1rem;">Find hurtige svar på de mest almindelige spørgsmål</p>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="border: 2px solid #e8f5e8; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; background: white; box-shadow: 0 2px 10px rgba(44,85,48,0.1);">
+                    <button onclick="toggleFAQ(this)" style="width: 100%; padding: 1.5rem; background: white; border: none; text-align: left; font-weight: 600; color: #2c5530; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.background='#e8f5e8'" onmouseout="this.style.background='white'">
+                        Hvordan bestiller jeg produkter?
+                        <i class="fas fa-chevron-down" style="transition: transform 0.3s ease; color: #2c5530;"></i>
+                    </button>
+                    <div style="padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+                        <p style="padding: 1.5rem 0; color: #6c757d; line-height: 1.6; margin: 0;">Du kan bestille vores produkter direkte på hjemmesiden ved at tilføje dem til din indkøbskurv og følge checkout-processen. Vi accepterer alle gængse betalingsmetoder.</p>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid #e8f5e8; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; background: white; box-shadow: 0 2px 10px rgba(44,85,48,0.1);">
+                    <button onclick="toggleFAQ(this)" style="width: 100%; padding: 1.5rem; background: white; border: none; text-align: left; font-weight: 600; color: #2c5530; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.background='#e8f5e8'" onmouseout="this.style.background='white'">
+                        Hvor lang tid tager levering?
+                        <i class="fas fa-chevron-down" style="transition: transform 0.3s ease; color: #2c5530;"></i>
+                    </button>
+                    <div style="padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+                        <p style="padding: 1.5rem 0; color: #6c757d; line-height: 1.6; margin: 0;">Standard levering tager 3-5 hverdage i Danmark. Express levering er tilgængelig og tager 1-2 hverdage. International levering tager 7-14 dage.</p>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid #e8f5e8; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; background: white; box-shadow: 0 2px 10px rgba(44,85,48,0.1);">
+                    <button onclick="toggleFAQ(this)" style="width: 100%; padding: 1.5rem; background: white; border: none; text-align: left; font-weight: 600; color: #2c5530; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.background='#e8f5e8'" onmouseout="this.style.background='white'">
+                        Kan jeg returnere produkter?
+                        <i class="fas fa-chevron-down" style="transition: transform 0.3s ease; color: #2c5530;"></i>
+                    </button>
+                    <div style="padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+                        <p style="padding: 1.5rem 0; color: #6c757d; line-height: 1.6; margin: 0;">Ja, du har 30 dages returret på alle produkter. Produkterne skal returneres i original stand og emballage. Se vores returpolitik for flere detaljer.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="faq.html" style="display: inline-block; background: transparent; color: #2c5530; padding: 1rem 2rem; text-decoration: none; border: 2px solid #2c5530; border-radius: 8px; font-weight: 500; transition: all 0.3s ease;" onmouseover="this.style.background='#2c5530'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='#2c5530'">
+                        Se Alle FAQ
                     </a>
                 </div>
             </div>
@@ -545,50 +361,47 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Palæstinensisk Arv</h3>
-                    <p>Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+    <footer style="background: linear-gradient(135deg, #1a472a 0%, #2c5530 25%, #4a7c59 50%, #6ba084 75%, #8bc4a8 100%); color: white; padding: 3rem 0 1.5rem; position: relative; overflow: hidden; box-shadow: 0 -10px 30px rgba(0,0,0,0.3); border-top: 3px solid #ffd700;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,215,0,0.03) 10px, rgba(255,215,0,0.03) 20px); pointer-events: none;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div class="footer-section" style="text-align: center;">
+                    <h3 style="color: #ffd700; font-size: 1.2rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 700;">🇵🇸 Palæstinensisk Arv</h3>
+                    <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.5rem; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social" style="display: flex; justify-content: center; gap: 1rem;">
+                        <a href="#" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease; padding: 0.5rem; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);" onmouseover="this.style.color='#ffd700'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(255,215,0,0.3)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease; padding: 0.5rem; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);" onmouseover="this.style.color='#ffd700'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(255,215,0,0.3)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease; padding: 0.5rem; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);" onmouseover="this.style.color='#ffd700'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(255,215,0,0.3)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Hurtige Links</h4>
-                    <a href="index.html">Hjem</a>
-                    <a href="produkter.html">Produkter</a>
-                    <a href="om-os.html">Om Os</a>
-                    <a href="kultur.html">Kultur</a>
-                    <a href="kontakt.html">Kontakt</a>
+                <div class="footer-section" style="text-align: center;">
+                    <h4 style="color: #ffd700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 600;">🚀 Hurtige Links</h4>
+                    <a href="index.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🏠 Hjem</a>
+                    <a href="produkter.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🛍️ Produkter</a>
+                    <a href="kontakt.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">📞 Kontakt</a>
                 </div>
-                <div class="footer-section">
-                    <h4>Kategorier</h4>
-                    <a href="produkter.html#tøj">Tøj & Mode</a>
-                    <a href="produkter.html#tilbehør">Tilbehør</a>
-                    <a href="kultur.html">Kultur & Historie</a>
-                    <a href="produkter.html#nyheder">Nyheder</a>
+                <div class="footer-section" style="text-align: center;">
+                    <h4 style="color: #ffd700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 600;">📂 Kategorier</h4>
+                    <a href="tøj.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">👕 Tøj & Mode</a>
+                    <a href="tilbehør.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">💍 Tilbehør</a>
+                    <a href="produkter.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🆕 Nyheder</a>
                 </div>
-                <div class="footer-section">
-                    <h4>Kundeservice</h4>
-                    <a href="kontakt.html">Kontakt Os</a>
-                    <a href="levering.html">Levering & Returnering</a>
-                    <a href="faq.html">FAQ</a>
-                    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+                <div class="footer-section" style="text-align: center;">
+                    <h4 style="color: #ffd700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 600;">🛎️ Kundeservice</h4>
+                    <a href="kontakt.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">💬 Kontakt Os</a>
+                    <a href="levering-returnering.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🚚 Levering & Returnering</a>
+                    <a href="faq.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">❓ FAQ</a>
+                    <a href="privatlivspolitik.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🔒 Privatlivspolitik</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
-                    <div class="footer-payment">
-                        <span>Betalinger accepteres:</span>
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                        <i class="fab fa-cc-paypal"></i>
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1.5rem; text-align: center;">
+                <div class="footer-bottom-content" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <p style="color: rgba(255,255,255,0.75); font-size: 0.75rem; margin: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">© 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+                        <span style="color: rgba(255,255,255,0.8); font-size: 0.7rem; margin-right: 0.5rem;">Betalinger accepteres:</span>
+                        <i class="fab fa-cc-visa" style="color: rgba(255,255,255,0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-mastercard" style="color: rgba(255,255,255,0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-paypal" style="color: rgba(255,255,255,0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='scale(1)'"></i>
                     </div>
                 </div>
             </div>
@@ -596,29 +409,10 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="performance-optimizations.js"></script>
     <script>
         // Contact page specific JavaScript
         document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Chat bubble animations
-            const chatBubbles = document.querySelectorAll('.chat-bubble');
-            chatBubbles.forEach((bubble, index) => {
-                bubble.style.animationDelay = `${index * 0.5}s`;
-            });
-
             // Contact form handling
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
@@ -626,59 +420,24 @@
                     e.preventDefault();
                     showNotification('Tak for din besked! Vi vender tilbage til dig hurtigst muligt.', 'success');
                     contactForm.reset();
-                    // Reset to first step
-                    showStep(1);
                 });
             }
         });
 
-        // Multi-step form functionality
-        let currentStep = 1;
-        const totalSteps = 3;
-
-        function showStep(step) {
-            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-            document.querySelector(`[data-step="${step}"]`).classList.add('active');
-            currentStep = step;
-        }
-
-        function nextStep() {
-            if (currentStep < totalSteps) {
-                showStep(currentStep + 1);
-            }
-        }
-
-        function prevStep() {
-            if (currentStep > 1) {
-                showStep(currentStep - 1);
-            }
-        }
-
-        // Contact method selection
-        function selectContactMethod(method) {
-            const cards = document.querySelectorAll('.contact-card-interactive');
-            cards.forEach(card => card.classList.remove('selected'));
+        // FAQ toggle functionality
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
             
-            event.currentTarget.classList.add('selected');
-            
-            // Show different actions based on method
-            switch(method) {
-                case 'email':
-                    window.location.href = 'mailto:info@palestinsk-arv.dk';
-                    break;
-                case 'phone':
-                    window.location.href = 'tel:+4512345678';
-                    break;
-
-                case 'chat':
-                    showNotification('Live chat kommer snart! Kontakt os i mellemtiden via email eller telefon.', 'info');
-                    break;
+            if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.padding = '0 1.5rem';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.style.maxHeight = '0px';
+                content.style.padding = '0 1.5rem';
+                icon.style.transform = 'rotate(0deg)';
             }
-        }
-
-        // FAQ functionality
-        function showMoreFAQs() {
-            showNotification('Flere FAQ kommer snart! Kontakt os direkte for hjælp.', 'info');
         }
 
         // Notification function

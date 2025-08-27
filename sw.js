@@ -1,8 +1,8 @@
 // Service Worker for Palestinian Heritage Store
-const CACHE_NAME = 'palestinensisk-arv-v1.0.0';
-const STATIC_CACHE = 'static-v1.0.0';
-const DYNAMIC_CACHE = 'dynamic-v1.0.0';
-const IMAGE_CACHE = 'images-v1.0.0';
+const CACHE_NAME = 'palestinensisk-arv-v1.1.0';
+const STATIC_CACHE = 'static-v1.1.0';
+const DYNAMIC_CACHE = 'dynamic-v1.1.0';
+const IMAGE_CACHE = 'images-v1.1.0';
 
 // Critical resources for immediate loading
 const CRITICAL_RESOURCES = [
@@ -10,6 +10,7 @@ const CRITICAL_RESOURCES = [
     '/index.html',
     '/styles.css',
     '/script.js',
+    '/performance-optimizations.js',
     '/manifest.json',
     '/offline.html'
 ];
@@ -17,8 +18,7 @@ const CRITICAL_RESOURCES = [
 // Static assets to cache
 const STATIC_ASSETS = [
     '/produkter.html',
-    '/om-os.html',
-    '/kultur.html',
+
     '/kontakt.html',
     '/faq.html',
     '/levering-returnering.html',
@@ -54,19 +54,28 @@ self.addEventListener('install', event => {
             // Cache critical resources immediately
             caches.open(STATIC_CACHE).then(cache => {
                 console.log('Service Worker: Caching critical resources');
-                return cache.addAll(CRITICAL_RESOURCES);
+                return cache.addAll(CRITICAL_RESOURCES).catch(error => {
+                    console.warn('Service Worker: Some critical resources failed to cache:', error);
+                    return Promise.resolve();
+                });
             }),
             
             // Cache static assets
             caches.open(STATIC_CACHE).then(cache => {
                 console.log('Service Worker: Caching static assets');
-                return cache.addAll(STATIC_ASSETS);
+                return cache.addAll(STATIC_ASSETS).catch(error => {
+                    console.warn('Service Worker: Some static assets failed to cache:', error);
+                    return Promise.resolve();
+                });
             }),
             
             // Cache images
             caches.open(IMAGE_CACHE).then(cache => {
                 console.log('Service Worker: Caching images');
-                return cache.addAll(IMAGE_ASSETS);
+                return cache.addAll(IMAGE_ASSETS).catch(error => {
+                    console.warn('Service Worker: Some images failed to cache:', error);
+                    return Promise.resolve();
+                });
             })
         ]).then(() => {
             console.log('Service Worker: Installation complete');

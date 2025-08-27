@@ -48,15 +48,45 @@
                     <span class="cart-count" id="cartCount">0</span>
                 </button>
                 <div class="language-currency-selector">
-                    <select class="language-selector" id="languageSelector" onchange="changeLanguage()">
-                        <option value="da">🇩🇰 Dansk</option>
-                        <option value="en">🇺🇸 English</option>
-                    </select>
-                    <select class="currency-selector" id="currencySelector" onchange="changeCurrency()">
-                        <option value="DKK">DKK</option>
-                        <option value="EUR">EUR</option>
-                        <option value="USD">USD</option>
-                    </select>
+                    <div class="selector-container">
+                        <button class="selector-btn language-selector-btn" onclick="toggleLanguageDropdown()">
+                            <span class="selector-icon">🌍</span>
+                            <span class="selector-text" id="currentLanguageDisplay">🇩🇰 Dansk</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown language-dropdown" id="languageDropdown">
+                            <div class="dropdown-item" onclick="console.log('Dansk clicked'); changeLanguage('da')">
+                                <span class="flag">🇩🇰</span>
+                                <span class="text">Dansk</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('English clicked'); changeLanguage('en')">
+                                <span class="flag">🇺🇸</span>
+                                <span class="text">English</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="selector-container">
+                        <button class="selector-btn currency-selector-btn" onclick="toggleCurrencyDropdown()">
+                            <span class="selector-icon">💰</span>
+                            <span class="selector-text" id="currentCurrencyDisplay">DKK</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown currency-dropdown" id="currencyDropdown">
+                            <div class="dropdown-item" onclick="console.log('DKK clicked'); changeCurrency('DKK')">
+                                <span class="currency-symbol">kr</span>
+                                <span class="text">DKK</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('EUR clicked'); changeCurrency('EUR')">
+                                <span class="currency-symbol">€</span>
+                                <span class="text">EUR</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('USD clicked'); changeCurrency('USD')">
+                                <span class="currency-symbol">$</span>
+                                <span class="text">USD</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
@@ -461,8 +491,7 @@
                     <div class="footer-social">
                         <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 
@@ -470,8 +499,6 @@
                     <h4>Hurtige Links</h4>
                     <a href="index.html">Hjem</a>
                     <a href="produkter.html">Produkter</a>
-                    <a href="om-os.html">Om Os</a>
-                    <a href="kultur.html">Kultur</a>
                     <a href="kontakt.html">Kontakt</a>
                 </div>
                 
@@ -479,7 +506,6 @@
                     <h4>Kategorier</h4>
                     <a href="produkter.html">Tøj & Mode</a>
                     <a href="produkter.html">Tilbehør</a>
-                    <a href="produkter.html">Kultur & Historie</a>
                     <a href="produkter.html">Nyheder</a>
                 </div>
                 
