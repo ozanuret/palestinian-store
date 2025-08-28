@@ -1,0 +1,1180 @@
+    <!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tøj & Mode - Palæstinensisk Arv Butik</title>
+    <meta name="description" content="Udforsk vores samling af autentiske palæstinensiske tøj og mode. T-shirts, hoodies og unisex items af højeste kvalitet.">
+    <link rel="stylesheet" href="styles.css?v=1.4">
+    <link rel="stylesheet" href="enhanced-selectors.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Professional E-commerce Styles */
+        .products-page {
+            padding: 2rem 0;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .products-header {
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .products-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .products-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Filters Sidebar */
+        .filters-sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .filter-section {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 1.5rem;
+        }
+
+        .filter-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .filter-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c5530;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-option:hover {
+            background: #f8f9fa;
+        }
+
+        .filter-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #2c5530;
+        }
+
+        .filter-option span {
+            font-size: 0.95rem;
+            color: #495057;
+        }
+
+        .price-range {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .price-input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .clear-filters-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .clear-filters-btn:hover {
+            background: #5a6268;
+        }
+
+        /* Products Grid */
+        .products-main {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .products-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .results-count {
+            font-size: 0.95rem;
+            color: #6c757d;
+        }
+
+        .sort-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            background: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid #e9ecef;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-image-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+
+        .overlay-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            color: #2c5530;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay-btn:hover {
+            background: #2c5530;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c5530;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c5530;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            flex: 1;
+            padding: 0.75rem;
+            background: #2c5530;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #1a472a;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #2c5530;
+            background: white;
+            color: #2c5530;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-secondary:hover {
+            background: #2c5530;
+            color: white;
+        }
+
+        /* Quick View Modal */
+        .quick-view-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .quick-view-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .quick-view-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6c757d;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #2c5530;
+        }
+
+        .quick-view-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 1.5rem;
+        }
+
+        .quick-view-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .quick-view-info h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c5530;
+            margin-bottom: 1rem;
+        }
+
+        .quick-view-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c5530;
+            margin-bottom: 1.5rem;
+        }
+
+        .quick-view-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters-sidebar {
+                position: static;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+            
+            .quick-view-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-toolbar {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+        }
+
+        /* Navigation Dropdown */
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .nav-menu .nav-link:hover + .nav-dropdown,
+        .nav-dropdown:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f9fa;
+            color: #2c5530;
+        }
+
+        /* Loading States */
+        .product-placeholder {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h1>🇵🇸 Palæstinensisk Arv</h1>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Hjem</a>
+                <div style="position: relative;">
+                    <a href="produkter.html" class="nav-link">Produkter</a>
+                    <div class="nav-dropdown">
+                        <a href="produkter.html" class="dropdown-item">Alle Produkter</a>
+                        <a href="tøj.html" class="dropdown-item active">Tøj</a>
+                        <a href="tilbehør.html" class="dropdown-item">Tilbehør</a>
+                    </div>
+                </div>
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+
+                <button class="wishlist-btn" onclick="toggleWishlist()">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="language-currency-selector">
+                    <div class="selector-container">
+                        <button class="selector-btn language-selector-btn" onclick="toggleLanguageDropdown()">
+                            <span class="selector-icon">🌍</span>
+                            <span class="selector-text" id="currentLanguageDisplay">🇩🇰 Dansk</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown language-dropdown" id="languageDropdown">
+                            <div class="dropdown-item" onclick="console.log('Dansk clicked'); changeLanguage('da')">
+                                <span class="flag">🇩🇰</span>
+                                <span class="text">Dansk</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('English clicked'); changeLanguage('en')">
+                                <span class="flag">🇺🇸</span>
+                                <span class="text">English</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="selector-container">
+                        <button class="selector-btn currency-selector-btn" onclick="toggleCurrencyDropdown()">
+                            <span class="selector-icon">💰</span>
+                            <span class="selector-text" id="currentCurrencyDisplay">DKK</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown currency-dropdown" id="currencyDropdown">
+                            <div class="dropdown-item" onclick="console.log('DKK clicked'); changeCurrency('DKK')">
+                                <span class="currency-symbol">kr</span>
+                                <span class="text">DKK</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('EUR clicked'); changeCurrency('EUR')">
+                                <span class="currency-symbol">€</span>
+                                <span class="text">EUR</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('USD clicked'); changeCurrency('USD')">
+                                <span class="currency-symbol">$</span>
+                                <span class="text">USD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link">Hjem</a>
+            <a href="produkter.html" class="mobile-link">Produkter</a>
+            <a href="kontakt.html" class="mobile-link">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="product-modal" style="display: none;">
+        <div id="productModalBody" class="product-modal-body">
+            <!-- Modal content will be inserted here -->
+        </div>
+    </div>
+    <div id="productModalOverlay" class="product-modal-overlay" style="display: none;" onclick="closeProductModal()"></div>
+
+    <!-- Products Page -->
+    <div class="products-page">
+        <!-- Products Header -->
+        <div class="products-header">
+            <div class="container">
+                <h1>Tøj & Mode</h1>
+                <p>Autentiske palæstinensiske tøj og mode</p>
+            </div>
+        </div>
+
+        <!-- Products Container -->
+        <div class="products-container">
+            <!-- Filters Sidebar -->
+            <div class="filters-sidebar">
+                <h2 style="margin-bottom: 1.5rem; color: #2c5530; font-size: 1.3rem;">Filtre</h2>
+                
+                <!-- Type Filter -->
+                <div class="filter-section">
+                    <h3>
+                        <i class="fas fa-tshirt"></i>
+                        Type
+                    </h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                                                    <input type="checkbox" id="filter-type-t-shirt" name="filter-type-t-shirt" value="t-shirt" onchange="applyFilters()">
+                        <span>T-Shirts</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-type-hoodie" name="filter-type-hoodie" value="hoodie" onchange="applyFilters()">
+                        <span>Hoodies</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-type-unisex" name="filter-type-unisex" value="unisex" onchange="applyFilters()">
+                        <span>Unisex</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Size Filter -->
+                <div class="filter-section">
+                    <h3>
+                        <i class="fas fa-ruler"></i>
+                        Størrelse
+                    </h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                                                    <input type="checkbox" id="filter-size-xs" name="filter-size-xs" value="XS" onchange="applyFilters()">
+                        <span>XS</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-size-s" name="filter-size-s" value="S" onchange="applyFilters()">
+                        <span>S</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-size-m" name="filter-size-m" value="M" onchange="applyFilters()">
+                        <span>M</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-size-l" name="filter-size-l" value="L" onchange="applyFilters()">
+                        <span>L</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-size-xl" name="filter-size-xl" value="XL" onchange="applyFilters()">
+                        <span>XL</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-size-xxl" name="filter-size-xxl" value="XXL" onchange="applyFilters()">
+                            <span>XXL</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Color Filter -->
+                <div class="filter-section">
+                    <h3>
+                        <i class="fas fa-palette"></i>
+                        Farve
+                    </h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                                                    <input type="checkbox" id="filter-color-sort" name="filter-color-sort" value="sort" onchange="applyFilters()">
+                        <span>Sort</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-color-hvid" name="filter-color-hvid" value="hvid" onchange="applyFilters()">
+                        <span>Hvid</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-color-grøn" name="filter-color-grøn" value="grøn" onchange="applyFilters()">
+                        <span>Grøn</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-color-rød" name="filter-color-rød" value="rød" onchange="applyFilters()">
+                        <span>Rød</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" id="filter-color-sort-hvid" name="filter-color-sort-hvid" value="sort-hvid" onchange="applyFilters()">
+                            <span>Sort/Hvid</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="filter-section">
+                    <h3>
+                        <i class="fas fa-coins"></i>
+                        Pris
+                    </h3>
+                    <div class="price-range">
+                        <input type="number" class="price-input" placeholder="Min" id="minPrice" onchange="applyFilters()">
+                        <span>-</span>
+                        <input type="number" class="price-input" placeholder="Max" id="maxPrice" onchange="applyFilters()">
+                    </div>
+                </div>
+
+                <button class="clear-filters-btn" onclick="clearFilters()">
+                    <i class="fas fa-times"></i>
+                    Ryd Filtre
+                </button>
+            </div>
+
+            <!-- Products Main -->
+            <div class="products-main">
+                <!-- Products Toolbar -->
+                <div class="products-toolbar">
+                                    <div class="results-count">
+                    Viser <span id="resultsCount">3</span> produkter
+                </div>
+                    <select class="sort-select" onchange="sortProducts(this.value)">
+                        <option value="newest">Nyeste først</option>
+                        <option value="oldest">Ældste først</option>
+                        <option value="price-low">Pris: Lav til høj</option>
+                        <option value="price-high">Pris: Høj til lav</option>
+                        <option value="name">Navn: A-Z</option>
+                    </select>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Product cards will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal" id="quickViewModal">
+        <div class="quick-view-content">
+            <div class="quick-view-header">
+                <h3>Produkt Forhåndsvisning</h3>
+                <button class="close-modal" onclick="closeQuickView()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="quick-view-body" id="quickViewBody">
+                <!-- Quick view content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Indkøbskurv</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">0,00 kr</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Gå til Kassen</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h3>Ønskeliste</h3>
+            <button class="close-wishlist" onclick="toggleWishlist()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <!-- Wishlist items will be displayed here -->
+        </div>
+        <div class="wishlist-footer">
+            <button class="clear-wishlist-btn" onclick="clearWishlist()">Ryd Ønskeliste</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Overlay -->
+    <div class="wishlist-overlay" id="wishlistOverlay" onclick="toggleWishlist()"></div>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Indlæser...</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: linear-gradient(135deg, #0f2d14 0%, #1a472a 25%, #2d5a3d 50%, #4a7c59 75%, #6b9c7a 100%); color: white; padding: 3rem 0 1.5rem; position: relative; overflow: hidden; box-shadow: 0 -10px 30px rgba(0,0,0,0.3);">
+        <!-- Animated background elements -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%); animation: float 20s ease-in-out infinite;"></div>
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px); opacity: 0.4;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                <div class="footer-section" style="position: relative;">
+                    <h3 style="color: white; font-weight: 600; font-size: 1.2rem; margin-bottom: 0.8rem; position: relative; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        🇵🇸 Palæstinensisk Arv
+                        <div style="position: absolute; bottom: -4px; left: 0; width: 30px; height: 2px; background: linear-gradient(90deg, #ffd700, #ffed4e); border-radius: 1px;"></div>
+                    </h3>
+                    <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.4; font-size: 0.85rem; margin-bottom: 1rem; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social" style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background: rgba(255,255,255,0.15); border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);" onmouseover="this.style.transform='scale(1.1)'; this.style.background='rgba(255,215,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(255,255,255,0.15)';">
+                            <i class="fab fa-facebook" style="font-size: 0.9rem;"></i>
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background: rgba(255,255,255,0.15); border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);" onmouseover="this.style.transform='scale(1.1)'; this.style.background='rgba(255,215,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(255,255,255,0.15)';">
+                            <i class="fab fa-instagram" style="font-size: 0.9rem;"></i>
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; background: rgba(255,255,255,0.15); border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2);" onmouseover="this.style.transform='scale(1.1)'; this.style.background='rgba(255,215,0,0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(255,255,255,0.15)';">
+                            <i class="fab fa-tiktok" style="font-size: 0.9rem;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section" style="position: relative;">
+                    <h4 style="color: white; font-weight: 600; font-size: 1rem; margin-bottom: 0.8rem; position: relative; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        🚀 Hurtige Links
+                        <div style="position: absolute; bottom: -3px; left: 0; width: 25px; height: 1px; background: linear-gradient(90deg, #ffd700, #ffed4e); border-radius: 1px;"></div>
+                    </h4>
+                    <a href="index.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🏠 Hjem</a>
+                    <a href="produkter.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🛍️ Produkter</a>
+
+                    <a href="kontakt.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">📞 Kontakt</a>
+                </div>
+                <div class="footer-section" style="position: relative;">
+                    <h4 style="color: white; font-weight: 600; font-size: 1rem; margin-bottom: 0.8rem; position: relative; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        📂 Kategorier
+                        <div style="position: absolute; bottom: -3px; left: 0; width: 25px; height: 1px; background: linear-gradient(90deg, #ffd700, #ffed4e); border-radius: 1px;"></div>
+                    </h4>
+                    <a href="tøj.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">👕 Tøj & Mode</a>
+                    <a href="tilbehør.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">💍 Tilbehør</a>
+
+                    <a href="produkter.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🆕 Nyheder</a>
+                </div>
+                <div class="footer-section" style="position: relative;">
+                    <h4 style="color: white; font-weight: 600; font-size: 1rem; margin-bottom: 0.8rem; position: relative; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        🛎️ Kundeservice
+                        <div style="position: absolute; bottom: -3px; left: 0; width: 25px; height: 1px; background: linear-gradient(90deg, #ffd700, #ffed4e); border-radius: 1px;"></div>
+                    </h4>
+                    <a href="kontakt.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">💬 Kontakt Os</a>
+                    <a href="levering-returnering.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🚚 Levering & Returnering</a>
+                    <a href="faq.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">❓ FAQ</a>
+                    <a href="privatlivspolitik.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🔒 Privatlivspolitik</a>
+                </div>
+            </div>
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 1rem; position: relative;">
+                <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);"></div>
+                <div class="footer-bottom-content" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.75rem; margin: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment" style="color: rgba(255, 255, 255, 0.8); display: flex; align-items: center; gap: 0.3rem;">
+                        <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.75rem; font-weight: 500;">💳 Betalinger:</span>
+                        <i class="fab fa-cc-visa" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-mastercard" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-paypal" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='scale(1)'"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Sample clothing product data
+        const products = [
+            {
+                id: 1,
+                name: "Palæstinensisk T-Shirt",
+                category: "tøj",
+                type: "t-shirt",
+                price: 299,
+                image: "",
+                colors: ["sort", "hvid", "grøn"],
+                sizes: ["S", "M", "L", "XL"],
+                description: "Autentisk palæstinensisk t-shirt med traditionelle mønstre og palæstinensisk flag design. 100% bomuld, behagelig at have på og perfekt til at vise din støtte til palæstinensisk kultur.",
+                details: {
+                    material: "100% Bomuld",
+                    fit: "Regular Fit",
+                    care: "Vask ved 30°C",
+                    origin: "Håndlavet i Palæstina"
+                }
+            },
+            {
+                id: 2,
+                name: "Palæstinensisk Hoodie",
+                category: "tøj",
+                type: "hoodie",
+                price: 399,
+                image: "",
+                colors: ["sort", "grøn"],
+                sizes: ["S", "M", "L", "XL", "XXL"],
+                description: "Varm og behagelig hoodie med palæstinensisk design. Perfekt til koldere dage og viser din støtte til palæstinensisk arv. Med lommer og trækstrenge.",
+                details: {
+                    material: "80% Bomuld, 20% Polyester",
+                    fit: "Loose Fit",
+                    care: "Vask ved 30°C",
+                    origin: "Håndlavet i Palæstina"
+                }
+            },
+            {
+                id: 3,
+                name: "Unisex Palæstinensisk Top",
+                category: "tøj",
+                type: "unisex",
+                price: 349,
+                image: "",
+                colors: ["sort", "hvid", "sort-hvid"],
+                sizes: ["XS", "S", "M", "L", "XL"],
+                description: "Unisex top med palæstinensisk flag design. Passer til alle køn og størrelser. Moderne snit med traditionelle palæstinensiske symboler.",
+                details: {
+                    material: "100% Bomuld",
+                    fit: "Unisex Fit",
+                    care: "Vask ved 30°C",
+                    origin: "Håndlavet i Palæstina"
+                }
+            }
+        ];
+
+        let filteredProducts = [...products];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            checkUrlParams();
+        });
+
+        // Render products
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const resultsCount = document.getElementById('resultsCount');
+            
+            resultsCount.textContent = filteredProducts.length;
+            
+            grid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card" data-product-id="${product.id}" onclick="quickView(${product.id})">
+                    <div class="product-image-container">
+                        <div class="product-image-placeholder" style="width: 100%; height: 100%; background: #f8f9fa; display: flex; align-items: center; justify-content: center; color: #6c757d; font-size: 1.2rem; font-weight: 500;">
+                            <i class="fas fa-image" style="font-size: 3rem; opacity: 0.3;"></i>
+                        </div>
+                        <div class="product-overlay">
+                            <button class="overlay-btn" onclick="event.stopPropagation(); quickView(${product.id})" title="Hurtig visning">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="overlay-btn" onclick="event.stopPropagation(); addToWishlist(${product.id})" title="Tilføj til ønskeliste">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="product-badge">Nyt</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Tøj & Mode</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">${product.price} kr</div>
+                        <div class="product-actions">
+                            <button class="btn-primary" onclick="event.stopPropagation(); addToCart(${product.id})">
+                                <i class="fas fa-shopping-cart"></i>
+                                Tilføj til kurv
+                            </button>
+                            <button class="btn-secondary" onclick="event.stopPropagation(); window.location.href='produkt-detaljer.html?id=${product.id}'" title="Se detaljer">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Apply filters
+        function applyFilters() {
+            const typeFilters = Array.from(document.querySelectorAll('input[value*="t-shirt"], input[value*="hoodie"], input[value*="unisex"]:checked')).map(cb => cb.value);
+            const sizeFilters = Array.from(document.querySelectorAll('input[value*="S"], input[value*="M"], input[value*="L"], input[value*="X"]:checked')).map(cb => cb.value);
+            const colorFilters = Array.from(document.querySelectorAll('input[value*="sort"], input[value*="hvid"], input[value*="grøn"]:checked')).map(cb => cb.value);
+            const minPrice = document.getElementById('minPrice').value;
+            const maxPrice = document.getElementById('maxPrice').value;
+
+            filteredProducts = products.filter(product => {
+                const typeMatch = typeFilters.length === 0 || typeFilters.includes(product.type);
+                const sizeMatch = sizeFilters.length === 0 || product.sizes.some(size => sizeFilters.includes(size));
+                const colorMatch = colorFilters.length === 0 || product.colors.some(color => colorFilters.includes(color));
+                const priceMatch = (!minPrice || product.price >= minPrice) && (!maxPrice || product.price <= maxPrice);
+
+                return typeMatch && sizeMatch && colorMatch && priceMatch;
+            });
+
+            renderProducts();
+        }
+
+        // Clear filters
+        function clearFilters() {
+            document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.getElementById('minPrice').value = '';
+            document.getElementById('maxPrice').value = '';
+            filteredProducts = [...products];
+            renderProducts();
+        }
+
+        // Sort products
+        function sortProducts(sortBy) {
+            switch(sortBy) {
+                case 'newest':
+                    filteredProducts.sort((a, b) => b.id - a.id);
+                    break;
+                case 'oldest':
+                    filteredProducts.sort((a, b) => a.id - b.id);
+                    break;
+                case 'price-low':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'name':
+                    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+            }
+            renderProducts();
+        }
+
+        // Quick view modal
+        function quickView(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const modal = document.getElementById('quickViewModal');
+            const body = document.getElementById('quickViewBody');
+
+            body.innerHTML = `
+                <div>
+                    <div class="quick-view-image-placeholder" style="width: 100%; height: 400px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; color: #6c757d; border-radius: 8px;">
+                        <i class="fas fa-image" style="font-size: 5rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+                <div>
+                    <h2>${product.name}</h2>
+                    <div class="quick-view-price">${product.price} kr</div>
+                    <p style="margin-bottom: 1.5rem; line-height: 1.6;">${product.description}</p>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #2c5530; margin-bottom: 0.5rem;">Produktdetaljer:</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;"><strong>Materiale:</strong> ${product.details.material}</li>
+                            <li style="margin-bottom: 0.5rem;"><strong>Pasform:</strong> ${product.details.fit}</li>
+                            <li style="margin-bottom: 0.5rem;"><strong>Pleje:</strong> ${product.details.care}</li>
+                            <li style="margin-bottom: 0.5rem;"><strong>Oprindelse:</strong> ${product.details.origin}</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="quick-view-actions">
+                        <button class="btn-primary" onclick="addToCart(${product.id}); closeQuickView();">
+                            <i class="fas fa-shopping-cart"></i>
+                            Tilføj til kurv
+                        </button>
+                        <button class="btn-secondary" onclick="window.location.href='produkt-detaljer.html?id=${product.id}'">
+                            Se detaljer
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            modal.style.display = 'flex';
+        }
+
+        // Close quick view
+        function closeQuickView() {
+            document.getElementById('quickViewModal').style.display = 'none';
+        }
+
+        // Check URL parameters for category filtering
+        function checkUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            
+            if (category) {
+                const checkbox = document.querySelector(`input[value="${category}"]`);
+                if (checkbox) {
+                    checkbox.checked = true;
+                    applyFilters();
+                }
+            }
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            // Get existing cart
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            
+            // Check if product already in cart
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            showNotification('Produkt tilføjet til kurv!', 'success');
+        }
+
+        // Add to wishlist
+        function addToWishlist(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+            
+            if (!wishlist.find(item => item.id === productId)) {
+                wishlist.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image
+                });
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                updateWishlistCount();
+                showNotification('Produkt tilføjet til ønskeliste!', 'success');
+            } else {
+                showNotification('Produkt findes allerede i ønskeliste!', 'info');
+            }
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        // Update wishlist count
+        function updateWishlistCount() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+            document.getElementById('wishlistCount').textContent = wishlist.length;
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const container = document.getElementById('notificationContainer');
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            container.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Initialize counts
+        updateCartCount();
+        updateWishlistCount();
+
+        // Close modal when clicking outside
+        document.getElementById('quickViewModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeQuickView();
+            }
+        });
+    </script>
+</body>
+</html> 

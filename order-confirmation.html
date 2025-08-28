@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordre Bekræftet - Palæstinensisk Arv Butik</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h1>🇵🇸 Palæstinensisk Arv</h1>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="confirmation-container" style="max-width: 800px; margin: 2rem auto; padding: 2rem; text-align: center;">
+        <div class="success-icon" style="width: 80px; height: 80px; background: linear-gradient(135deg, #28a745, #20c997); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 2rem;">
+            <i class="fas fa-check"></i>
+        </div>
+        
+        <h1 style="color: #2c5530; font-size: 2rem; margin-bottom: 0.5rem;">Tak for din ordre!</h1>
+        <p style="color: #666; font-size: 1.1rem; margin-bottom: 2rem;">Din betaling er bekræftet og din ordre er under behandling</p>
+        
+        <div id="orderDetails" style="background: #f8f9fa; padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
+            <h3 style="color: #2c5530; margin-bottom: 1rem;">Ordre Detaljer</h3>
+            <p><strong>Ordre ID:</strong> <span id="orderId">Indlæser...</span></p>
+            <p><strong>Dato:</strong> <span id="orderDate">Indlæser...</span></p>
+            <p><strong>Status:</strong> <span id="orderStatus">Bekræftet</span></p>
+        </div>
+        
+        <div class="action-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="index.html" style="padding: 1rem 2rem; background: linear-gradient(135deg, #2c5530, #4a7c59); color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                <i class="fas fa-home"></i> Tilbage til Hjem
+            </a>
+            <a href="produkter.html" style="padding: 1rem 2rem; background: #f8f9fa; color: #333; text-decoration: none; border-radius: 8px; font-weight: 600; border: 1px solid #dee2e6;">
+                <i class="fas fa-shopping-bag"></i> Shop Flere Produkter
+            </a>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            
+            if (orderId) {
+                document.getElementById('orderId').textContent = orderId;
+            } else {
+                document.getElementById('orderId').textContent = 'PAL_' + Date.now();
+            }
+            
+            document.getElementById('orderDate').textContent = new Date().toLocaleDateString('da-DK');
+        });
+    </script>
+</body>
+</html> 

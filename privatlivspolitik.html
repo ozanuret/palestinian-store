@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privatlivspolitik - Palæstinensisk Arv Butik</title>
+    <meta name="description" content="Vores privatlivspolitik og hvordan vi beskytter dine personlige oplysninger.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c5530">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Palæstinensisk Arv">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+                            <div class="nav-brand">
+                    <a href="index.html">
+                        <h1>🇵🇸 Palæstinensisk Arv</h1>
+                    </a>
+                </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Hjem</a>
+                <div style="position: relative;">
+                    <a href="produkter.html" class="nav-link">Produkter</a>
+                    <div class="nav-dropdown">
+                        <a href="produkter.html" class="dropdown-item">Alle Produkter</a>
+                        <a href="tøj.html" class="dropdown-item">Tøj</a>
+                        <a href="tilbehør.html" class="dropdown-item">Tilbehør</a>
+                    </div>
+                </div>
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+
+                <button class="wishlist-btn" onclick="toggleWishlist()">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="language-currency-selector">
+                    <div class="selector-container">
+                        <button class="selector-btn language-selector-btn" onclick="toggleLanguageDropdown()">
+                            <span class="selector-icon">🌍</span>
+                            <span class="selector-text" id="currentLanguageDisplay">🇩🇰 Dansk</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown language-dropdown" id="languageDropdown">
+                            <div class="dropdown-item" onclick="console.log('Dansk clicked'); changeLanguage('da')">
+                                <span class="flag">🇩🇰</span>
+                                <span class="text">Dansk</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('English clicked'); changeLanguage('en')">
+                                <span class="flag">🇺🇸</span>
+                                <span class="text">English</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="selector-container">
+                        <button class="selector-btn currency-selector-btn" onclick="toggleCurrencyDropdown()">
+                            <span class="selector-icon">💰</span>
+                            <span class="selector-text" id="currentCurrencyDisplay">DKK</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown currency-dropdown" id="currencyDropdown">
+                            <div class="dropdown-item" onclick="console.log('DKK clicked'); changeCurrency('DKK')">
+                                <span class="currency-symbol">kr</span>
+                                <span class="text">DKK</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('EUR clicked'); changeCurrency('EUR')">
+                                <span class="currency-symbol">€</span>
+                                <span class="text">EUR</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('USD clicked'); changeCurrency('USD')">
+                                <span class="currency-symbol">$</span>
+                                <span class="text">USD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link">Hjem</a>
+            <a href="produkter.html" class="mobile-link">Produkter</a>
+            <a href="kontakt.html" class="mobile-link">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Privatlivspolitik</h1>
+            <p>Hvordan vi beskytter og håndterer dine personlige oplysninger</p>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Page -->
+    <section class="privacy-policy-page">
+        <div class="container">
+            <!-- Quick Navigation -->
+            <div class="page-navigation">
+                <a href="#overview" class="nav-link">Oversigt</a>
+                <a href="#data-collection" class="nav-link">Dataindsamling</a>
+                <a href="#data-use" class="nav-link">Brug af Data</a>
+                <a href="#data-sharing" class="nav-link">Deling af Data</a>
+
+                <a href="#rights" class="nav-link">Dine Rettigheder</a>
+                <a href="#security" class="nav-link">Sikkerhed</a>
+                <a href="#contact" class="nav-link">Kontakt</a>
+            </div>
+
+            <!-- Overview Section -->
+            <section id="overview" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2>Oversigt</h2>
+                    <p>Din privatliv er vigtig for os, og vi er forpligtet til at beskytte dine personlige oplysninger</p>
+                </div>
+
+                <div class="policy-overview">
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3>Din Privatliv</h3>
+                        <p>Vi respekterer dit privatliv og er forpligtet til at beskytte dine personlige oplysninger i overensstemmelse med GDPR og dansk lovgivning.</p>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-transparency"></i>
+                        </div>
+                        <h3>Transparens</h3>
+                        <p>Vi er transparente omkring, hvordan vi indsamler, bruger og deler dine oplysninger. Denne politik forklarer det hele i detaljer.</p>
+                    </div>
+
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-controls"></i>
+                        </div>
+                        <h3>Kontrol</h3>
+                        <p>Du har fuld kontrol over dine personlige oplysninger. Du kan når som helst anmode om at se, ændre eller slette dine data.</p>
+                    </div>
+                </div>
+
+                <div class="last-updated">
+                    <p><strong>Sidst opdateret:</strong> 1. januar 2024</p>
+                    <p><strong>Version:</strong> 1.0</p>
+                </div>
+            </section>
+
+            <!-- Data Collection Section -->
+            <section id="data-collection" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h2>Hvilke oplysninger indsamler vi?</h2>
+                    <p>Vi indsamler kun de oplysninger, der er nødvendige for at give dig den bedste oplevelse</p>
+                </div>
+
+                <div class="data-types">
+                    <div class="data-type">
+                        <h3>Personlige oplysninger</h3>
+                        <ul>
+                            <li><strong>Navn og kontaktoplysninger:</strong> Når du opretter en konto eller laver en bestilling</li>
+                            <li><strong>Leveringsadresse:</strong> For at kunne levere dine produkter</li>
+                            <li><strong>Telefonnummer:</strong> For leveringsopdateringer og kundeservice</li>
+                            <li><strong>Email adresse:</strong> For ordrebekræftelser og kommunikation</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-type">
+                        <h3>Betalingsoplysninger</h3>
+                        <ul>
+                            <li><strong>Betalingsmetode:</strong> Vi gemmer ikke dine kreditkortoplysninger</li>
+                            <li><strong>Transaktionshistorik:</strong> For at kunne håndtere returneringer og refusioner</li>
+                            <li><strong>Faktureringsadresse:</strong> For fakturering og regnskab</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-type">
+                        <h3>Brugsdata</h3>
+                        <ul>
+                            <li><strong>Webstedsaktivitet:</strong> Hvilke sider du besøger og hvordan du bruger vores site</li>
+                            <li><strong>Produktinteresser:</strong> Hvilke produkter du ser på og tilføjer til ønskeliste</li>
+                            <li><strong>Enhedsoplysninger:</strong> Browser type, operativsystem og IP-adresse</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Use Section -->
+            <section id="data-use" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h2>Hvordan bruger vi dine oplysninger?</h2>
+                    <p>Vi bruger dine oplysninger kun til de formål, du har givet samtykke til</p>
+                </div>
+
+                <div class="data-usage">
+                    <div class="usage-card">
+                        <div class="usage-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Ordrebehandling</h3>
+                        <p>For at behandle dine bestillinger, sende bekræftelser og levere produkter til dig.</p>
+                    </div>
+
+                    <div class="usage-card">
+                        <div class="usage-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Kundeservice</h3>
+                        <p>For at kunne hjælpe dig med spørgsmål, returneringer og support.</p>
+                    </div>
+
+                    <div class="usage-card">
+                        <div class="usage-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Forbedring af service</h3>
+                        <p>For at forbedre vores website, produkter og kundeservice baseret på feedback.</p>
+                    </div>
+
+                    <div class="usage-card">
+                        <div class="usage-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Marketing (kun med samtykke)</h3>
+                        <p>For at sende dig relevante tilbud og nyheder, hvis du har givet samtykke.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Sharing Section -->
+            <section id="data-sharing" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h2>Deling af oplysninger</h2>
+                    <p>Vi deler aldrig dine personlige oplysninger uden din tilladelse, undtagen i specifikke tilfælde</p>
+                </div>
+
+                <div class="sharing-policy">
+                    <div class="sharing-card">
+                        <h3>Vi deler IKKE dine oplysninger med:</h3>
+                        <ul>
+                            <li>Tredjeparter til marketingformål</li>
+                            <li>Uautoriserede partnere</li>
+                            <li>Organisationer uden for EU (medmindre det er nødvendigt for ordrebehandling)</li>
+                        </ul>
+                    </div>
+
+                    <div class="sharing-card">
+                        <h3>Vi deler kun med:</h3>
+                        <ul>
+                            <li><strong>Leveringspartnere:</strong> Kun nødvendige oplysninger for levering</li>
+                            <li><strong>Betalingsprocessorer:</strong> For sikker betalingsbehandling</li>
+                            <li><strong>Myndigheder:</strong> Kun når loven kræver det</li>
+                            <li><strong>Vores team:</strong> Kun til kundeservice og ordrebehandling</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Rights Section -->
+            <section id="rights" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h2>Dine rettigheder</h2>
+                    <p>Du har ret til at kontrollere dine personlige oplysninger</p>
+                </div>
+
+                <div class="user-rights">
+                    <div class="right-card">
+                        <div class="right-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Ret til indsigt</h3>
+                        <p>Du har ret til at se, hvilke personlige oplysninger vi har om dig.</p>
+                    </div>
+
+                    <div class="right-card">
+                        <div class="right-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3>Ret til rettelse</h3>
+                        <p>Du kan når som helst opdatere eller rette dine personlige oplysninger.</p>
+                    </div>
+
+                    <div class="right-card">
+                        <div class="right-icon">
+                            <i class="fas fa-trash"></i>
+                        </div>
+                        <h3>Ret til sletning</h3>
+                        <p>Du kan anmode om, at vi sletter dine personlige oplysninger.</p>
+                    </div>
+
+                    <div class="right-card">
+                        <div class="right-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h3>Ret til dataportabilitet</h3>
+                        <p>Du kan anmode om en kopi af dine data i et struktureret format.</p>
+                    </div>
+
+                    <div class="right-card">
+                        <div class="right-icon">
+                            <i class="fas fa-ban"></i>
+                        </div>
+                        <h3>Ret til indsigelse</h3>
+                        <p>Du kan protestere mod behandling af dine personlige oplysninger.</p>
+                    </div>
+
+                    <div class="right-card">
+                        <div class="right-icon">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <h3>Ret til begrænsning</h3>
+                        <p>Du kan anmode om begrænsning af behandling af dine oplysninger.</p>
+                    </div>
+                </div>
+
+                <div class="rights-exercise">
+                    <h3>Hvordan udøver du dine rettigheder?</h3>
+                    <p>Du kan udøve dine rettigheder ved at kontakte os via email, telefon eller gennem din konto på vores website. Vi vil svare inden for 30 dage.</p>
+                </div>
+            </section>
+
+            <!-- Security Section -->
+            <section id="security" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h2>Sikkerhed af dine oplysninger</h2>
+                    <p>Vi implementerer strenge sikkerhedsforanstaltninger for at beskytte dine data</p>
+                </div>
+
+                <div class="security-measures">
+                    <div class="security-card">
+                        <div class="security-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Kryptering</h3>
+                        <p>Alle data overføres og gemmes med SSL/TLS kryptering for maksimal sikkerhed.</p>
+                    </div>
+
+                    <div class="security-card">
+                        <div class="security-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>Sikre servere</h3>
+                        <p>Vores servere er placeret i sikre datacentre med 24/7 overvågning og beskyttelse.</p>
+                    </div>
+
+                    <div class="security-card">
+                        <div class="security-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h3>Adgangskontrol</h3>
+                        <p>Kun autoriserede medarbejdere har adgang til personlige oplysninger, og alle adgange logges.</p>
+                    </div>
+
+                    <div class="security-card">
+                        <div class="security-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Regelmæssige opdateringer</h3>
+                        <p>Vi opdaterer regelmæssigt vores sikkerhedsforanstaltninger og overvåger for trusler.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="content-section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h2>Kontakt os</h2>
+                    <p>Har du spørgsmål om vores privatlivspolitik eller dine personlige oplysninger?</p>
+                </div>
+
+                <div class="privacy-contact">
+                    <div class="contact-info">
+                        <h3>Kontaktoplysninger</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email:</strong>
+                                <a href="mailto:privacy@palestinensisk-arv.dk">privacy@palestinensisk-arv.dk</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Telefon:</strong>
+                                <a href="tel:+4512345678">+45 12 34 56 78</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email:</strong>
+                                <span>info@palestinsk-arv.dk</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h3>Send os en besked</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Navn *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Emne *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Vælg emne</option>
+                                    <option value="data-access">Anmodning om data</option>
+                                    <option value="data-correction">Rettelse af data</option>
+                                    <option value="data-deletion">Sletning af data</option>
+            
+                                    <option value="other">Andet</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Besked *</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Besked
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Palæstinensisk Arv</h3>
+                    <p>Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Hurtige Links</h4>
+                    <a href="index.html">Hjem</a>
+                    <a href="produkter.html">Produkter</a>
+                    <a href="kontakt.html">Kontakt</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kategorier</h4>
+                    <a href="produkter.html">Tøj & Mode</a>
+                    <a href="produkter.html">Tilbehør</a>
+                    <a href="produkter.html">Nyheder</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kundeservice</h4>
+                    <a href="kontakt.html">Kontakt Os</a>
+                    <a href="levering-returnering.html">Levering & Returnering</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="privatlivspolitik.html">Privatlivspolitik</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment">
+                        <span>Betalinger accepteres:</span>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Indkøbskurv</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p>Din kurv er tom</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">0.00 kr</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Gå til Kassen</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h3>Ønskeliste</h3>
+            <button class="close-wishlist" onclick="toggleWishlist()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <p>Din ønskeliste er tom</p>
+        </div>
+        <div class="wishlist-footer">
+            <button class="clear-wishlist-btn" onclick="clearWishlist()">Ryd Ønskeliste</button>
+        </div>
+    </div>
+    <div class="wishlist-overlay" id="wishlistOverlay" onclick="toggleWishlist()"></div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Indlæser...</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.page-navigation a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+
+
+        // Form submission
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Tak for din besked! Vi vil kontakte dig hurtigst muligt.');
+            this.reset();
+        });
+    </script>
+</body>
+</html> 

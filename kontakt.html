@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt Os - Palæstinensisk Arv Butik | Support & Hjælp</title>
+    <meta name="description" content="Kontakt Palæstinensisk Arv Butik for support, spørgsmål om produkter, levering og mere. Vi er her for at hjælpe dig med alt relateret til autentiske palæstinensiske produkter.">
+    <meta name="keywords" content="kontakt palæstinensisk arv, support, kundeservice, hjælp, spørgsmål, levering, returnering">
+    <meta name="author" content="Palæstinensisk Arv Butik">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://palestinensisk-arv.dk/kontakt.html">
+    <meta property="og:title" content="Kontakt Os - Palæstinensisk Arv Butik">
+    <meta property="og:description" content="Kontakt Palæstinensisk Arv Butik for support og hjælp med autentiske palæstinensiske produkter.">
+    <meta property="og:image" content="https://palestinensisk-arv.dk/images/contact-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Palæstinensisk Arv Butik">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://palestinensisk-arv.dk/kontakt.html">
+    <meta property="twitter:title" content="Kontakt Os - Palæstinensisk Arv Butik">
+    <meta property="twitter:description" content="Kontakt Palæstinensisk Arv Butik for support og hjælp med autentiske palæstinensiske produkter.">
+    <meta property="twitter:image" content="https://palestinensisk-arv.dk/images/contact-twitter.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Kontakt Palæstinensisk Arv Butik",
+        "description": "Kontakt os for support og hjælp med autentiske palæstinensiske produkter",
+        "url": "https://palestinensisk-arv.dk/kontakt.html",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Palæstinensisk Arv Butik",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "info@palestinensisk-arv.dk",
+                "availableLanguage": ["Danish", "English"]
+            }
+        }
+    }
+    </script>
+    
+    <!-- Performance optimizations -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <link rel="stylesheet" href="styles.css?v=1.4">
+    <link rel="stylesheet" href="enhanced-selectors.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h1>🇵🇸 Palæstinensisk Arv</h1>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Hjem</a>
+                <div style="position: relative;">
+                <a href="produkter.html" class="nav-link">Produkter</a>
+                    <div class="nav-dropdown">
+                        <a href="produkter.html" class="dropdown-item">Alle Produkter</a>
+                        <a href="tøj.html" class="dropdown-item">Tøj</a>
+                        <a href="tilbehør.html" class="dropdown-item">Tilbehør</a>
+                    </div>
+                </div>
+                <a href="kontakt.html" class="nav-link active">Kontakt</a>
+            </div>
+            <div class="nav-actions">
+
+                <button class="wishlist-btn" onclick="toggleWishlist()">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="language-currency-selector">
+                    <div class="selector-container">
+                        <button class="selector-btn language-selector-btn" onclick="toggleLanguageDropdown()">
+                            <span class="selector-icon">🌍</span>
+                            <span class="selector-text" id="currentLanguageDisplay">🇩🇰 Dansk</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown language-dropdown" id="languageDropdown">
+                            <div class="dropdown-item" onclick="console.log('Dansk clicked'); changeLanguage('da')">
+                                <span class="flag">🇩🇰</span>
+                                <span class="text">Dansk</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('English clicked'); changeLanguage('en')">
+                                <span class="flag">🇺🇸</span>
+                                <span class="text">English</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="selector-container">
+                        <button class="selector-btn currency-selector-btn" onclick="toggleCurrencyDropdown()">
+                            <span class="selector-icon">💰</span>
+                            <span class="selector-text" id="currentCurrencyDisplay">DKK</span>
+                            <i class="fas fa-chevron-down selector-arrow"></i>
+                        </button>
+                        <div class="selector-dropdown currency-dropdown" id="currencyDropdown">
+                            <div class="dropdown-item" onclick="console.log('DKK clicked'); changeCurrency('DKK')">
+                                <span class="currency-symbol">kr</span>
+                                <span class="text">DKK</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('EUR clicked'); changeCurrency('EUR')">
+                                <span class="currency-symbol">€</span>
+                                <span class="text">EUR</span>
+                            </div>
+                            <div class="dropdown-item" onclick="console.log('USD clicked'); changeCurrency('USD')">
+                                <span class="currency-symbol">$</span>
+                                <span class="text">USD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-link">Hjem</a>
+            <a href="produkter.html" class="mobile-link">Produkter</a>
+            <a href="kontakt.html" class="mobile-link">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero" style="background: linear-gradient(135deg, #2c5530 0%, #4a7c59 50%, #6ba084 100%); padding: 6rem 0 4rem; text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,215,0,0.05) 10px, rgba(255,215,0,0.05) 20px); pointer-events: none;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <h1 style="font-size: 3rem; font-weight: 700; color: white; margin-bottom: 1rem; font-family: 'Playfair Display', serif; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Kontakt Os</h1>
+            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto; line-height: 1.6; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Vi er her for at hjælpe dig med alle spørgsmål om vores produkter og service.</p>
+        </div>
+    </section>
+
+    <!-- Contact Methods -->
+    <section class="contact-methods" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto;">
+                
+                <!-- Email Contact -->
+                <div style="text-align: center; padding: 3rem 2rem; background: white; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 2px solid #e8f5e8;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(44,85,48,0.15)'; this.style.borderColor='#2c5530'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='#e8f5e8'">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 5px 15px rgba(44,85,48,0.3);">
+                        <i class="fas fa-envelope" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">Email Support</h3>
+                    <p style="color: #6c757d; margin-bottom: 1.5rem; line-height: 1.6;">Få svar på dine spørgsmål inden for 24 timer</p>
+                    <a href="mailto:info@palestinsk-arv.dk" style="display: inline-block; background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 3px 10px rgba(44,85,48,0.2);" onmouseover="this.style.background='linear-gradient(135deg, #1a472a 0%, #2c5530 100%)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(44,85,48,0.3)'" onmouseout="this.style.background='linear-gradient(135deg, #2c5530 0%, #4a7c59 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 10px rgba(44,85,48,0.2)'">
+                        info@palestinsk-arv.dk
+                    </a>
+                </div>
+
+                <!-- FAQ -->
+                <div style="text-align: center; padding: 3rem 2rem; background: white; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 2px solid #e8f5e8;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(44,85,48,0.15)'; this.style.borderColor='#2c5530'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='#e8f5e8'">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4a7c59 0%, #6ba084 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 5px 15px rgba(74,124,89,0.3);">
+                        <i class="fas fa-question-circle" style="font-size: 2rem; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 600; color: #2c5530; margin-bottom: 1rem;">FAQ</h3>
+                    <p style="color: #6c757d; margin-bottom: 1.5rem; line-height: 1.6;">Find hurtige svar på ofte stillede spørgsmål</p>
+                    <a href="faq.html" style="display: inline-block; background: linear-gradient(135deg, #4a7c59 0%, #6ba084 100%); color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 500; transition: all 0.3s ease; box-shadow: 0 3px 10px rgba(74,124,89,0.2);" onmouseover="this.style.background='linear-gradient(135deg, #2c5530 0%, #4a7c59 100%)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(74,124,89,0.3)'" onmouseout="this.style.background='linear-gradient(135deg, #4a7c59 0%, #6ba084 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 10px rgba(74,124,89,0.2)'">
+                        Se FAQ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section" style="padding: 4rem 0; background: linear-gradient(135deg, #e8f5e8 0%, #f8f9fa 100%);">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(44,85,48,0.1); border: 2px solid #e8f5e8;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; font-weight: 700; color: #2c5530; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Send os en besked</h2>
+                    <p style="color: #6c757d; font-size: 1.1rem;">Udfyld formularen nedenfor, og vi vender tilbage til dig hurtigst muligt.</p>
+                </div>
+
+                <form id="contactForm" style="display: grid; gap: 2rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <label for="firstName" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Fornavn *</label>
+                            <input type="text" id="firstName" name="firstName" required style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'">
+                        </div>
+                        <div>
+                            <label for="lastName" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Efternavn *</label>
+                            <input type="text" id="lastName" name="lastName" required style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Email *</label>
+                            <input type="email" id="email" name="email" required style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'">
+                        </div>
+                        <div>
+                            <label for="phone" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Telefon</label>
+                            <input type="tel" id="phone" name="phone" style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="subject" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Emne *</label>
+                        <select id="subject" name="subject" required style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease; background: white;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'">
+                            <option value="">Vælg emne</option>
+                            <option value="products">Produktspørgsmål</option>
+                            <option value="shipping">Levering & Returnering</option>
+                            <option value="support">Kundeservice</option>
+                            <option value="other">Andet</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2c5530;">Besked *</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Fortæl os hvad vi kan hjælpe dig med..." style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease; resize: vertical;" onfocus="this.style.borderColor='#2c5530'" onblur="this.style.borderColor='#e9ecef'"></textarea>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
+                        <input type="checkbox" id="privacy" name="privacy" required style="width: 20px; height: 20px; accent-color: #2c5530;">
+                        <label for="privacy" style="color: #6c757d; font-size: 0.9rem;">
+                            Jeg accepterer <a href="privatlivspolitik.html" style="color: #2c5530; text-decoration: underline;">privatlivspolitikken</a> *
+                        </label>
+                    </div>
+
+                    <button type="submit" style="background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%); color: white; padding: 1.5rem 3rem; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 1rem; box-shadow: 0 5px 15px rgba(44,85,48,0.3);" onmouseover="this.style.background='linear-gradient(135deg, #1a472a 0%, #2c5530 100%)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(44,85,48,0.4)'" onmouseout="this.style.background='linear-gradient(135deg, #2c5530 0%, #4a7c59 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(44,85,48,0.3)'">
+                        Send Besked
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Preview -->
+    <section class="faq-preview" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: #2c5530; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Ofte Stillede Spørgsmål</h2>
+                <p style="color: #6c757d; font-size: 1.1rem;">Find hurtige svar på de mest almindelige spørgsmål</p>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="border: 2px solid #e8f5e8; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; background: white; box-shadow: 0 2px 10px rgba(44,85,48,0.1);">
+                    <button onclick="toggleFAQ(this)" style="width: 100%; padding: 1.5rem; background: white; border: none; text-align: left; font-weight: 600; color: #2c5530; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.background='#e8f5e8'" onmouseout="this.style.background='white'">
+                        Hvordan bestiller jeg produkter?
+                        <i class="fas fa-chevron-down" style="transition: transform 0.3s ease; color: #2c5530;"></i>
+                    </button>
+                    <div style="padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+                        <p style="padding: 1.5rem 0; color: #6c757d; line-height: 1.6; margin: 0;">Du kan bestille vores produkter direkte på hjemmesiden ved at tilføje dem til din indkøbskurv og følge checkout-processen. Vi accepterer alle gængse betalingsmetoder.</p>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid #e8f5e8; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; background: white; box-shadow: 0 2px 10px rgba(44,85,48,0.1);">
+                    <button onclick="toggleFAQ(this)" style="width: 100%; padding: 1.5rem; background: white; border: none; text-align: left; font-weight: 600; color: #2c5530; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.background='#e8f5e8'" onmouseout="this.style.background='white'">
+                        Hvor lang tid tager levering?
+                        <i class="fas fa-chevron-down" style="transition: transform 0.3s ease; color: #2c5530;"></i>
+                    </button>
+                    <div style="padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+                        <p style="padding: 1.5rem 0; color: #6c757d; line-height: 1.6; margin: 0;">Standard levering tager 3-5 hverdage i Danmark. Express levering er tilgængelig og tager 1-2 hverdage. International levering tager 7-14 dage.</p>
+                    </div>
+                </div>
+
+                <div style="border: 2px solid #e8f5e8; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; background: white; box-shadow: 0 2px 10px rgba(44,85,48,0.1);">
+                    <button onclick="toggleFAQ(this)" style="width: 100%; padding: 1.5rem; background: white; border: none; text-align: left; font-weight: 600; color: #2c5530; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.background='#e8f5e8'" onmouseout="this.style.background='white'">
+                        Kan jeg returnere produkter?
+                        <i class="fas fa-chevron-down" style="transition: transform 0.3s ease; color: #2c5530;"></i>
+                    </button>
+                    <div style="padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease;">
+                        <p style="padding: 1.5rem 0; color: #6c757d; line-height: 1.6; margin: 0;">Ja, du har 30 dages returret på alle produkter. Produkterne skal returneres i original stand og emballage. Se vores returpolitik for flere detaljer.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="faq.html" style="display: inline-block; background: transparent; color: #2c5530; padding: 1rem 2rem; text-decoration: none; border: 2px solid #2c5530; border-radius: 8px; font-weight: 500; transition: all 0.3s ease;" onmouseover="this.style.background='#2c5530'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='#2c5530'">
+                        Se Alle FAQ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Indkøbskurv</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">0,00 kr</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Gå til Kassen</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h3>Ønskeliste</h3>
+            <button class="close-wishlist" onclick="toggleWishlist()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <!-- Wishlist items will be displayed here -->
+        </div>
+        <div class="wishlist-footer">
+            <button class="clear-wishlist-btn" onclick="clearWishlist()">Ryd Ønskeliste</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Overlay -->
+    <div class="wishlist-overlay" id="wishlistOverlay" onclick="toggleWishlist()"></div>
+
+    <!-- Notification System -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Indlæser...</p>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: linear-gradient(135deg, #1a472a 0%, #2c5530 25%, #4a7c59 50%, #6ba084 75%, #8bc4a8 100%); color: white; padding: 3rem 0 1.5rem; position: relative; overflow: hidden; box-shadow: 0 -10px 30px rgba(0,0,0,0.3); border-top: 3px solid #ffd700;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,215,0,0.03) 10px, rgba(255,215,0,0.03) 20px); pointer-events: none;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div class="footer-section" style="text-align: center;">
+                    <h3 style="color: #ffd700; font-size: 1.2rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 700;">🇵🇸 Palæstinensisk Arv</h3>
+                    <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.5rem; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Fejrer kultur gennem autentiske produkter og støtter palæstinensiske håndværkere verden over.</p>
+                    <div class="footer-social" style="display: flex; justify-content: center; gap: 1rem;">
+                        <a href="#" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease; padding: 0.5rem; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);" onmouseover="this.style.color='#ffd700'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(255,215,0,0.3)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease; padding: 0.5rem; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);" onmouseover="this.style.color='#ffd700'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(255,215,0,0.3)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem; transition: all 0.3s ease; padding: 0.5rem; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);" onmouseover="this.style.color='#ffd700'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(255,215,0,0.3)'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section" style="text-align: center;">
+                    <h4 style="color: #ffd700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 600;">🚀 Hurtige Links</h4>
+                    <a href="index.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🏠 Hjem</a>
+                    <a href="produkter.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🛍️ Produkter</a>
+                    <a href="kontakt.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">📞 Kontakt</a>
+                </div>
+                <div class="footer-section" style="text-align: center;">
+                    <h4 style="color: #ffd700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 600;">📂 Kategorier</h4>
+                    <a href="tøj.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">👕 Tøj & Mode</a>
+                    <a href="tilbehør.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">💍 Tilbehør</a>
+                    <a href="produkter.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🆕 Nyheder</a>
+                </div>
+                <div class="footer-section" style="text-align: center;">
+                    <h4 style="color: #ffd700; font-size: 1rem; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-weight: 600;">🛎️ Kundeservice</h4>
+                    <a href="kontakt.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">💬 Kontakt Os</a>
+                    <a href="levering-returnering.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🚚 Levering & Returnering</a>
+                    <a href="faq.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">❓ FAQ</a>
+                    <a href="privatlivspolitik.html" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; display: block; margin-bottom: 0.5rem; padding: 0.2rem 0; transition: all 0.3s ease; position: relative; padding-left: 15px; font-size: 0.8rem;" onmouseover="this.style.color='#ffd700'; this.style.transform='translateX(5px)';" onmouseout="this.style.color='rgba(255, 255, 255, 0.9)'; this.style.transform='translateX(0)'">🔒 Privatlivspolitik</a>
+                </div>
+            </div>
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1.5rem; text-align: center;">
+                <div class="footer-bottom-content" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <p style="color: rgba(255,255,255,0.75); font-size: 0.75rem; margin: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">© 2024 Palæstinensisk Arv Butik. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-payment" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+                        <span style="color: rgba(255,255,255,0.8); font-size: 0.7rem; margin-right: 0.5rem;">Betalinger accepteres:</span>
+                        <i class="fab fa-cc-visa" style="color: rgba(255,255,255,0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-mastercard" style="color: rgba(255,255,255,0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='scale(1)'"></i>
+                        <i class="fab fa-cc-paypal" style="color: rgba(255,255,255,0.8); font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1)'" onmouseout="this.style.color='rgba(255,255,255,0.8)'; this.style.transform='scale(1)'"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="performance-optimizations.js"></script>
+    <script>
+        // Contact page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Contact form handling
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Tak for din besked! Vi vender tilbage til dig hurtigst muligt.', 'success');
+                    contactForm.reset();
+                });
+            }
+        });
+
+        // FAQ toggle functionality
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.padding = '0 1.5rem';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.style.maxHeight = '0px';
+                content.style.padding = '0 1.5rem';
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Notification function
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            const container = document.getElementById('notificationContainer');
+            container.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    container.removeChild(notification);
+                }, 300);
+            }, 5000);
+        }
+    </script>
+</body>
+</html> 
