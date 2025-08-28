@@ -579,7 +579,7 @@ const products = [
             en: "Authentic Palestinian t-shirt available in both white and black. Handcrafted with love for Palestinian culture and history. 100% cotton with high quality."
         },
         price: 499,
-        image: "images/palestinian-tshirt-white.jpg",
+        image: "images/images:palestinian-tshirt-white.jpg",
         category: "tøj",
         colors: ["hvid", "sort"],
         sizes: ["S", "M", "L", "XL"],
@@ -622,8 +622,8 @@ const products = [
         },
         // Color-specific images
         colorImages: {
-            hvid: "images/palestinian-tshirt-white.jpg",
-            sort: "images/palestinian-tshirt-black.jpg"
+            hvid: "images/images:palestinian-tshirt-white.jpg",
+            sort: "images/images:palestinian-tshirt-black.jpg"
         }
     }
 ];
@@ -790,8 +790,13 @@ function displayFeaturedProducts() {
     const featuredProductsGrid = document.getElementById('featuredProductsGrid');
     if (!featuredProductsGrid) return;
     
-    // Get first 6 products as featured
-    const featuredProducts = products.slice(0, 6);
+    // Get new and trending products first, then fill with other products
+    const newProducts = products.filter(product => product.isNew);
+    const trendingProducts = products.filter(product => product.isTrending && !product.isNew);
+    const otherProducts = products.filter(product => !product.isNew && !product.isTrending);
+    
+    // Combine products: new first, then trending, then others
+    const featuredProducts = [...newProducts, ...trendingProducts, ...otherProducts].slice(0, 6);
     
     featuredProductsGrid.innerHTML = '';
     
