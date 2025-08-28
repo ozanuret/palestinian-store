@@ -591,9 +591,7 @@ const cartTotal = document.getElementById('cartTotal');
 const productModal = document.getElementById('productModal');
 const productModalOverlay = document.getElementById('productModalOverlay');
 const productModalBody = document.getElementById('productModalBody');
-const searchBar = document.getElementById('searchBar');
 const mobileMenu = document.getElementById('mobileMenu');
-const searchInput = document.getElementById('searchInput');
 const wishlistSidebar = document.getElementById('wishlistSidebar');
 const wishlistOverlay = document.getElementById('wishlistOverlay');
 const wishlistItems = document.getElementById('wishlistItems');
@@ -610,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCartCount();
         updateWishlistCount();
         setupMobileMenu();
-        setupSearch();
+
         setupProductFilters();
         
         // Initialize products page if we're on it
@@ -714,121 +712,9 @@ function toggleMobileMenu() {
     document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 }
 
-// Search Functions
-function setupSearch() {
-    const searchBtn = document.querySelector('.search-btn');
-    if (searchBtn) {
-        searchBtn.addEventListener('click', toggleSearch);
-    }
-    
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-        
-        // Add real-time search functionality
-        searchInput.addEventListener('input', function() {
-            const query = this.value.trim().toLowerCase();
-            if (query.length >= 2) {
-                performRealTimeSearch(query);
-            } else if (query.length === 0) {
-                displayProducts(); // Show all products when search is cleared
-            }
-        });
-    }
-    
-    const searchSubmit = document.querySelector('.search-submit');
-    if (searchSubmit) {
-        searchSubmit.addEventListener('click', performSearch);
-    }
-}
 
-function toggleSearch() {
-    searchBar.classList.toggle('open');
-    if (searchBar.classList.contains('open')) {
-        searchInput.focus();
-    }
-}
 
-function performRealTimeSearch(query) {
-    // Filter products based on search query using translated data
-    const filteredProducts = products.filter(product => {
-        const translatedProduct = getTranslatedProduct(product);
-        return translatedProduct.name.toLowerCase().includes(query) ||
-               translatedProduct.description.toLowerCase().includes(query) ||
-               translatedProduct.category.toLowerCase().includes(query) ||
-               (product.colors && product.colors.some(color => 
-                   translations[currentLanguage][color] && 
-                   translations[currentLanguage][color].toLowerCase().includes(query)
-               ));
-    });
-    
-    // Display filtered products without closing search bar
-    displayFilteredProducts(filteredProducts);
-}
 
-function performSearch() {
-    const query = searchInput.value.trim().toLowerCase();
-    if (query) {
-        // Filter products based on search query using translated data
-        const filteredProducts = products.filter(product => {
-            const translatedProduct = getTranslatedProduct(product);
-            return translatedProduct.name.toLowerCase().includes(query) ||
-                   translatedProduct.description.toLowerCase().includes(query) ||
-                   translatedProduct.category.toLowerCase().includes(query) ||
-                   (product.colors && product.colors.some(color => 
-                       translations[currentLanguage][color] && 
-                       translations[currentLanguage][color].toLowerCase().includes(query)
-                   ));
-        });
-        
-        // Display filtered products
-        displayFilteredProducts(filteredProducts);
-        
-        // Close search bar
-        searchBar.classList.remove('open');
-        searchInput.value = '';
-        
-        // Show notification
-        showNotification(`${filteredProducts.length} ${translations[currentLanguage].productsFound} for "${query}"`);
-    }
-}
-
-function displayFilteredProducts(filteredProducts) {
-    console.log('displayFilteredProducts called with:', filteredProducts.length, 'products');
-    
-    const productsGrid = document.getElementById('productsGrid');
-    console.log('Products grid element:', !!productsGrid);
-    
-    if (productsGrid) {
-        productsGrid.innerHTML = '';
-        console.log('Cleared products grid');
-        
-        if (filteredProducts.length === 0) {
-            console.log('No products to display');
-            productsGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                    <h3>${currentLanguage === 'da' ? 'Ingen produkter fundet' : 'No products found'}</h3>
-                    <p>${currentLanguage === 'da' ? 'Prøv at søge efter noget andet' : 'Try searching for something else'}</p>
-                </div>
-            `;
-            return;
-        }
-        
-        console.log('Creating product cards for', filteredProducts.length, 'products');
-        filteredProducts.forEach((product, index) => {
-            console.log('Creating card for product', index + 1, ':', product.name);
-            const productCard = createProductCard(product);
-            productsGrid.appendChild(productCard);
-        });
-        
-        console.log('Finished creating product cards');
-    } else {
-        console.error('Products grid not found!');
-    }
-}
 
 // Newsletter Subscription
 function subscribeNewsletter(event) {
@@ -1099,14 +985,8 @@ document.addEventListener('click', function(e) {
         toggleWishlist();
     }
     
-    // Search bar - close when clicking outside
-    const searchBar = document.getElementById('searchBar');
-    const searchBtn = document.querySelector('.search-btn');
-    if (searchBar && searchBar.classList.contains('open') && 
-        !searchBar.contains(e.target) && 
-        !searchBtn.contains(e.target)) {
-        searchBar.classList.remove('open');
-    }
+
+
     
     // Language dropdown - close when clicking outside
     const languageDropdown = document.getElementById('languageDropdown');
@@ -1179,11 +1059,8 @@ document.addEventListener('keydown', function(e) {
             closeQuickView();
         }
         
-        // Close search bar
-        const searchBar = document.getElementById('searchBar');
-        if (searchBar && searchBar.classList.contains('open')) {
-            searchBar.classList.remove('open');
-        }
+
+
         
         // Close language dropdown
         const languageDropdown = document.getElementById('languageDropdown');
@@ -1913,11 +1790,7 @@ function updateLanguage() {
         }
     });
     
-    // Update search placeholder
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.placeholder = translations[currentLanguage].searchPlaceholder;
-    }
+
     
     // Update pagination
     const paginationInfo = document.querySelector('.pagination-info');
@@ -3551,25 +3424,7 @@ document.addEventListener('DOMContentLoaded', function() {
             animationSystem.addAnimation(element, 'fade-up', { delay: index * 100 });
         });
         
-        // Enhanced search functionality
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            let searchTimeout;
-            searchInput.addEventListener('input', (e) => {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    const query = e.target.value;
-                    if (query.length >= 2) {
-                        const results = advancedSearch.search(query);
-                        displaySearchResults(results);
-                        
-                        // Show suggestions
-                        const suggestions = advancedSearch.getSearchSuggestions(query);
-                        displaySearchSuggestions(suggestions);
-                    }
-                }, 300);
-            });
-        }
+
         
         console.log('🚀 Advanced features initialized!');
     }, 100);
@@ -3922,113 +3777,9 @@ function filterProducts() {
 
 // Enhanced Products Page Functions
 
-// Smart Search Functionality
-function handleSmartSearch() {
-    const searchInput = document.getElementById('searchInput');
-    const searchSuggestions = document.getElementById('searchSuggestions');
-    const searchClear = document.getElementById('searchClear');
-    const query = searchInput.value.trim();
-    
-    // Show/hide clear button
-    if (query.length > 0) {
-        searchClear.style.display = 'block';
-    } else {
-        searchClear.style.display = 'none';
-        searchSuggestions.classList.remove('show');
-        return;
-    }
-    
-    // Generate smart suggestions
-    const suggestions = generateSearchSuggestions(query);
-    
-    if (suggestions.length > 0) {
-        displaySearchSuggestions(suggestions);
-        searchSuggestions.classList.add('show');
-    } else {
-        searchSuggestions.classList.remove('show');
-    }
-    
-    // Apply search filter
-    applySearchFilter(query);
-}
 
-function generateSearchSuggestions(query) {
-    const suggestions = [];
-    const lowerQuery = query.toLowerCase();
-    
-    // Category suggestions
-    const categories = ['tøj', 'tilbehør', 'håndværk', 'hjem', 'kaftan', 'kjole', 'skjorte'];
-    categories.forEach(category => {
-        if (category.includes(lowerQuery) && !suggestions.includes(category)) {
-            suggestions.push({ type: 'category', text: category, icon: 'fas fa-tag' });
-        }
-    });
-    
-    // Product suggestions
-    products.forEach(product => {
-        const name = (product.name.da || product.name).toLowerCase();
-        const description = (product.description.da || product.description).toLowerCase();
-        
-        if (name.includes(lowerQuery) || description.includes(lowerQuery)) {
-            suggestions.push({
-                type: 'product',
-                text: product.name.da || product.name,
-                icon: 'fas fa-tshirt',
-                product: product
-            });
-        }
-    });
-    
-    // Style suggestions
-    const styles = ['traditionel', 'moderne', 'elegant', 'casual', 'festlig'];
-    styles.forEach(style => {
-        if (style.includes(lowerQuery) && !suggestions.some(s => s.text === style)) {
-            suggestions.push({ type: 'style', text: style, icon: 'fas fa-star' });
-        }
-    });
-    
-    return suggestions.slice(0, 8); // Limit to 8 suggestions
-}
 
-function displaySearchSuggestions(suggestions) {
-    const searchSuggestions = document.getElementById('searchSuggestions');
-    
-    searchSuggestions.innerHTML = suggestions.map(suggestion => `
-        <div class="suggestion-item" onclick="selectSuggestion('${suggestion.text}')">
-            <i class="${suggestion.icon}"></i>
-            <span>${suggestion.text}</span>
-        </div>
-    `).join('');
-}
 
-function selectSuggestion(text) {
-    document.getElementById('searchInput').value = text;
-    document.getElementById('searchSuggestions').classList.remove('show');
-    applySearchFilter(text);
-}
-
-function clearSearch() {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('searchClear').style.display = 'none';
-    document.getElementById('searchSuggestions').classList.remove('show');
-    applySearchFilter('');
-}
-
-function applySearchFilter(query) {
-    const filteredProducts = products.filter(product => {
-        if (!query) return true;
-        
-        const name = (product.name.da || product.name).toLowerCase();
-        const description = (product.description.da || product.description).toLowerCase();
-        const category = product.category.toLowerCase();
-        
-        return name.includes(query.toLowerCase()) ||
-               description.includes(query.toLowerCase()) ||
-               category.includes(query.toLowerCase());
-    });
-    
-    displayFilteredProducts(filteredProducts);
-}
 
 // Advanced Filtering System
 let currentFilters = {
@@ -4208,7 +3959,6 @@ function clearAllFilters() {
 
 function resetFilters() {
     clearAllFilters();
-    document.getElementById('searchInput').value = '';
     displayFilteredProducts(products);
 }
 
@@ -4543,11 +4293,7 @@ function initializeProductsPage() {
         displayFilteredProducts(products);
         updatePagination();
         
-        // Initialize search
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.addEventListener('input', handleSmartSearch);
-        }
+
         
         // Initialize price range
         updatePriceRange();
@@ -4718,10 +4464,9 @@ document.addEventListener('click', function(event) {
 // Test if functions are accessible globally
 window.toggleLanguageDropdown = toggleLanguageDropdown;
 window.toggleCurrencyDropdown = toggleCurrencyDropdown;
-window.toggleCart = toggleCart;
-window.toggleWishlist = toggleWishlist;
-window.toggleSearch = toggleSearch;
-window.toggleMobileMenu = toggleMobileMenu;
+    window.toggleCart = toggleCart;
+    window.toggleWishlist = toggleWishlist;
+    window.toggleMobileMenu = toggleMobileMenu;
 window.changeLanguage = changeLanguage;
 window.changeCurrency = changeCurrency;
 
