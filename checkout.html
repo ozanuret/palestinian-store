@@ -195,8 +195,51 @@
                             <p>Gennemgå dine produkter før du fortsætter</p>
                         </div>
                         
+<<<<<<< HEAD
                         <div class="cart-items-review" id="checkoutItems">
                             <!-- Dynamic checkout items will be inserted here -->
+=======
+                        <div class="cart-items-review">
+                            <div class="cart-item">
+                                <div class="item-image">
+                                    <img src="images/free-palestine-black-tshirt.jpg" alt="Free Palestine T-shirt">
+                                </div>
+                                <div class="item-details">
+                                    <h3>Free Palestine T-shirt</h3>
+                                    <p class="item-variant">Sort, Størrelse L</p>
+                                    <div class="item-price">299 kr</div>
+                                </div>
+                                <div class="item-quantity">
+                                    <button class="qty-btn" onclick="updateQuantity(1, -1)">-</button>
+                                    <span class="qty-value">1</span>
+                                    <button class="qty-btn" onclick="updateQuantity(1, 1)">+</button>
+                                </div>
+                                <div class="item-total">299 kr</div>
+                                <button class="remove-item" onclick="removeItem(1)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="cart-item">
+                                <div class="item-image">
+                                    <img src="images/palestine-map-white-tshirt.jpg" alt="Palestine Map T-shirt">
+                                </div>
+                                <div class="item-details">
+                                    <h3>Palestine Map T-shirt</h3>
+                                    <p class="item-variant">Hvid, Størrelse M</p>
+                                    <div class="item-price">349 kr</div>
+                                </div>
+                                <div class="item-quantity">
+                                    <button class="qty-btn" onclick="updateQuantity(2, -1)">-</button>
+                                    <span class="qty-value">1</span>
+                                    <button class="qty-btn" onclick="updateQuantity(2, 1)">+</button>
+                                </div>
+                                <div class="item-total">349 kr</div>
+                                <button class="remove-item" onclick="removeItem(2)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
                         </div>
                         
                         <div class="step-actions">
@@ -874,6 +917,7 @@
             this.value = value;
         });
 
+<<<<<<< HEAD
         // Load checkout data and display items
         function loadCheckoutData() {
             const checkoutData = JSON.parse(localStorage.getItem('checkoutData') || '{}');
@@ -975,6 +1019,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateStepDisplay();
             loadCheckoutData();
+=======
+        // Initialize checkout
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStepDisplay();
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
         });
     </script>
 </body>

@@ -1,7 +1,12 @@
 // Stripe Configuration for Palæstinensisk Arv Butik
 const STRIPE_CONFIG = {
+<<<<<<< HEAD
     // Live Stripe publishable key from environment variable
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+=======
+    // Replace with your actual Stripe publishable key
+    publishableKey: 'pk_live_51RzvuxAk9GqvqMvKx5FHkRkvnuQ6ciGkrIe7PIEB2KNslzS6J0YCWQNCb7978qVF39XbIvj6wL87ij0soIFqV8Uz00E5ZytUja', // Replace with your actual test key
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
     
     // Currency settings
     currency: 'dkk',

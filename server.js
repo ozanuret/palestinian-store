@@ -12,8 +12,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('.'));
 
+<<<<<<< HEAD
 // Initialize Stripe with your secret key from environment variable
 const stripeInstance = stripe(process.env.STRIPE_SECRET_KEY);
+=======
+// Initialize Stripe with your secret key
+// Replace with your actual Stripe secret key
+const stripeInstance = stripe('sk_test_51OZANEXAMPLE'); // Replace with your actual test key
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
 
 // In-memory storage for orders (in production, use a database)
 let orders = [];

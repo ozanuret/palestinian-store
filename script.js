@@ -1,6 +1,61 @@
 // Product Data - Palæstinensisk Arv Produkter
 const products = [
     {
+<<<<<<< HEAD
+=======
+        id: 1,
+        name: {
+            da: "Palæstina Kort T-Shirt - Sort",
+            en: "Palestine Map T-Shirt - Black"
+        },
+        description: {
+            da: "Sort t-shirt med Palæstina-kort design fyldt med traditionel keffiyeh-mønster. Arabisk tekst 'فلسطين' (Palæstina) på begge sider af kortet. 100% bomuld.",
+            en: "Black t-shirt with Palestine map design filled with traditional keffiyeh pattern. Arabic text 'فلسطين' (Palestine) on both sides of the map. 100% cotton."
+        },
+        price: 199.99,
+        image: "images/palestine-map-black-tshirt.jpg",
+        category: "tøj",
+        colors: ["sort", "hvid"],
+        sizes: ["S", "M", "L", "XL"],
+        material: "bomuld",
+        inStock: true,
+        isNew: true,
+        isTrending: true,
+        onSale: false,
+        rating: 4.8,
+        reviewCount: 24,
+        popularity: 9,
+        imageAlt: {
+            da: "Sort t-shirt med Palæstina-kort og keffiyeh-mønster",
+            en: "Black t-shirt with Palestine map and keffiyeh pattern"
+        },
+        features: {
+            da: [
+                "100% organisk bomuld",
+                "Håndtrykt design",
+                "Autentisk palæstinensisk mønster",
+                "Bæredygtig produktion",
+                "Støtter palæstinensiske håndværkere"
+            ],
+            en: [
+                "100% organic cotton",
+                "Hand-printed design",
+                "Authentic Palestinian pattern",
+                "Sustainable production",
+                "Supports Palestinian artisans"
+            ]
+        },
+        material: {
+            da: "100% organisk bomuld",
+            en: "100% organic cotton"
+        },
+        care: {
+            da: "Vask ved 30°C, ikke brug blegemiddel",
+            en: "Wash at 30°C, do not use bleach"
+        }
+    },
+    {
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
         id: 2,
         name: {
             da: "Palæstina Kort T-Shirt - Hvid",
@@ -517,7 +572,11 @@ const products = [
         }
     },
     {
+<<<<<<< HEAD
         id: 1,
+=======
+        id: 17,
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
         name: {
             da: "Palestinian T-shirt",
             en: "Palestinian T-shirt"
@@ -766,6 +825,7 @@ function displayProducts() {
     });
 }
 
+<<<<<<< HEAD
 // Open Product Modal
 function openProductDetail(productId) {
     const product = products.find(p => p.id === productId);
@@ -845,10 +905,17 @@ function updateProductModalContent(product) {
     
     // Enable/disable checkout button based on color selection
     updateCheckoutButton();
+=======
+// Open Product Detail Page
+function openProductDetail(productId) {
+    // Navigate to product detail page with product ID
+    window.location.href = `produkt-detaljer.html?id=${productId}`;
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
 }
 
 // Close Product Detail Modal
 function closeProductModal() {
+<<<<<<< HEAD
     const modal = document.getElementById('productModal');
     const modalOverlay = document.getElementById('productModalOverlay');
     
@@ -858,6 +925,11 @@ function closeProductModal() {
         document.body.style.overflow = '';
     }
     
+=======
+    productModal.classList.remove('open');
+    productModalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
     currentProductDetail = null;
     selectedColor = null;
     selectedQuantity = 1;
@@ -875,12 +947,17 @@ function selectColor(color) {
     
     // Update product image if color-specific images are available
     if (currentProductDetail && currentProductDetail.colorImages && currentProductDetail.colorImages[color]) {
+<<<<<<< HEAD
         const productImage = document.getElementById('modalProductImage');
+=======
+        const productImage = document.querySelector('.product-detail-image img');
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
         if (productImage) {
             productImage.src = currentProductDetail.colorImages[color];
             productImage.alt = `${currentProductDetail.name[currentLanguage]} - ${translations[currentLanguage][color] || color}`;
         }
     }
+<<<<<<< HEAD
     
     // Update checkout button
     updateCheckoutButton();
@@ -924,6 +1001,8 @@ function proceedToCheckout() {
     // Close modal and navigate to checkout
     closeProductModal();
     window.location.href = 'checkout.html';
+=======
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
 }
 
 // Change Quantity in Product Detail

@@ -6,6 +6,7 @@
     pointer-events: none !important;
 }
 
+<<<<<<< HEAD
 /* Product Modal Styles */
 .product-modal {
     position: fixed;
@@ -244,6 +245,8 @@
     }
 }
 
+=======
+>>>>>>> df19fb4927cdc5d5afdcfde05ed85c08e0c2b080
 /* Fix wishlist button visibility - now uses same styling as cart button */
 .wishlist-btn {
     background: none !important;
