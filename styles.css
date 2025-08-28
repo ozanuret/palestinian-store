@@ -1,6 +1,11 @@
 /* Reset and Base Styles */
 
 
+/* Ensure loading spinner never blocks header/menu clicks */
+.loading-spinner {
+    pointer-events: none !important;
+}
+
 /* Fix wishlist button visibility - now uses same styling as cart button */
 .wishlist-btn {
     background: none !important;
@@ -25050,6 +25055,12 @@ textarea:focus {
 }
 
 .cart-overlay.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Support JS toggling 'open' as well */
+.cart-overlay.open {
     opacity: 1 !important;
     visibility: visible !important;
 }

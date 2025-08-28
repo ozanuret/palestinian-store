@@ -567,6 +567,64 @@ const products = [
             da: "Vask ved 30°C, ikke brug blegemiddel",
             en: "Wash at 30°C, do not use bleach"
         }
+    },
+    {
+        id: 17,
+        name: {
+            da: "Palestinian T-shirt",
+            en: "Palestinian T-shirt"
+        },
+        description: {
+            da: "Autentisk palæstinensisk t-shirt i både hvid og sort. Håndlavet med kærlighed til palæstinensk kultur og historie. 100% bomuld med høj kvalitet.",
+            en: "Authentic Palestinian t-shirt available in both white and black. Handcrafted with love for Palestinian culture and history. 100% cotton with high quality."
+        },
+        price: 499,
+        image: "images/images:palestinian-tshirt-white.jpg",
+        category: "tøj",
+        colors: ["hvid", "sort"],
+        sizes: ["S", "M", "L", "XL"],
+        material: "bomuld",
+        inStock: true,
+        isNew: true,
+        isTrending: true,
+        onSale: false,
+        rating: 5.0,
+        reviewCount: 0,
+        popularity: 10,
+        stripeProductId: "prod_SwRfCCjvqqh007",
+        imageAlt: {
+            da: "Palestinian T-shirt i hvid og sort",
+            en: "Palestinian T-shirt in white and black"
+        },
+        features: {
+            da: [
+                "100% bomuld",
+                "Håndlavet design",
+                "Autentisk palæstinensisk stil",
+                "Bæredygtig produktion",
+                "Støtter palæstinensk kultur"
+            ],
+            en: [
+                "100% cotton",
+                "Handcrafted design",
+                "Authentic Palestinian style",
+                "Sustainable production",
+                "Supports Palestinian culture"
+            ]
+        },
+        material: {
+            da: "100% bomuld",
+            en: "100% cotton"
+        },
+        care: {
+            da: "Vask ved 30°C, ikke brug blegemiddel",
+            en: "Wash at 30°C, do not use bleach"
+        },
+        // Color-specific images
+        colorImages: {
+            hvid: "images/images:palestinian-tshirt-white.jpg",
+            sort: "images/images:palestinian-tshirt-black.jpg"
+        }
     }
 ];
 
@@ -591,9 +649,7 @@ const cartTotal = document.getElementById('cartTotal');
 const productModal = document.getElementById('productModal');
 const productModalOverlay = document.getElementById('productModalOverlay');
 const productModalBody = document.getElementById('productModalBody');
-const searchBar = document.getElementById('searchBar');
 const mobileMenu = document.getElementById('mobileMenu');
-const searchInput = document.getElementById('searchInput');
 const wishlistSidebar = document.getElementById('wishlistSidebar');
 const wishlistOverlay = document.getElementById('wishlistOverlay');
 const wishlistItems = document.getElementById('wishlistItems');
@@ -610,7 +666,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCartCount();
         updateWishlistCount();
         setupMobileMenu();
-        setupSearch();
+
         setupProductFilters();
         
         // Initialize products page if we're on it
@@ -714,121 +770,9 @@ function toggleMobileMenu() {
     document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 }
 
-// Search Functions
-function setupSearch() {
-    const searchBtn = document.querySelector('.search-btn');
-    if (searchBtn) {
-        searchBtn.addEventListener('click', toggleSearch);
-    }
-    
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-        
-        // Add real-time search functionality
-        searchInput.addEventListener('input', function() {
-            const query = this.value.trim().toLowerCase();
-            if (query.length >= 2) {
-                performRealTimeSearch(query);
-            } else if (query.length === 0) {
-                displayProducts(); // Show all products when search is cleared
-            }
-        });
-    }
-    
-    const searchSubmit = document.querySelector('.search-submit');
-    if (searchSubmit) {
-        searchSubmit.addEventListener('click', performSearch);
-    }
-}
 
-function toggleSearch() {
-    searchBar.classList.toggle('open');
-    if (searchBar.classList.contains('open')) {
-        searchInput.focus();
-    }
-}
 
-function performRealTimeSearch(query) {
-    // Filter products based on search query using translated data
-    const filteredProducts = products.filter(product => {
-        const translatedProduct = getTranslatedProduct(product);
-        return translatedProduct.name.toLowerCase().includes(query) ||
-               translatedProduct.description.toLowerCase().includes(query) ||
-               translatedProduct.category.toLowerCase().includes(query) ||
-               (product.colors && product.colors.some(color => 
-                   translations[currentLanguage][color] && 
-                   translations[currentLanguage][color].toLowerCase().includes(query)
-               ));
-    });
-    
-    // Display filtered products without closing search bar
-    displayFilteredProducts(filteredProducts);
-}
 
-function performSearch() {
-    const query = searchInput.value.trim().toLowerCase();
-    if (query) {
-        // Filter products based on search query using translated data
-        const filteredProducts = products.filter(product => {
-            const translatedProduct = getTranslatedProduct(product);
-            return translatedProduct.name.toLowerCase().includes(query) ||
-                   translatedProduct.description.toLowerCase().includes(query) ||
-                   translatedProduct.category.toLowerCase().includes(query) ||
-                   (product.colors && product.colors.some(color => 
-                       translations[currentLanguage][color] && 
-                       translations[currentLanguage][color].toLowerCase().includes(query)
-                   ));
-        });
-        
-        // Display filtered products
-        displayFilteredProducts(filteredProducts);
-        
-        // Close search bar
-        searchBar.classList.remove('open');
-        searchInput.value = '';
-        
-        // Show notification
-        showNotification(`${filteredProducts.length} ${translations[currentLanguage].productsFound} for "${query}"`);
-    }
-}
-
-function displayFilteredProducts(filteredProducts) {
-    console.log('displayFilteredProducts called with:', filteredProducts.length, 'products');
-    
-    const productsGrid = document.getElementById('productsGrid');
-    console.log('Products grid element:', !!productsGrid);
-    
-    if (productsGrid) {
-        productsGrid.innerHTML = '';
-        console.log('Cleared products grid');
-        
-        if (filteredProducts.length === 0) {
-            console.log('No products to display');
-            productsGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                    <h3>${currentLanguage === 'da' ? 'Ingen produkter fundet' : 'No products found'}</h3>
-                    <p>${currentLanguage === 'da' ? 'Prøv at søge efter noget andet' : 'Try searching for something else'}</p>
-                </div>
-            `;
-            return;
-        }
-        
-        console.log('Creating product cards for', filteredProducts.length, 'products');
-        filteredProducts.forEach((product, index) => {
-            console.log('Creating card for product', index + 1, ':', product.name);
-            const productCard = createProductCard(product);
-            productsGrid.appendChild(productCard);
-        });
-        
-        console.log('Finished creating product cards');
-    } else {
-        console.error('Products grid not found!');
-    }
-}
 
 // Newsletter Subscription
 function subscribeNewsletter(event) {
@@ -846,8 +790,13 @@ function displayFeaturedProducts() {
     const featuredProductsGrid = document.getElementById('featuredProductsGrid');
     if (!featuredProductsGrid) return;
     
-    // Get first 6 products as featured
-    const featuredProducts = products.slice(0, 6);
+    // Get new and trending products first, then fill with other products
+    const newProducts = products.filter(product => product.isNew);
+    const trendingProducts = products.filter(product => product.isTrending && !product.isNew);
+    const otherProducts = products.filter(product => !product.isNew && !product.isTrending);
+    
+    // Combine products: new first, then trending, then others
+    const featuredProducts = [...newProducts, ...trendingProducts, ...otherProducts].slice(0, 6);
     
     featuredProductsGrid.innerHTML = '';
     
@@ -894,6 +843,15 @@ function selectColor(color) {
         option.classList.remove('selected');
     });
     event.target.closest('.color-option').classList.add('selected');
+    
+    // Update product image if color-specific images are available
+    if (currentProductDetail && currentProductDetail.colorImages && currentProductDetail.colorImages[color]) {
+        const productImage = document.querySelector('.product-detail-image img');
+        if (productImage) {
+            productImage.src = currentProductDetail.colorImages[color];
+            productImage.alt = `${currentProductDetail.name[currentLanguage]} - ${translations[currentLanguage][color] || color}`;
+        }
+    }
 }
 
 // Change Quantity in Product Detail
@@ -911,15 +869,25 @@ function changeQuantity(change) {
 function addToCartFromDetail() {
     if (!currentProductDetail) return;
     
-    // Original cart functionality
-    const existingItem = cart.find(item => item.id === currentProductDetail.id);
+    // Use selected color or default to first color
+    const colorToAdd = selectedColor || (currentProductDetail.colors && currentProductDetail.colors[0]);
+    
+    // Create a unique cart item ID that includes color if applicable
+    const cartItemId = colorToAdd ? `${currentProductDetail.id}-${colorToAdd}` : currentProductDetail.id;
+    
+    // Check if item with same ID and color already exists
+    const existingItem = cart.find(item => {
+        const itemId = item.selectedColor ? `${item.id}-${item.selectedColor}` : item.id;
+        return itemId === cartItemId;
+    });
     
     if (existingItem) {
         existingItem.quantity += selectedQuantity;
     } else {
         cart.push({
             ...currentProductDetail,
-            quantity: selectedQuantity
+            quantity: selectedQuantity,
+            selectedColor: colorToAdd
         });
     }
     
@@ -955,19 +923,31 @@ function getColorCode(color) {
 }
 
 // Add to Cart
-function addToCart(productId) {
+function addToCart(productId, selectedColor = null) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
     
-    // Original cart functionality
-    const existingItem = cart.find(item => item.id === productId);
+    // If product has multiple colors and no color is selected, use the first color
+    if (product.colors && product.colors.length > 1 && !selectedColor) {
+        selectedColor = product.colors[0];
+    }
+    
+    // Create a unique cart item ID that includes color if applicable
+    const cartItemId = selectedColor ? `${productId}-${selectedColor}` : productId;
+    
+    // Check if item with same ID and color already exists
+    const existingItem = cart.find(item => {
+        const itemId = item.selectedColor ? `${item.id}-${item.selectedColor}` : item.id;
+        return itemId === cartItemId;
+    });
     
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
         cart.push({
             ...product,
-            quantity: 1
+            quantity: 1,
+            selectedColor: selectedColor
         });
     }
     
@@ -976,19 +956,30 @@ function addToCart(productId) {
 }
 
 // Remove from Cart
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
+function removeFromCart(productId, selectedColor = null) {
+    cart = cart.filter(item => {
+        if (selectedColor) {
+            return !(item.id === productId && item.selectedColor === selectedColor);
+        }
+        return item.id !== productId;
+    });
     updateCart();
     showNotification(translations[currentLanguage].removedFromCart);
 }
 
 // Update Quantity
-function updateQuantity(productId, change) {
-    const item = cart.find(item => item.id === productId);
+function updateQuantity(productId, change, selectedColor = null) {
+    const item = cart.find(item => {
+        if (selectedColor) {
+            return item.id === productId && item.selectedColor === selectedColor;
+        }
+        return item.id === productId;
+    });
+    
     if (item) {
         item.quantity += change;
         if (item.quantity <= 0) {
-            removeFromCart(productId);
+            removeFromCart(productId, selectedColor);
         } else {
             updateCart();
         }
@@ -1021,23 +1012,36 @@ function updateCartItems() {
     cart.forEach(item => {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
+        // Use color-specific image if available
+        const itemImage = item.selectedColor && item.colorImages && item.colorImages[item.selectedColor] 
+            ? item.colorImages[item.selectedColor] 
+            : item.image;
+            
+        // Get translated name
+        const translatedName = item.name[currentLanguage] || item.name;
+        
+        // Add color to title if selected
+        const itemTitle = item.selectedColor 
+            ? `${translatedName} (${translations[currentLanguage][item.selectedColor] || item.selectedColor})`
+            : translatedName;
+            
         cartItem.innerHTML = `
             <div class="cart-item-image">
-                <img src="${item.image}" alt="${item.imageAlt}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <img src="${itemImage}" alt="${item.imageAlt}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="cart-item-placeholder" style="display: none;">
                     <span style="font-size: 1.5rem;">${getProductEmoji(item.category)}</span>
                 </div>
             </div>
             <div class="cart-item-info">
-                <div class="cart-item-title">${item.name}</div>
+                <div class="cart-item-title">${itemTitle}</div>
                 <div class="cart-item-price">${item.price.toFixed(2)} kr</div>
                 <div class="cart-item-quantity">
-                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1, '${item.selectedColor || ''}')">-</button>
                     <span>${item.quantity}</span>
-                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1, '${item.selectedColor || ''}')">+</button>
                 </div>
             </div>
-            <button class="quantity-btn" onclick="removeFromCart(${item.id})" style="background: #ff6b6b; color: white;">
+            <button class="quantity-btn" onclick="removeFromCart(${item.id}, '${item.selectedColor || ''}')" style="background: #ff6b6b; color: white;">
                 <i class="fas fa-trash"></i>
             </button>
         `;
@@ -1099,14 +1103,8 @@ document.addEventListener('click', function(e) {
         toggleWishlist();
     }
     
-    // Search bar - close when clicking outside
-    const searchBar = document.getElementById('searchBar');
-    const searchBtn = document.querySelector('.search-btn');
-    if (searchBar && searchBar.classList.contains('open') && 
-        !searchBar.contains(e.target) && 
-        !searchBtn.contains(e.target)) {
-        searchBar.classList.remove('open');
-    }
+
+
     
     // Language dropdown - close when clicking outside
     const languageDropdown = document.getElementById('languageDropdown');
@@ -1179,11 +1177,8 @@ document.addEventListener('keydown', function(e) {
             closeQuickView();
         }
         
-        // Close search bar
-        const searchBar = document.getElementById('searchBar');
-        if (searchBar && searchBar.classList.contains('open')) {
-            searchBar.classList.remove('open');
-        }
+
+
         
         // Close language dropdown
         const languageDropdown = document.getElementById('languageDropdown');
@@ -1913,11 +1908,7 @@ function updateLanguage() {
         }
     });
     
-    // Update search placeholder
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.placeholder = translations[currentLanguage].searchPlaceholder;
-    }
+
     
     // Update pagination
     const paginationInfo = document.querySelector('.pagination-info');
@@ -3551,25 +3542,7 @@ document.addEventListener('DOMContentLoaded', function() {
             animationSystem.addAnimation(element, 'fade-up', { delay: index * 100 });
         });
         
-        // Enhanced search functionality
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            let searchTimeout;
-            searchInput.addEventListener('input', (e) => {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    const query = e.target.value;
-                    if (query.length >= 2) {
-                        const results = advancedSearch.search(query);
-                        displaySearchResults(results);
-                        
-                        // Show suggestions
-                        const suggestions = advancedSearch.getSearchSuggestions(query);
-                        displaySearchSuggestions(suggestions);
-                    }
-                }, 300);
-            });
-        }
+
         
         console.log('🚀 Advanced features initialized!');
     }, 100);
@@ -3922,113 +3895,9 @@ function filterProducts() {
 
 // Enhanced Products Page Functions
 
-// Smart Search Functionality
-function handleSmartSearch() {
-    const searchInput = document.getElementById('searchInput');
-    const searchSuggestions = document.getElementById('searchSuggestions');
-    const searchClear = document.getElementById('searchClear');
-    const query = searchInput.value.trim();
-    
-    // Show/hide clear button
-    if (query.length > 0) {
-        searchClear.style.display = 'block';
-    } else {
-        searchClear.style.display = 'none';
-        searchSuggestions.classList.remove('show');
-        return;
-    }
-    
-    // Generate smart suggestions
-    const suggestions = generateSearchSuggestions(query);
-    
-    if (suggestions.length > 0) {
-        displaySearchSuggestions(suggestions);
-        searchSuggestions.classList.add('show');
-    } else {
-        searchSuggestions.classList.remove('show');
-    }
-    
-    // Apply search filter
-    applySearchFilter(query);
-}
 
-function generateSearchSuggestions(query) {
-    const suggestions = [];
-    const lowerQuery = query.toLowerCase();
-    
-    // Category suggestions
-    const categories = ['tøj', 'tilbehør', 'håndværk', 'hjem', 'kaftan', 'kjole', 'skjorte'];
-    categories.forEach(category => {
-        if (category.includes(lowerQuery) && !suggestions.includes(category)) {
-            suggestions.push({ type: 'category', text: category, icon: 'fas fa-tag' });
-        }
-    });
-    
-    // Product suggestions
-    products.forEach(product => {
-        const name = (product.name.da || product.name).toLowerCase();
-        const description = (product.description.da || product.description).toLowerCase();
-        
-        if (name.includes(lowerQuery) || description.includes(lowerQuery)) {
-            suggestions.push({
-                type: 'product',
-                text: product.name.da || product.name,
-                icon: 'fas fa-tshirt',
-                product: product
-            });
-        }
-    });
-    
-    // Style suggestions
-    const styles = ['traditionel', 'moderne', 'elegant', 'casual', 'festlig'];
-    styles.forEach(style => {
-        if (style.includes(lowerQuery) && !suggestions.some(s => s.text === style)) {
-            suggestions.push({ type: 'style', text: style, icon: 'fas fa-star' });
-        }
-    });
-    
-    return suggestions.slice(0, 8); // Limit to 8 suggestions
-}
 
-function displaySearchSuggestions(suggestions) {
-    const searchSuggestions = document.getElementById('searchSuggestions');
-    
-    searchSuggestions.innerHTML = suggestions.map(suggestion => `
-        <div class="suggestion-item" onclick="selectSuggestion('${suggestion.text}')">
-            <i class="${suggestion.icon}"></i>
-            <span>${suggestion.text}</span>
-        </div>
-    `).join('');
-}
 
-function selectSuggestion(text) {
-    document.getElementById('searchInput').value = text;
-    document.getElementById('searchSuggestions').classList.remove('show');
-    applySearchFilter(text);
-}
-
-function clearSearch() {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('searchClear').style.display = 'none';
-    document.getElementById('searchSuggestions').classList.remove('show');
-    applySearchFilter('');
-}
-
-function applySearchFilter(query) {
-    const filteredProducts = products.filter(product => {
-        if (!query) return true;
-        
-        const name = (product.name.da || product.name).toLowerCase();
-        const description = (product.description.da || product.description).toLowerCase();
-        const category = product.category.toLowerCase();
-        
-        return name.includes(query.toLowerCase()) ||
-               description.includes(query.toLowerCase()) ||
-               category.includes(query.toLowerCase());
-    });
-    
-    displayFilteredProducts(filteredProducts);
-}
 
 // Advanced Filtering System
 let currentFilters = {
@@ -4208,7 +4077,6 @@ function clearAllFilters() {
 
 function resetFilters() {
     clearAllFilters();
-    document.getElementById('searchInput').value = '';
     displayFilteredProducts(products);
 }
 
@@ -4543,11 +4411,7 @@ function initializeProductsPage() {
         displayFilteredProducts(products);
         updatePagination();
         
-        // Initialize search
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.addEventListener('input', handleSmartSearch);
-        }
+
         
         // Initialize price range
         updatePriceRange();
@@ -4718,6 +4582,9 @@ document.addEventListener('click', function(event) {
 // Test if functions are accessible globally
 window.toggleLanguageDropdown = toggleLanguageDropdown;
 window.toggleCurrencyDropdown = toggleCurrencyDropdown;
+    window.toggleCart = toggleCart;
+    window.toggleWishlist = toggleWishlist;
+    window.toggleMobileMenu = toggleMobileMenu;
 window.changeLanguage = changeLanguage;
 window.changeCurrency = changeCurrency;
 
