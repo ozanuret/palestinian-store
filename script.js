@@ -567,6 +567,64 @@ const products = [
             da: "Vask ved 30°C, ikke brug blegemiddel",
             en: "Wash at 30°C, do not use bleach"
         }
+    },
+    {
+        id: 17,
+        name: {
+            da: "Palestinian T-shirt",
+            en: "Palestinian T-shirt"
+        },
+        description: {
+            da: "Autentisk palæstinensisk t-shirt i både hvid og sort. Håndlavet med kærlighed til palæstinensk kultur og historie. 100% bomuld med høj kvalitet.",
+            en: "Authentic Palestinian t-shirt available in both white and black. Handcrafted with love for Palestinian culture and history. 100% cotton with high quality."
+        },
+        price: 499,
+        image: "images/palestinian-tshirt-white.jpg",
+        category: "tøj",
+        colors: ["hvid", "sort"],
+        sizes: ["S", "M", "L", "XL"],
+        material: "bomuld",
+        inStock: true,
+        isNew: true,
+        isTrending: true,
+        onSale: false,
+        rating: 5.0,
+        reviewCount: 0,
+        popularity: 10,
+        stripeProductId: "prod_SwRfCCjvqqh007",
+        imageAlt: {
+            da: "Palestinian T-shirt i hvid og sort",
+            en: "Palestinian T-shirt in white and black"
+        },
+        features: {
+            da: [
+                "100% bomuld",
+                "Håndlavet design",
+                "Autentisk palæstinensisk stil",
+                "Bæredygtig produktion",
+                "Støtter palæstinensk kultur"
+            ],
+            en: [
+                "100% cotton",
+                "Handcrafted design",
+                "Authentic Palestinian style",
+                "Sustainable production",
+                "Supports Palestinian culture"
+            ]
+        },
+        material: {
+            da: "100% bomuld",
+            en: "100% cotton"
+        },
+        care: {
+            da: "Vask ved 30°C, ikke brug blegemiddel",
+            en: "Wash at 30°C, do not use bleach"
+        },
+        // Color-specific images
+        colorImages: {
+            hvid: "images/palestinian-tshirt-white.jpg",
+            sort: "images/palestinian-tshirt-black.jpg"
+        }
     }
 ];
 
@@ -780,6 +838,15 @@ function selectColor(color) {
         option.classList.remove('selected');
     });
     event.target.closest('.color-option').classList.add('selected');
+    
+    // Update product image if color-specific images are available
+    if (currentProductDetail && currentProductDetail.colorImages && currentProductDetail.colorImages[color]) {
+        const productImage = document.querySelector('.product-detail-image img');
+        if (productImage) {
+            productImage.src = currentProductDetail.colorImages[color];
+            productImage.alt = `${currentProductDetail.name[currentLanguage]} - ${translations[currentLanguage][color] || color}`;
+        }
+    }
 }
 
 // Change Quantity in Product Detail
@@ -797,15 +864,25 @@ function changeQuantity(change) {
 function addToCartFromDetail() {
     if (!currentProductDetail) return;
     
-    // Original cart functionality
-    const existingItem = cart.find(item => item.id === currentProductDetail.id);
+    // Use selected color or default to first color
+    const colorToAdd = selectedColor || (currentProductDetail.colors && currentProductDetail.colors[0]);
+    
+    // Create a unique cart item ID that includes color if applicable
+    const cartItemId = colorToAdd ? `${currentProductDetail.id}-${colorToAdd}` : currentProductDetail.id;
+    
+    // Check if item with same ID and color already exists
+    const existingItem = cart.find(item => {
+        const itemId = item.selectedColor ? `${item.id}-${item.selectedColor}` : item.id;
+        return itemId === cartItemId;
+    });
     
     if (existingItem) {
         existingItem.quantity += selectedQuantity;
     } else {
         cart.push({
             ...currentProductDetail,
-            quantity: selectedQuantity
+            quantity: selectedQuantity,
+            selectedColor: colorToAdd
         });
     }
     
@@ -841,19 +918,31 @@ function getColorCode(color) {
 }
 
 // Add to Cart
-function addToCart(productId) {
+function addToCart(productId, selectedColor = null) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
     
-    // Original cart functionality
-    const existingItem = cart.find(item => item.id === productId);
+    // If product has multiple colors and no color is selected, use the first color
+    if (product.colors && product.colors.length > 1 && !selectedColor) {
+        selectedColor = product.colors[0];
+    }
+    
+    // Create a unique cart item ID that includes color if applicable
+    const cartItemId = selectedColor ? `${productId}-${selectedColor}` : productId;
+    
+    // Check if item with same ID and color already exists
+    const existingItem = cart.find(item => {
+        const itemId = item.selectedColor ? `${item.id}-${item.selectedColor}` : item.id;
+        return itemId === cartItemId;
+    });
     
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
         cart.push({
             ...product,
-            quantity: 1
+            quantity: 1,
+            selectedColor: selectedColor
         });
     }
     
@@ -862,19 +951,30 @@ function addToCart(productId) {
 }
 
 // Remove from Cart
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
+function removeFromCart(productId, selectedColor = null) {
+    cart = cart.filter(item => {
+        if (selectedColor) {
+            return !(item.id === productId && item.selectedColor === selectedColor);
+        }
+        return item.id !== productId;
+    });
     updateCart();
     showNotification(translations[currentLanguage].removedFromCart);
 }
 
 // Update Quantity
-function updateQuantity(productId, change) {
-    const item = cart.find(item => item.id === productId);
+function updateQuantity(productId, change, selectedColor = null) {
+    const item = cart.find(item => {
+        if (selectedColor) {
+            return item.id === productId && item.selectedColor === selectedColor;
+        }
+        return item.id === productId;
+    });
+    
     if (item) {
         item.quantity += change;
         if (item.quantity <= 0) {
-            removeFromCart(productId);
+            removeFromCart(productId, selectedColor);
         } else {
             updateCart();
         }
@@ -907,23 +1007,36 @@ function updateCartItems() {
     cart.forEach(item => {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
+        // Use color-specific image if available
+        const itemImage = item.selectedColor && item.colorImages && item.colorImages[item.selectedColor] 
+            ? item.colorImages[item.selectedColor] 
+            : item.image;
+            
+        // Get translated name
+        const translatedName = item.name[currentLanguage] || item.name;
+        
+        // Add color to title if selected
+        const itemTitle = item.selectedColor 
+            ? `${translatedName} (${translations[currentLanguage][item.selectedColor] || item.selectedColor})`
+            : translatedName;
+            
         cartItem.innerHTML = `
             <div class="cart-item-image">
-                <img src="${item.image}" alt="${item.imageAlt}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <img src="${itemImage}" alt="${item.imageAlt}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="cart-item-placeholder" style="display: none;">
                     <span style="font-size: 1.5rem;">${getProductEmoji(item.category)}</span>
                 </div>
             </div>
             <div class="cart-item-info">
-                <div class="cart-item-title">${item.name}</div>
+                <div class="cart-item-title">${itemTitle}</div>
                 <div class="cart-item-price">${item.price.toFixed(2)} kr</div>
                 <div class="cart-item-quantity">
-                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1, '${item.selectedColor || ''}')">-</button>
                     <span>${item.quantity}</span>
-                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1, '${item.selectedColor || ''}')">+</button>
                 </div>
             </div>
-            <button class="quantity-btn" onclick="removeFromCart(${item.id})" style="background: #ff6b6b; color: white;">
+            <button class="quantity-btn" onclick="removeFromCart(${item.id}, '${item.selectedColor || ''}')" style="background: #ff6b6b; color: white;">
                 <i class="fas fa-trash"></i>
             </button>
         `;
